@@ -1,52 +1,30 @@
-# Data Science in Practice
+# Data Science in Practice or Neurophysiological Data
 
-Data Science in Practice is an open set of materials for learning introductory data science.
-
-This website is a public version of the Data Science in Practice course, taught as
-[COGS 108](https://github.com/COGS108/)
-at UC San Diego.
-
-_If you are in the COGS108 class at UC San Diego, this website is **not** the same as the materials and coursework for the class._
+Data Science in Practice for Neurophysiological data is an open set of materials for learning introductory data science for [**psyM1**](https://www.studium.uni-kiel.de/de/studienangebot/studienfaecher/psychologie-ma).
+This website is a closely related to the public version of the Data Science in Practice course, taught as [COGS 108](https://github.com/COGS108/) at UC San Diego.
 
 ## Overview
 
-The goal of Data Science in Practice is to introduce the practical elements of _doing_ data science.
-
+The goal of Data Science in Practice is to introduce the practical elements of _doing_ data science with a focus on neurophysiological data.
 Data science is an emerging and multidisciplinary field, organized around the practice of analyzing data, and all the questions, practices and problems that entails.
-
 These materials focus on the practical elements of finding, analyzing, interpreting and contextualizing data analysis, in order to practice answering questions with data.
 
-## Requirements
-
-These materials uses the Python programming language, and presume knowledge of standard library Python.
-
-The tutorials introduce how to get Python installed in which dependencies are needed.
 
 ## Content
 
 Available materials include:
 
-- **Tutorials** which introduce key topics for doing data science
+- **Theory** which introduce key topics for doing data science
     - These can be used to explore and learn about key topics
 - **Assignments** which are problem sets that can be worked through
     - These can be used to practice key skills and ideas with code
-- **Projects** which describes how to pursue independent analysis projects
-    - This can be used as a guide for how to continue with real data science projects
 
 All the materials are listed in the table of contents in the left sidebar.
-
 Note that these materials are not created as fully detailed descriptions or formal descriptions of the topics they introduce.
-
-Rather, they seek to _introduce_ key topics, _demonstrate_ them in code, and allow for interaction, exploration and _practice_.
-
-Put another way, these materials are designed to be more of a map than encyclopedia.
-
-For further information on topics we introduce, these materials link to external resources.
 
 ## How to Use These Materials
 
 These materials are created as [Jupyter Notebooks](https://jupyter.org), and are intended to be executed and explored in a hands-on manner.
-
 There is a download link at the top left of the page, that can be used to download each page as a notebook. This allows you to use the notebook locally, executing code, and answering questions.
 
 ## Issue Tracking
@@ -60,8 +38,6 @@ This set of materials is an openly available version of tutorials and coursework
 used in a university undergraduate course,
 [COGS 108](https://github.com/COGS108/),
 which is taught at UC San Diego.
-
-These materials may still contain some references to the university course or to grading, which can be ignored.
 
 You can find more information about the university course in the
 [overview repository](https://github.com/COGS108/Overview/).

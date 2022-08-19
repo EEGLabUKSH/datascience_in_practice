@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Python" href="01-Python.html" />
-    <link rel="prev" title="Data Science in Practice" href="../intro.html" />
+    <link rel="prev" title="Data Science in Practice or Neurophysiological Data" href="../intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -109,7 +109,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Data Science in Practice
+                    Data Science in Practice or Neurophysiological Data
                 </a>
             </li>
         </ul>
@@ -202,11 +202,6 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="17-Classification.html">
    Classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="18-NaturalLanguageProcessing.html">
-   Natural Language Processing
   </a>
  </li>
  <li class="toctree-l1">
@@ -426,41 +421,21 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prufungsordnung">
-   Prüfungsordnung
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-do-you-need-for-these-tutorials">
-   What do you need for these tutorials?
+  <a class="reference internal nav-link" href="#prerequisits">
+   Prerequisits
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#prerequisites">
-     Prerequisites
+    <a class="reference internal nav-link" href="#prufungsordnung">
+     Prüfungsordnung
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#software">
-     Software
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#already-have-python">
-     Already have Python
+    <a class="reference internal nav-link" href="#tools">
+     Tools
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tools">
-   Tools
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#environments">
-   Environments
-  </a>
  </li>
 </ul>
 
@@ -482,41 +457,21 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prufungsordnung">
-   Prüfungsordnung
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-do-you-need-for-these-tutorials">
-   What do you need for these tutorials?
+  <a class="reference internal nav-link" href="#prerequisits">
+   Prerequisits
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#prerequisites">
-     Prerequisites
+    <a class="reference internal nav-link" href="#prufungsordnung">
+     Prüfungsordnung
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#software">
-     Software
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#already-have-python">
-     Already have Python
+    <a class="reference internal nav-link" href="#tools">
+     Tools
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tools">
-   Tools
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#environments">
-   Environments
-  </a>
  </li>
 </ul>
 
@@ -532,41 +487,44 @@ title="Print to PDF"
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
 <p>Welcome to the hands on materials for psyM1-01a <em>(practical part)</em>.
 This notebook will guide through getting the tools you will need for data science related tasks.</p>
-<section id="prufungsordnung">
-<h2>Prüfungsordnung<a class="headerlink" href="#prufungsordnung" title="Permalink to this headline">#</a></h2>
+<section id="prerequisits">
+<h2>Prerequisits<a class="headerlink" href="#prerequisits" title="Permalink to this headline">#</a></h2>
+<p>Throughout these tutorials, you will see colored ‘alert’ text:</p>
+<div class="alert alert-success">
+Green alerts provide key information and definitions.
+</div>
+<div class="alert alert-info">
+Blue alerts provide links out to further 
+</div>
+<div class="alert alert-danger">
+Red alerts will indicate task necessary to do in order to pass the seminar. 
+</div><section id="prufungsordnung">
+<h3>Prüfungsordnung<a class="headerlink" href="#prufungsordnung" title="Permalink to this headline">#</a></h3>
 <p>First things first, why are you herewhat are you doing? A closer look in the <a class="reference external" href="http://www.studservice.uni-kiel.de/sta/fachpruefungsordnung-psychologie-master-1-fach.pdf">Prüfungsordnung</a> shed some lights on everything.</p>
 <br>
 <img src="img/moduloverview.png",width="250px">
 <br><p>Another excerpt from the Prüfungsordnung:</p>
 <blockquote>
-<div><br>
-Als zentrales Ziel des Masterstudiengangs sollen Voraussetzungen für das selbstständige und
+<div><p>Als zentrales Ziel des Masterstudiengangs sollen Voraussetzungen für das selbstständige und
 eigenverantwortliche Arbeiten in den Berufsfeldern der Psychologie geschaffen werden. Dabei
 werden auch Transferkompetenzen zur Verbindung wissenschaftlicher Erkenntnisse mit
-**praktischen Handeln** erworben. - FPO Psychologie M.Sc. 2020 - Seite 3/17 
-<br>
-<br>
+<strong>praktischen Handeln</strong> erworben. <br>
+<em>- FPO Psychologie <a class="reference external" href="http://M.Sc">M.Sc</a>. 2020 - Seite 3/17</em></p>
 </div></blockquote>
 <p>Therefore this seminar will provide you with some hands-on tools of psychological competence with a wide variety of used cases in the real-world.</p>
 </section>
-<section id="what-do-you-need-for-these-tutorials">
-<h2>What do you need for these tutorials?<a class="headerlink" href="#what-do-you-need-for-these-tutorials" title="Permalink to this headline">#</a></h2>
-<section id="prerequisites">
-<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">#</a></h3>
+<section id="tools">
+<h3>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">#</a></h3>
 <p>These tutorials presume that you do already have some basic knowledge of programming.</p>
-<p>If you are somewhat unfamiliar with Python, we will make sure will not be at the end of the seminar.</p>
-</section>
-<section id="software">
-<h3>Software<a class="headerlink" href="#software" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p>Working install of Python (comes with anaconda)</p></li>
-<li><p>Jupyter Notebooks (comes with anaconda)</p></li>
+<p>If you are somewhat unfamiliar with Python, we will make sure you feel comfortable with Python by the end of the seminar.</p>
+<p>The following are a series of tools that you will need for this class</p>
+<ol class="simple">
+<li><p>Anaconda</p></li>
+<li><p>git &amp; GitHub Desktop</p></li>
 <li><p>Visual Studio Code</p></li>
-<li><p>git and a GitHub account</p></li>
-</ul>
-</section>
-<section id="already-have-python">
-<h3>Already have Python<a class="headerlink" href="#already-have-python" title="Permalink to this headline">#</a></h3>
+</ol>
+<p>Today we will go through them and how to set them up.</p>
+<p><strong>Already have Python</strong>?</p>
 <ul class="simple">
 <li><p>If you are running code locally, we recommend you install a new version of Python with Anaconda, as described below</p></li>
 <li><p>If you are on Mac, you have a native installation of python. This native installation of Python may be older, will not include the extra packages that you will need for this class, and is best left untouched.</p>
@@ -576,11 +534,6 @@ werden auch Transferkompetenzen zur Verbindung wissenschaftlicher Erkenntnisse m
 </li>
 <li><p>Windows does not require Python natively and so it is not typically pre-installed.</p></li>
 </ul>
-</section>
-</section>
-<section id="tools">
-<h2>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">#</a></h2>
-<p>The following are a series of tools that you will need for this class</p>
 <br>
 <br>
 <img src="img/anaconda.png" width="350px">
@@ -596,7 +549,9 @@ with the download page
 </div><p>Anaconda itself is a distribution, meaning that is a version of Python with a collection of packages that are curated and maintained together.
 Using a pre-built distribution is useful, as it comes with the packages that you need for data science.
 Anaconda also comes with <code class="docutils literal notranslate"><span class="pre">conda</span></code>, which is a package manager, allowing you to download, install, and manage other packages.</p>
-<br>
+<div class="alert alert-danger">
+Download and install Anaconda until the next session. (1 point)
+</div><br>
 <br>
 <img src="https://raw.githubusercontent.com/COGS108/Tutorials/master/img/git.png" width="300px">
 <br>
@@ -618,7 +573,12 @@ Github is an online hosting service that can be used with git, and offers online
 Create an account on 
 <a href="https://github.com/" class="alert-link">Github</a>.
 </div><p>Git &amp; GitHub are not the same thing, though, in practice, they are commonly used together, whereby git is used as a tool to version control code and manage multiple copies stored across your computer, as well as on remote repositories that are stored on Github.</p>
-<br>
+<div class="alert alert-danger">
+Download and install GitHub Desktop until the next session. (1 point)
+</div>
+<div class="alert alert-danger">
+Connect your Github account to your GitHub Desktop install. (1 point)
+</div><br>
 <br>
 <img src="img/visualstudiologo.png" width="300px">
 <br>
@@ -628,26 +588,12 @@ Visual Studio Code is a free graphical user interface (GUI) for coding.
 <div class="alert alert-info">
 Visual Studio Code is available 
 <a href="https://code.visualstudio.com/" class="alert-link">here</a>.
+</div>
+<div class="alert alert-danger">
+Download and install Visual Studio Code until the next session. (1 point)
+</div>
 </section>
-<section id="environments">
-<h2>Environments<a class="headerlink" href="#environments" title="Permalink to this headline">#</a></h2>
-<div class="alert alert-success">
-Environments are isolated, independent installations of a programming language and groups of packages, that don't interfere with each other. 
-</div>
-<div class="alert alert-info">
-Patrick J Mineault wrote a greate resource how to use virtual enviroments in data science here: 
-<a href="https://goodresearch.dev/setup.html#set-up-a-virtual-environment" class="alert-link">here</a>.
-</div><p>We weill set up all of our powerful tools next week</p>
-<p>Throughout these tutorials, you will see colored ‘alert’ text:</p>
-<div class="alert alert-success">
-Green alerts provide key information and definitions.
-</div>
-<div class="alert alert-info">
-Blue alerts provide links out to further 
-</div>
-<div class="alert alert-info">
-Red alerts will indicate task necessary to do in order to pass the seminar. 
-</div></section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -681,7 +627,7 @@ Red alerts will indicate task necessary to do in order to pass the seminar.
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Data Science in Practice</p>
+            <p class="prev-next-title">Data Science in Practice or Neurophysiological Data</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="01-Python.html" title="next page">
