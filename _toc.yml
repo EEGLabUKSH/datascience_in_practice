@@ -1,0 +1,26 @@
+format: jb-book
+root: intro
+
+parts:
+- caption: Tutorials
+  chapters:
+  - file: tutorials/00-Introduction
+  - file: tutorials/01-Python
+  - file: tutorials/02-JupyterNotebooks
+  - file: tutorials/03-DataAnalysis
+  - file: tutorials/04-DataSciencePython
+  - file: tutorials/05-DataGathering
+  - file: tutorials/06-DataWrangling
+  - file: tutorials/07-DataCleaning
+  - file: tutorials/08-DataPrivacy&Anonymization
+  - file: tutorials/09-DataVisualization
+  - file: tutorials/10-Distributions
+  - file: tutorials/11-TestingDistributions
+  - file: tutorials/12-StatisticalComparisons
+  - file: tutorials/13-OrdinaryLeastSquares
+  - file: tutorials/14-LinearModels
+  - file: tutorials/15-Clustering
+  - file: tutorials/16-DimensionalityReduction
+  - file: tutorials/17-Classification
+  - file: tutorials/A1-PythonPackages
+  - file: tutorials/A2-Git
