@@ -50,8 +50,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Data Analysis" href="03-DataAnalysis.html" />
@@ -462,11 +460,6 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#latex-formatted-text">
-       LaTeX-formatted text
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#code-cells">
        Code Cells
       </a>
@@ -487,28 +480,6 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#kernel-namespace">
      Kernel &amp; Namespace
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#magic-commands">
-     Magic Commands
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#line-magics">
-       Line Magics
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#cell-magics">
-       Cell Magics
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#running-terminal-commands">
-       Running terminal commands
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -571,11 +542,6 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#latex-formatted-text">
-       LaTeX-formatted text
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#code-cells">
        Code Cells
       </a>
@@ -597,28 +563,6 @@ title="Print to PDF"
      Kernel &amp; Namespace
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#magic-commands">
-     Magic Commands
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#line-magics">
-       Line Magics
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#cell-magics">
-       Cell Magics
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#running-terminal-commands">
-       Running terminal commands
-      </a>
-     </li>
-    </ul>
-   </li>
   </ul>
  </li>
 </ul>
@@ -635,7 +579,7 @@ title="Print to PDF"
 <h1>Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Permalink to this headline">#</a></h1>
 <br>
 <br>
-<img src="https://raw.githubusercontent.com/COGS108/Tutorials/master/img/jupyter.png" width="200px">
+<img src="img/jupyter.png" width="200px">
 <br>
 <br>
 <p>This is a quick introduction to Jupyter notebooks.</p>
@@ -656,12 +600,13 @@ and they also have some example notebooks
 <h2>Cells<a class="headerlink" href="#cells" title="Permalink to this headline">#</a></h2>
 <div class="alert alert-success">
 The main organizational structure of the notebook are 'cells'.
-</div><p>Cells, can be markdown (text), like this one or code cells (we’ll get to those).</p>
+</div>
+<p>Cells, can be markdown (text), like this one or code cells.</p>
 <section id="markdown-cells">
 <h3>Markdown cells<a class="headerlink" href="#markdown-cells" title="Permalink to this headline">#</a></h3>
-<p>Markdown cell are useful for communicating information about our notebooks.</p>
-<p>They perform basic text formatting including italics, bold, headings, links and images.</p>
-<p>Double-click on any of the cells in this section to see what the plain-text looks like. Run the cell to then see what the formatted Markdown text looks like.</p>
+<p>For communicating information about our notes, markdown cells are helpful.
+They apply basic text formatting such as bold, italics, headings, links, and photos.
+To view the plain text in any of the cells in this section, double-click on any one of them. Run the cell to observe how the Markdown formatting appears.</p>
 </section>
 </section>
 </section>
@@ -708,17 +653,11 @@ The main organizational structure of the notebook are 'cells'.
 <li><p>This is my third item</p></li>
 </ol>
 <p>We can make a link to this <a class="reference external" href="https://www.markdownguide.org/cheat-sheet/">useful markdown cheatsheet</a> as such.</p>
-<p>If we don’t use the markdown syntax for links, it will just show the link itself as the link text: <a class="reference external" href="https://www.markdownguide.org/cheat-sheet/">https://www.markdownguide.org/cheat-sheet/</a></p>
-</section>
-<section id="latex-formatted-text">
-<h3>LaTeX-formatted text<a class="headerlink" href="#latex-formatted-text" title="Permalink to this headline">#</a></h3>
-<div class="math notranslate nohighlight">
-\[ P(A \mid B) = \frac{P(B \mid A) \, P(A)}{P(B)} \]</div>
 </section>
 <section id="code-cells">
 <h3>Code Cells<a class="headerlink" href="#code-cells" title="Permalink to this headline">#</a></h3>
-<p>Code cells are cells that contain code, that can be executed.</p>
-<p>Comments can also be written in code cells, indicated by ‘#’.</p>
+<p>Code cells are cells that contain python code, that can be executed.
+Comments can also be written in code cells, indicated by ‘#’.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># In a code cell, comments can be typed</span>
@@ -804,30 +743,6 @@ The main organizational structure of the notebook are 'cells'.
 Jupyter has useful shortcuts. Add a single '?' after a function or class get a window with the documentation, or a double '??' to pull up the source code. 
 </div><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import numpy for examples</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the docs for a numpy array</span>
-np.array<span class="o">?</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the full source code for numpy append function</span>
-np.append<span class="o">??</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get information about a variable you&#39;ve created</span>
 my_string<span class="o">?</span>
 </pre></div>
@@ -843,13 +758,13 @@ Jupyter also has
 capacities, which can autocomplete what you are typing, and/or be used to explore what code is available.  
 </div><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Move your cursor just after the period, press tab, and a drop menu will appear showing all possible completions</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Move your cursor just after the period, press the first letter of the command you want to execute or tab for all avaliable commands, and a drop menu will appear showing all possible completions</span>
 <span class="n">np</span><span class="o">.</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]</span>
     <span class="n">np</span><span class="o">.</span>
        <span class="o">^</span>
 <span class="ne">SyntaxError</span>: invalid syntax
@@ -876,139 +791,16 @@ capacities, which can autocomplete what you are typing, and/or be used to explor
 </section>
 <section id="kernel-namespace">
 <h2>Kernel &amp; Namespace<a class="headerlink" href="#kernel-namespace" title="Permalink to this headline">#</a></h2>
-<p>You do not need to run cells in order! This is useful for flexibly testing and developing code.</p>
-<p>The numbers in the square brackets to the left of a cell show which cells have been run, and in what order.</p>
-<p>However, it can also be easy to lose track of what has already been declared / imported, leading to unexpected behaviour from running cells.</p>
-<p>The kernel is what connects the notebook to your computer behind-the-scenes to execute the code.</p>
-<p>It can be useful to clear and re-launch the kernel. You can do this from the ‘kernel’ drop down menu, at the top, optionally also clearing all ouputs.</p>
-</section>
-<section id="magic-commands">
-<h2>Magic Commands<a class="headerlink" href="#magic-commands" title="Permalink to this headline">#</a></h2>
-<div class="alert alert-success">
-'Magic Commands' are a special (command-line like) syntax in IPython/Jupyter to run special functionality. They can run on lines and/or entire cells. 
-</div>
-<div class="alert alert-info">
-The iPython <a href="http://ipython.readthedocs.io/en/stable/interactive/magics.html" class="alert-link">documentation</a> has more information on magic commands.
-</div><p>Magic commands are designed to succinctly solve various common problems in standard data analysis. Magic commands come in two flavors: line magics, which are denoted by a single % prefix and operate on a single line of input, and cell magics, which are denoted by a double %% prefix and operate on multiple lines of input.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access quick reference sheet for interactive Python (this opens a reference guide)</span>
-<span class="o">%</span><span class="k">quickref</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check a list of available magic commands</span>
-<span class="o">%</span><span class="k">lsmagic</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the current working directory</span>
-<span class="o">%</span><span class="k">pwd</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check all currently defined variables</span>
-<span class="o">%</span><span class="k">who</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Chcek all variables, with more information about them</span>
-<span class="o">%</span><span class="k">whos</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check code history</span>
-<span class="o">%</span><span class="k">hist</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="line-magics">
-<h3>Line Magics<a class="headerlink" href="#line-magics" title="Permalink to this headline">#</a></h3>
-<p>Line magics use a single ‘%’, and apply to a single line.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For example, we can time how long it takes to create a large list</span>
-<span class="o">%</span><span class="k">timeit</span> list(range(100000))
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="cell-magics">
-<h3>Cell Magics<a class="headerlink" href="#cell-magics" title="Permalink to this headline">#</a></h3>
-<p>Cell magics use a double ‘%%’, and apply to the whole cell.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
-<span class="c1"># For example, we could time a whole cell</span>
-<span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">))</span>
-<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="running-terminal-commands">
-<h3>Running terminal commands<a class="headerlink" href="#running-terminal-commands" title="Permalink to this headline">#</a></h3>
-<p>Another nice thing about notebooks is being able to run terminals commands</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># You can run a terminal command by adding &#39;!&#39; to the start of the line</span>
-<span class="o">!</span>pwd
-
-<span class="c1"># Note that in this case, &#39;!pwd&#39; is equivalent to line magic &#39;%pwd&#39;. </span>
-<span class="c1"># The &#39;!&#39; syntax is more general though, allowing you to run anything you want through command-line </span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
-# Equivalently, (for bash) use the %%bash cell magic to run a cell as bash (command-line)
-pwd
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># List files in directory</span>
-<span class="o">!</span>ls
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change current directory</span>
-<span class="o">!</span><span class="nb">cd</span> .
-</pre></div>
-</div>
-</div>
-</div>
+<p>You do not need to run cells in order! This is useful for flexibly testing and developing code.
+The numbers in the square brackets to the left of a cell show which cells have been run, and in what order.
+However, it can also be easy to lose track of what has already been declared / imported, leading to unexpected behaviour from running cells.</p>
+<p>The kernel is what connects the notebook to your computer behind-the-scenes to execute the code.
+It can be useful to clear and re-launch the kernel. You can do this from the ‘kernel’ drop down menu, at the top, optionally also clearing all ouputs.</p>
 <div class="alert alert-info">
 For more useful information, check out Jupyter Notebooks 
 <a href="https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/" class="alert-link">tips & tricks</a>, and more information on how 
 <a href="http://jupyter.readthedocs.io/en/latest/architecture/how_jupyter_ipython_work.html" class="alert-link">notebooks work</a>.
 </div></section>
-</section>
 </section>
 
     <script type="text/x-thebe-config">

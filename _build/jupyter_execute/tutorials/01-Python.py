@@ -5,7 +5,7 @@
 
 # <br>
 # <br>
-# <img src="https://raw.githubusercontent.com/COGS108/Tutorials/master/img/python.png" width="400px">
+# <img src="img/python.png" width="400px">
 # <br>
 # <br>
 
@@ -26,19 +26,10 @@
 
 # ## Why Python
 # 
-# - As a general purpose language, Python supports a large range of tasks.
-#     - Or put another way: 'Python isn't the best at anything, but it's second best at everything'
+# - Python is not the best language at eveything but it is second best of everything. It supports a wide range of tasks and has a decent library of base and community projects.
 #     - This is useful. A data science project may include everything from scraping data from the web, analyzing a mixture or text and numerical data, computing features, training a model, creating high-quality graphs, and then hosting a website with your results. 
-# - Python is explicitly and by design, user-friendly.
-# - Python also has a massive user community, who contribute to a large number of high-quality, well maintained open-source tools.
-#     - The best language for your project is one which has the things you need.
-# - In part for the reasons listed above, Python is heavily used in industry
+# - Python is heavily used in industry
 # 
-
-# <div class="alert alert-info">
-# The Python programming language is developed and maintained by the
-# <a href=https://www.python.org/psf/ class="alert-link">Python Software Foundation</a>.
-# </div>
 
 # ## Python Versions
 # 

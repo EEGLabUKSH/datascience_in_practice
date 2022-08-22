@@ -3,7 +3,7 @@
 
 # # Scientific Python
 # 
-# Python has a large number of tools available for doing data science, sometimes referred to as 'scientific Python'. 
+# Python has a large number of open source tools available for doing data science, sometimes referred to as 'scientific Python'. 
 # 
 # The scientific Python ecosystem revolves around some a set of core modules, including:
 # 
@@ -17,7 +17,7 @@
 
 # <br>
 # <br>
-# <img src="https://raw.githubusercontent.com/COGS108/Tutorials/master/img/scipy.png" width="200px">
+# <img src="img/scipy.png" width="200px">
 # <br>
 # <br>
 
@@ -69,7 +69,7 @@ print('The percent of heads from this sample is: ', sum(coin_flips) / len(coin_f
 
 # <br>
 # <br>
-# <img src="https://raw.githubusercontent.com/COGS108/Tutorials/master/img/numpy.png" width="300px">
+# <img src="img/numpy.png" width="300px">
 # <br>
 # <br>
 
@@ -138,7 +138,7 @@ print(arr[2] == True)
 
 # <br>
 # <br>
-# <img src="https://raw.githubusercontent.com/COGS108/Tutorials/master/img/pandas.png" width="400px">
+# <img src="img/pandas.png" width="400px">
 # <br>
 # <br>
 
@@ -250,7 +250,7 @@ df.mean()
 
 # <br>
 # <br>
-# <img src="https://raw.githubusercontent.com/COGS108/Tutorials/master/img/matplotlib.png" width="500px">
+# <img src="img/matplotlib.png" width="500px">
 # <br>
 # <br>
 
@@ -296,7 +296,7 @@ plt.plot([1, 2, 3], [4, 6, 8])
 
 # <br>
 # <br>
-# <img src="https://raw.githubusercontent.com/COGS108/Tutorials/master/img/sklearn.png" width="250px">
+# <img src="img/sklearn.png" width="250px">
 # <br>
 # <br>
 
