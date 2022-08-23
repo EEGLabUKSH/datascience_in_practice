@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# # EEG magic
+
 # In[1]:
 
 
@@ -20,7 +22,7 @@ bundles.beamer_moml()
 plt.rcParams.update({"figure.dpi": 200,"figure.facecolor":"w","figure.figsize": (15,10)})
 
 
-# # Set path and load data
+# ## Set path and load data
 # First we will detect where the current script is located on our harddrive. We will points VS code to the location of the file we want to load. The raw data is in MatLab format, luckerly scipy can handle this issue.
 # 
 # <div class="alert alert-danger">
@@ -38,7 +40,7 @@ data = sio.loadmat(Path.joinpath(dir_rawdata,fname))
 data_mne = np.vstack((data['EEG'],data['labels']))
 
 
-# # Explore the loaded data
+# ## Explore the loaded data
 # To understand the data we were handed please explore what the variable contains.
 # 
 # <div class="alert alert-danger">
@@ -55,7 +57,7 @@ print('Label dimensions:', data['labels'].shape)
 print(np.unique(data['labels']))
 
 
-# # Set config vars for MNE
+# ## Set config vars for MNE
 # To process the data we have to hardcode a couple of information to pass to the MNE toolbox.
 # For now these are channel names and types of our data, as well as the sampling rate.
 # 
@@ -73,7 +75,7 @@ srate = 2048
 info = mne.create_info(ch_names=ch_nms, sfreq=srate, ch_types=ch_types)
 
 
-# # Create MNE object
+# ## Create MNE object
 # With the raw data loaded and the config variables defined, we can initiate the MNE object.
 
 # In[17]:
@@ -91,7 +93,7 @@ raw = mne.io.RawArray(data_mne, info)
 raw.filter(0.5, 20)
 
 
-# # Prepare epoching
+# ## Prepare epoching
 # To better understand the data, we want to find events in the raw data and epoch around these.
 
 # In[19]:
@@ -151,7 +153,7 @@ for i, onset in enumerate(onsets):
 print(trials.shape)
 
 
-# # Defining a function
+# ## Defining a function
 # because we will probably plot our data a trazillion times, lets define a function to make the code look cleaner and to help us keep an overview.
 
 # In[21]:
@@ -208,7 +210,7 @@ plt.figure(figsize=(4, 4))
 plot_eeg(trials[0, :, :], vspace=30)
 
 
-# # More plotting
+# ## More plotting
 # "Why do you always plot your data?" <br>
 # "Because I can" - *Immanuel Kant*
 
@@ -228,7 +230,7 @@ for i in range(len(cards)):
 plt.xlim(0,0.5)
 
 
-# # Find features
+# ## Find features
 # For the classification we want to extract the P300 amplitude. Easy!
 
 # In[24]:
