@@ -1,7 +1,6 @@
 # Data Science in Practice or Neurophysiological Data
 
 Data Science in Practice for Neurophysiological data is an open set of materials for learning introductory data science for [**psyM1**](https://www.studium.uni-kiel.de/de/studienangebot/studienfaecher/psychologie-ma).
-This website is a closely related to the public version of the Data Science in Practice course, taught as [COGS 108](https://github.com/COGS108/) at UC San Diego.
 
 ## Overview
 
@@ -39,11 +38,9 @@ used in a university undergraduate course,
 [COGS 108](https://github.com/COGS108/),
 which is taught at UC San Diego.
 
-You can find more information about the university course in the
-[overview repository](https://github.com/COGS108/Overview/).
+Designing and curation scientific data projects is based in the [The Good Research Code Handbook by Patrick J Mineault](https://dx.doi.org/10.5281/zenodo.5796873).
 
-The materials for this open version of the course are managed through this
-[Github organization](https://github.com/DataScienceInPractice/). 
+The idea for the analysis of electrophysiological data is inspired by [Neuroscience tutorials from van Vliet](https://github.com/wmvanvliet/neuroscience_tutorials).
 
 The source repository for this website is available [here](https://github.com/DataScienceInPractice/Site).
 
