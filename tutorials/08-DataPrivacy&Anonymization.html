@@ -1,0 +1,729 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Data Privacy &amp; Anonymization &#8212; Data science in practice</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Visualization" href="09-DataVisualization.html" />
+    <link rel="prev" title="Data Cleaning" href="07-DataCleaning.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data science in practice</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Data Science in Practice or Neurophysiological Data
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="00-Introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-Python.html">
+   Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-JupyterNotebooks.html">
+   Jupyter Notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-DataAnalysis.html">
+   Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05-DataGathering.html">
+   Data Gathering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06-DataWrangling.html">
+   Data Wrangling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07-DataCleaning.html">
+   Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Data Privacy &amp; Anonymization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09-DataVisualization.html">
+   Data Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10-Distributions.html">
+   Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11-TestingDistributions.html">
+   Testing Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12-StatisticalComparisons.html">
+   Statistical Comparisons
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13-OrdinaryLeastSquares.html">
+   Ordinary Least Squares
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14-LinearModels.html">
+   Linear Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="15-Clustering.html">
+   Clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="16-DimensionalityReduction.html">
+   Dimensionality Reduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="17-Classification.html">
+   Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A1-PythonPackages.html">
+   Appendix: Python Packages
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A2-Git.html">
+   Appendix: Version Control
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/tutorials/08-DataPrivacy&Anonymization.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftutorials/08-DataPrivacy&Anonymization.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/tutorials/08-DataPrivacy&Anonymization.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Data Privacy &amp; Anonymization
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#information-privacy">
+     Information Privacy
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anonymization">
+     Anonymization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regulations">
+   Regulations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#research-standards">
+     Research Standards
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hipaa-protection-for-health-related-information">
+     HIPAA - Protection for Health Related Information
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#safe-harbour-method">
+     Safe Harbour Method
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#unique-identifiers">
+       Unique Identifiers
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Data Privacy & Anonymization</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Data Privacy &amp; Anonymization
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#information-privacy">
+     Information Privacy
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anonymization">
+     Anonymization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regulations">
+   Regulations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#research-standards">
+     Research Standards
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hipaa-protection-for-health-related-information">
+     HIPAA - Protection for Health Related Information
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#safe-harbour-method">
+     Safe Harbour Method
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#unique-identifiers">
+       Unique Identifiers
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="data-privacy-anonymization">
+<h1>Data Privacy &amp; Anonymization<a class="headerlink" href="#data-privacy-anonymization" title="Permalink to this headline">#</a></h1>
+<p>A lot of data, perhaps the vast majority of data typically used in data science, is, directly or indirectly, about people.</p>
+<p>Individuals have privacy rights regarding who can know or share information about specifically identified individuals. This is true in particular about certain classes of sensitive information. For example, health-related information has special protections. Regardless of the data type, data privacy and security should also be a key concern when analyzing human data.</p>
+<section id="information-privacy">
+<h2>Information Privacy<a class="headerlink" href="#information-privacy" title="Permalink to this headline">#</a></h2>
+<div class="alert alert-success">
+Information (or Data) Privacy refers to the legal, ethical, and practical issues of collecting, using and releasing data in which there is identifiable information about people included in the dataset. It also deals with when and how to deal with data privacy issues, and how to protect users' privacy.
+</div>
+<div class="alert alert-info">
+<a href=https://en.wikipedia.org/wiki/Information_privacy class="alert-link">Wikipedia</a>
+has an overview of information privacy.
+</div></section>
+<section id="anonymization">
+<h2>Anonymization<a class="headerlink" href="#anonymization" title="Permalink to this headline">#</a></h2>
+<div class="alert alert-success">
+Data Anonymization is a type of information sanitization - that is the removal of sensitive information - for the purpose of privacy protection. It is a procedure to modify a data set such that the individuals it reflect are anonymous. Typically this means the removal or personally identifiable information from data sets such that the identify of individuals contained in the data set are anonymous.
+</div>
+<div class="alert alert-info">
+<a href="https://en.wikipedia.org/wiki/Data_anonymization" class="alert-link">Wikipedia</a>
+also has an overview of data anonymization.
+</div><p>Data protection and anonymization are interdisciplinary components of data science and data practice. Data protection includes everything from considerations of the ethics &amp; legalities of data use, to the practical and technical challenges of protecting and anonymizing data.</p>
+<p>Anonymizing data typically comes down to removing any personally identifiable data from a dataset, or, if this information must be kept, separating the identifiable data from sensitive information.</p>
+<p>Part of the difficulty of data anonymization is that while we can provably demonstrate that a given dataset is anonymized, this rests on particular assumptions. Most notably, datasets are only provably anonymized under the assumption that no extra external information is available to be used to attempt to de-identify it. In practice, this means that de-anonymization of data can often be done by combining multiple datasets. By using information from multiple information sources, one can often use processes of elimination to decode the individuals included in a particular dataset.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="regulations">
+<h1>Regulations<a class="headerlink" href="#regulations" title="Permalink to this headline">#</a></h1>
+<p>There are many official guidelines, rules and standards for data privacy and user identity protection, although much of it is case specific.</p>
+<p>At the minimum, what is legally required in terms of data protection depends, amongst other things, on:</p>
+<ul class="simple">
+<li><p>What the data is / contains, and who it is about,</p>
+<ul>
+<li><p>Certain data types, and/or populations may have special protections, for example health-related information.</p></li>
+</ul>
+</li>
+<li><p>Who owns the data and in what capacity they are acting (company, university, etc.)</p>
+<ul>
+<li><p>For example, regulations for scientific research are different than those for companies</p></li>
+</ul>
+</li>
+<li><p>User agreements / consent procedures that were in place when the data were collected.</p>
+<ul>
+<li><p>Individuals have a right to self-determination in terms of what their data is used for. Data should only be used for things that are covered by it’s terms of use / terms of collection / consent procedures.</p></li>
+</ul>
+</li>
+<li><p>What the data is to be used for.</p>
+<ul>
+<li><p>Often a combination of the what and the who, there may be specific regulations about how you must deal with, and what you can do, based on the goal of having and using the data.</p></li>
+</ul>
+</li>
+<li><p>Where the data was collected and where it is stored, and who it is about.</p>
+<ul>
+<li><p>Different regions (countries, etc) often have different regulations.</p></li>
+</ul>
+</li>
+</ul>
+<p>Much of these regulations apply more directly to the collection, storage, and release of datasets (rather than analysis), but aspects also apply to the use of datasets, including publicly available datasets. Available datasets often have a user agreement for using the data, and, in particular, attempting to identify individuals from datasets may at a minimum break user agreements, and/or (depending on the nature of the data) be illegal based on consumer and research subject protection laws.</p>
+<section id="research-standards">
+<h2>Research Standards<a class="headerlink" href="#research-standards" title="Permalink to this headline">#</a></h2>
+<div class="alert alert-success">
+Data collected and used for research purposes has it's own set of guidelines and requirements regarding the treatment of human subjects, and the collection, storage, use, and dissemination of data. These regulations focus, among other things, on the right to self-determination of human subjects to consent to what data is collected, and how it is used. Data collected for research purposes must follow restrictions based on these consent procedures. 
+</div>
+<div class="alert alert-info">
+Research protections under the
+<a href="https://en.wikipedia.org/wiki/Declaration_of_Helsinki" class="alert-link">Declaration of Helsinki</a>.
+</div></section>
+<section id="hipaa-protection-for-health-related-information">
+<h2>HIPAA - Protection for Health Related Information<a class="headerlink" href="#hipaa-protection-for-health-related-information" title="Permalink to this headline">#</a></h2>
+<div class="alert alert-success">
+The Health Insurance Portability and Accountability Act (HIPAA) is a US federal government regulation that standardizes and protects individuals medical records and health related data. It includes terms for how data must be stored, and how they can be used & shared.
+</div>
+<div class="alert alert-info">
+The official US federal government HIPAA information
+<a href="https://www.hhs.gov/hipaa/" class="alert-link">guidelines</a>
+include an overview of HIPAA.
+</div></section>
+<section id="safe-harbour-method">
+<h2>Safe Harbour Method<a class="headerlink" href="#safe-harbour-method" title="Permalink to this headline">#</a></h2>
+<div class="alert alert-success">
+Safe Harbor is an official agreement regarding how to deal with datasets that have personal data. It describes specific guidelines on what information to remove from datasets in order to anonymize them. It is a single set of data protection requirements shared across many contexts and countries.
+</div>
+<div class="alert alert-info">
+The 
+<a href="https://www.hhs.gov/hipaa/for-professionals/privacy/special-topics/de-identification/" class="alert-link">official documentation</a>
+for Safe Harbour includes guidelines on how to anonymize data.
+</div><p>The Safe Harbor method requires that the following identifiers of the individuals be removed:</p>
+<ul class="simple">
+<li><p>Names</p></li>
+<li><p>Geographic Subdivisions smaller than a state**</p></li>
+<li><p>Dates (such as birth dates, etc), and all ages above 90</p></li>
+<li><p>Telephone Numbers</p></li>
+<li><p>Vehicle Identification Numbers</p></li>
+<li><p>Fax numbers</p></li>
+<li><p>Device identifiers and serial numbers</p></li>
+<li><p>Email addresses</p></li>
+<li><p>Web Universal Resource Locators (URLs)</p></li>
+<li><p>Social security numbers</p></li>
+<li><p>Internet Protocol (IP) addresses</p></li>
+<li><p>Medical record numbers</p></li>
+<li><p>Biometric identifiers, including finger and voice prints</p></li>
+<li><p>Health plan beneficiary numbers</p></li>
+<li><p>Full-face photographs and any comparable images</p></li>
+<li><p>Account numbers</p></li>
+<li><p>Certificate/license numbers</p></li>
+<li><p>Any other unique identifying number, characteristic, or code</p></li>
+</ul>
+<p>** The first three numbers of the zip code can be kept, provided that more than 20,000 people live in the region covered by all the zip codes that share the same initial three digits (the same geographic subdivision).</p>
+<section id="unique-identifiers">
+<h3>Unique Identifiers<a class="headerlink" href="#unique-identifiers" title="Permalink to this headline">#</a></h3>
+<p>The goal of Safe Harbor, and Data Anonymization in general, is to remove any unique information that could be used to identify you.</p>
+<p>This is perhaps most obvious for things like names. Other, perhaps less obvious specifications of Safe Harbour, are also based on the that this information being in a dataset creates a risk for identification of individuals contained in the dataset.</p>
+<p>For example, while it may be innocuous to talk about a 37 year old male who lives in Los Angeles (as there are many candidates, such that the specific individual is not revealed), it might actually be quite obvious who the person is when talking about a 37 year old male who lives in Potrero, California, a town of about 700 people. This is the same reason ages above 90 have to be removed - even in a fairly large area, say San Diego, it may be fairly obvious who the 98 year old female participant is.</p>
+<p>Basically - any information that makes you stand out is liable to identify you. Anonymization attempts to remove these kinds of indications from the data, such that individuals do not stand out in a way that lets someone figure out who they are.</p>
+<p>This also underlies the difficulty in protecting data in the face of multiple data sources, since collecting observations together makes it much easier to start to pick out people more uniquely. It may still be relatively easy to identify the 37 year old male from LA if you also happen to know (or figure out) that he has a poodle, is 5’6”, works at UCLA, and was at Griffith Park on Saturday, April 15th. All of this extra information may be relatively easy to figure out by combining publicly available, or easily obtainable, data.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="07-DataCleaning.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Data Cleaning</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="09-DataVisualization.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Visualization</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Julius Welzel<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

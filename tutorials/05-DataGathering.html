@@ -1,0 +1,988 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Data Gathering &#8212; Data science in practice</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Wrangling" href="06-DataWrangling.html" />
+    <link rel="prev" title="Data Analysis" href="03-DataAnalysis.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data science in practice</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Data Science in Practice or Neurophysiological Data
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="00-Introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-Python.html">
+   Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-JupyterNotebooks.html">
+   Jupyter Notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-DataAnalysis.html">
+   Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Data Gathering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06-DataWrangling.html">
+   Data Wrangling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07-DataCleaning.html">
+   Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08-DataPrivacy%26Anonymization.html">
+   Data Privacy &amp; Anonymization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09-DataVisualization.html">
+   Data Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10-Distributions.html">
+   Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11-TestingDistributions.html">
+   Testing Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12-StatisticalComparisons.html">
+   Statistical Comparisons
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13-OrdinaryLeastSquares.html">
+   Ordinary Least Squares
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14-LinearModels.html">
+   Linear Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="15-Clustering.html">
+   Clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="16-DimensionalityReduction.html">
+   Dimensionality Reduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="17-Classification.html">
+   Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A1-PythonPackages.html">
+   Appendix: Python Packages
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A2-Git.html">
+   Appendix: Version Control
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/tutorials/05-DataGathering.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftutorials/05-DataGathering.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/tutorials/05-DataGathering.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#where-to-get-data">
+   Where to get Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#institutional-access">
+     Institutional Access
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-repositories">
+     Data Repositories
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#web-scraping">
+     Web Scraping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#asking-people-for-data">
+     Asking People for Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-gathering-skills">
+     Data Gathering Skills
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definitions-databases-query-languages">
+   Definitions: Databases &amp; Query Languages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Data Repositories
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#application-program-interfaces-apis">
+   Application Program Interfaces (APIs)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#launching-url-requests-from-python">
+     Launching URL Requests from Python
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#api-example">
+       API Example
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   Web Scraping
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#apis-vs-web-scraping">
+     APIs vs. Web Scraping
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Data Gathering</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#where-to-get-data">
+   Where to get Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#institutional-access">
+     Institutional Access
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-repositories">
+     Data Repositories
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#web-scraping">
+     Web Scraping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#asking-people-for-data">
+     Asking People for Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-gathering-skills">
+     Data Gathering Skills
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definitions-databases-query-languages">
+   Definitions: Databases &amp; Query Languages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Data Repositories
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#application-program-interfaces-apis">
+   Application Program Interfaces (APIs)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#launching-url-requests-from-python">
+     Launching URL Requests from Python
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#api-example">
+       API Example
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   Web Scraping
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#apis-vs-web-scraping">
+     APIs vs. Web Scraping
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="data-gathering">
+<h1>Data Gathering<a class="headerlink" href="#data-gathering" title="Permalink to this headline">#</a></h1>
+<div class="alert alert-success">
+Data Gathering is the process of accessing data and collecting it together.
+</div><p>This notebook covers strategies for finding and gathering data.</p>
+<p>If you want to start by working on data analyses (with provided data) you can move onto the next tutorials, and come back to this one later.</p>
+<p>Data gathering can encompass many different strategies, including data collection, web scraping, accessing data from databases, and downloading data in bulk. Sometimes it even includes things like calling someone to ask if you can use some of their data, and asking them to send it over.</p>
+<section id="where-to-get-data">
+<h2>Where to get Data<a class="headerlink" href="#where-to-get-data" title="Permalink to this headline">#</a></h2>
+<p>There are lots of way to get data, and lots of places to get it from. Typically, most of this data will be accessed through the internet, in one way or another, especially when pursuing indepent research projects.</p>
+<section id="institutional-access">
+<h3>Institutional Access<a class="headerlink" href="#institutional-access" title="Permalink to this headline">#</a></h3>
+<p>If you are working with data as part of an institution, such as a company of research lab, the institution will typically have data it needs analyzing, that it collects in various ways. Keep in mind that even people working inside institutions, with access to local data, will data still seek to find and incorporate external datasets.</p>
+</section>
+<section id="data-repositories">
+<h3>Data Repositories<a class="headerlink" href="#data-repositories" title="Permalink to this headline">#</a></h3>
+<p><strong>Data repositories</strong> are databases from which you can download data. Some data repositories allow you to explore available datasets and download datasets in bulk. Others may also offer <strong>APIs</strong>, through which you can request specific data from particular databases.</p>
+</section>
+<section id="web-scraping">
+<h3>Web Scraping<a class="headerlink" href="#web-scraping" title="Permalink to this headline">#</a></h3>
+<p>The web itself is full of unstructured data. <strong>Web scraping</strong> can be done to directly extract and collect data directly from websites.</p>
+</section>
+<section id="asking-people-for-data">
+<h3>Asking People for Data<a class="headerlink" href="#asking-people-for-data" title="Permalink to this headline">#</a></h3>
+<p>Not all data is indexed or accessible on the web, at least not publicly. Sometimes finding data means figuring out if any data is available, figuring out where it might be, and then reaching out and asking people directly about data access. If there is some particular data you need, you can try to figure out who might have it, and get in touch to see if it might be available.</p>
+</section>
+<section id="data-gathering-skills">
+<h3>Data Gathering Skills<a class="headerlink" href="#data-gathering-skills" title="Permalink to this headline">#</a></h3>
+<p>Depending on your gathering method, you will likely have to do some combination of the following:</p>
+<ul class="simple">
+<li><p>Direct download data files from repositories</p></li>
+<li><p>Query databases &amp; use APIs to extract and collect data of interest</p></li>
+<li><p>Ask people for data, and going to pick up data with a harddrive</p></li>
+</ul>
+<p>Ultimately, the goal is collect and curate data files, hopefully structured, that you can read into Python.</p>
+</section>
+</section>
+<section id="definitions-databases-query-languages">
+<h2>Definitions: Databases &amp; Query Languages<a class="headerlink" href="#definitions-databases-query-languages" title="Permalink to this headline">#</a></h2>
+<p>Here, we will introduce some useful definitions you will likely encounter when exploring how to gather data.</p>
+<p>Other than these definitions, we will not cover databases &amp; query languages more in these tutorials.</p>
+<div class="alert alert-success">
+A database is an organized collection of data. More formally, 'database' refers to a set of related data, and the way it is organized. 
+</div><div class="alert alert-success">
+A query language is a language for operating with databases, such as retrieving, and sometimes modifying, information from databases.
+</div><div class="alert alert-success">
+SQL (pronounced 'sequel') is a common query language used to interact with databases, and request data.
+</div>
+<div class="alert alert-info">
+If you are interested, there is a useful introduction and tutorial to SQL
+<a href="http://www.sqlcourse.com/intro.html" class="alert-link">here</a>
+as well as some useful 'cheat sheets' 
+<a href="http://www.cheat-sheets.org/sites/sql.su/" class="alert-link">here</a>
+and
+<a href="http://www.sqltutorial.org/wp-content/uploads/2016/04/SQL-cheat-sheet.pdf" class="alert-link">here</a>.
+</div></section>
+<section id="id1">
+<h2>Data Repositories<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<div class="alert alert-success">
+A Data Repository is basically just a place that data is stored. For our purposes, it is a place you can download data from. 
+</div>
+<div class="alert alert-info">
+There is a curated list of good data source included in the 
+<a href="https://github.com/COGS108/Projects" class="alert-link">project materials</a>.
+</div><p>For our purposes, data repositories are places you can download data directly from, for example <a class="reference external" href="https://www.data.gov/">data.gov</a>.</p>
+</section>
+<section id="application-program-interfaces-apis">
+<h2>Application Program Interfaces (APIs)<a class="headerlink" href="#application-program-interfaces-apis" title="Permalink to this headline">#</a></h2>
+<div class="alert alert-success">
+APIs are basically a way for software to talk to software - it is an interface into an application / website / database designed for software.
+</div>
+<div class="alert alert-info">
+For a simple explanation of APIs go
+<a href="https://medium.freecodecamp.com/what-is-an-api-in-english-please-b880a3214a82" class="alert-link">here</a>
+or for a much broader, more technical, overview try
+<a href="https://medium.com/@mattburgess/apis-a-basic-primer-f8250602597d" class="alert-link">here</a>.
+</div>
+<div class="alert alert-info">
+This
+<a href="http://www.webopedia.com/TERM/A/API.html" class="alert-link">list</a>
+includes a collection of commonly used and available APIs. 
+</div><p>APIs offer a lot of functionality - you can send requests to the application to do all kinds of actions. In fact, any application interface that is designed to be used programmatically is an API, including, for example, interfaces for using packages of code.</p>
+<p>One of the many things that APIs do, and offer, is a way to query and access data from particular applications / databases. For example, there is a an API for Google maps that allows for programmatically querying the latitude &amp; longitude positions of given addresses.</p>
+<p>The benefit of using APIs for data gathering purposes is that they typically return data in nicely structured formats, that are relatively easy to analyze.</p>
+<section id="launching-url-requests-from-python">
+<h3>Launching URL Requests from Python<a class="headerlink" href="#launching-url-requests-from-python" title="Permalink to this headline">#</a></h3>
+<p>In order to use APIs, and for other approaches to collecting data, it may be useful to launch URL requests from Python.</p>
+<p>Note that by <code class="docutils literal notranslate"><span class="pre">URL</span></code>, we just mean a file or application that can be reached by a web address. Python can be used to organize and launch URL requests, triggering actions and collecting any returned data.</p>
+<p>In practice, APIs are usually special URLs that return raw data, such as <code class="docutils literal notranslate"><span class="pre">json</span></code> or <code class="docutils literal notranslate"><span class="pre">XML</span></code> files. This is compared to URLs we are typically more used to that return web pages as <code class="docutils literal notranslate"><span class="pre">html</span></code>, which can be rendered for human viewers (html). The key difference is that APIs return structured data files, where as <code class="docutils literal notranslate"><span class="pre">html</span></code> files are typically unstructured (more on that later, with web scraping).</p>
+<p>If you with to use an API, try and find the documentation for to see how you send requests to access whatever data you want.</p>
+<section id="api-example">
+<h4>API Example<a class="headerlink" href="#api-example" title="Permalink to this headline">#</a></h4>
+<p>For our example here, we will use the Github API. Note that the URL we use is <code class="docutils literal notranslate"><span class="pre">api.github.com</span></code>. This URL accesses the API, and will return structured data files, instead of the html that would be returned by the standard URL (<a class="reference external" href="http://github.com">github.com</a>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># We will use the `requests` library to launch URL requests from Python</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Request data from the Github API on a particular user</span>
+<span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://api.github.com/users/tomdonoghue&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># In this case, the content we get back is a json file</span>
+<span class="n">page</span><span class="o">.</span><span class="n">content</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;{&quot;login&quot;:&quot;TomDonoghue&quot;,&quot;id&quot;:7727566,&quot;node_id&quot;:&quot;MDQ6VXNlcjc3Mjc1NjY=&quot;,&quot;avatar_url&quot;:&quot;https://avatars.githubusercontent.com/u/7727566?v=4&quot;,&quot;gravatar_id&quot;:&quot;&quot;,&quot;url&quot;:&quot;https://api.github.com/users/TomDonoghue&quot;,&quot;html_url&quot;:&quot;https://github.com/TomDonoghue&quot;,&quot;followers_url&quot;:&quot;https://api.github.com/users/TomDonoghue/followers&quot;,&quot;following_url&quot;:&quot;https://api.github.com/users/TomDonoghue/following{/other_user}&quot;,&quot;gists_url&quot;:&quot;https://api.github.com/users/TomDonoghue/gists{/gist_id}&quot;,&quot;starred_url&quot;:&quot;https://api.github.com/users/TomDonoghue/starred{/owner}{/repo}&quot;,&quot;subscriptions_url&quot;:&quot;https://api.github.com/users/TomDonoghue/subscriptions&quot;,&quot;organizations_url&quot;:&quot;https://api.github.com/users/TomDonoghue/orgs&quot;,&quot;repos_url&quot;:&quot;https://api.github.com/users/TomDonoghue/repos&quot;,&quot;events_url&quot;:&quot;https://api.github.com/users/TomDonoghue/events{/privacy}&quot;,&quot;received_events_url&quot;:&quot;https://api.github.com/users/TomDonoghue/received_events&quot;,&quot;type&quot;:&quot;User&quot;,&quot;site_admin&quot;:false,&quot;name&quot;:&quot;Tom&quot;,&quot;company&quot;:null,&quot;blog&quot;:&quot;https://tomdonoghue.github.io&quot;,&quot;location&quot;:&quot;New York City&quot;,&quot;email&quot;:null,&quot;hireable&quot;:null,&quot;bio&quot;:&quot;Researcher in cognitive &amp; computational neuroscience, working on tools for analyzing electrical neural data, as well as general Python &amp; Data Science.&quot;,&quot;twitter_username&quot;:&quot;tomdonoghue&quot;,&quot;public_repos&quot;:22,&quot;public_gists&quot;:0,&quot;followers&quot;:185,&quot;following&quot;:94,&quot;created_at&quot;:&quot;2014-05-28T20:20:48Z&quot;,&quot;updated_at&quot;:&quot;2022-08-08T11:13:34Z&quot;}&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can read in the json data with pandas</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="n">typ</span><span class="o">=</span><span class="s1">&#39;series&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># We can read in the json data with pandas</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="n">typ</span><span class="o">=</span><span class="s1">&#39;series&#39;</span><span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\lib\site-packages\pandas\util\_decorators.py:207,</span> in <span class="ni">deprecate_kwarg.&lt;locals&gt;._deprecate_kwarg.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">205</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span>         <span class="n">kwargs</span><span class="p">[</span><span class="n">new_arg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_arg_value</span>
+<span class="ne">--&gt; </span><span class="mi">207</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\lib\site-packages\pandas\util\_decorators.py:311,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">311</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\lib\site-packages\pandas\io\json\_json.py:588,</span> in <span class="ni">read_json</span><span class="nt">(path_or_buf, orient, typ, dtype, convert_axes, convert_dates, keep_default_dates, numpy, precise_float, date_unit, encoding, encoding_errors, lines, chunksize, compression, nrows, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span> <span class="k">if</span> <span class="n">convert_axes</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">orient</span> <span class="o">!=</span> <span class="s2">&quot;table&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">586</span>     <span class="n">convert_axes</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">--&gt; </span><span class="mi">588</span> <span class="n">json_reader</span> <span class="o">=</span> <span class="n">JsonReader</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">589</span>     <span class="n">path_or_buf</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">590</span>     <span class="n">orient</span><span class="o">=</span><span class="n">orient</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span>     <span class="n">typ</span><span class="o">=</span><span class="n">typ</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">592</span>     <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">593</span>     <span class="n">convert_axes</span><span class="o">=</span><span class="n">convert_axes</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">594</span>     <span class="n">convert_dates</span><span class="o">=</span><span class="n">convert_dates</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">595</span>     <span class="n">keep_default_dates</span><span class="o">=</span><span class="n">keep_default_dates</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">596</span>     <span class="n">numpy</span><span class="o">=</span><span class="n">numpy</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">597</span>     <span class="n">precise_float</span><span class="o">=</span><span class="n">precise_float</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">598</span>     <span class="n">date_unit</span><span class="o">=</span><span class="n">date_unit</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">599</span>     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">600</span>     <span class="n">lines</span><span class="o">=</span><span class="n">lines</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">601</span>     <span class="n">chunksize</span><span class="o">=</span><span class="n">chunksize</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">602</span>     <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">603</span>     <span class="n">nrows</span><span class="o">=</span><span class="n">nrows</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">604</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">605</span>     <span class="n">encoding_errors</span><span class="o">=</span><span class="n">encoding_errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">606</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">608</span> <span class="k">if</span> <span class="n">chunksize</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">609</span>     <span class="k">return</span> <span class="n">json_reader</span>
+
+<span class="nn">File ~\anaconda3\lib\site-packages\pandas\io\json\_json.py:673,</span> in <span class="ni">JsonReader.__init__</span><span class="nt">(self, filepath_or_buffer, orient, typ, dtype, convert_axes, convert_dates, keep_default_dates, numpy, precise_float, date_unit, encoding, lines, chunksize, compression, nrows, storage_options, encoding_errors)</span>
+<span class="g g-Whitespace">    </span><span class="mi">670</span>     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">lines</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">671</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;nrows can only be passed if lines=True&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">673</span> <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data_from_filepath</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">674</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocess_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\lib\site-packages\pandas\io\json\_json.py:710,</span> in <span class="ni">JsonReader._get_data_from_filepath</span><span class="nt">(self, filepath_or_buffer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">703</span> <span class="n">filepath_or_buffer</span> <span class="o">=</span> <span class="n">stringify_path</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span> <span class="k">if</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span>     <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">706</span>     <span class="ow">or</span> <span class="n">is_url</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">707</span>     <span class="ow">or</span> <span class="n">is_fsspec_url</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">708</span>     <span class="ow">or</span> <span class="n">file_exists</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">709</span> <span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">710</span>     <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">711</span>         <span class="n">filepath_or_buffer</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">712</span>         <span class="s2">&quot;r&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">713</span>         <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">714</span>         <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">compression</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">715</span>         <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">716</span>         <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding_errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">717</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">718</span>     <span class="n">filepath_or_buffer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+<span class="g g-Whitespace">    </span><span class="mi">720</span> <span class="k">return</span> <span class="n">filepath_or_buffer</span>
+
+<span class="nn">File ~\anaconda3\lib\site-packages\pandas\io\common.py:823,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">818</span>     <span class="n">is_wrapped</span> <span class="o">=</span> <span class="ow">not</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">819</span>         <span class="nb">isinstance</span><span class="p">(</span><span class="n">ioargs</span><span class="o">.</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">should_close</span>
+<span class="g g-Whitespace">    </span><span class="mi">820</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">822</span> <span class="k">if</span> <span class="s2">&quot;r&quot;</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">823</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">824</span>         <span class="s2">&quot;Expected file path name or file-like object, &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">825</span>         <span class="sa">f</span><span class="s2">&quot;got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">ioargs</span><span class="o">.</span><span class="n">filepath_or_buffer</span><span class="p">)</span><span class="si">}</span><span class="s2"> type&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">826</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">828</span> <span class="n">handles</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>  <span class="c1"># close the most recently added buffer first</span>
+<span class="g g-Whitespace">    </span><span class="mi">829</span> <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">should_close</span><span class="p">:</span>
+
+<span class="ne">TypeError</span>: Expected file path name or file-like object, got &lt;class &#39;bytes&#39;&gt; type
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we can see above, in a couple lines of code, we can collect a lot of structured data about a particular user.</p>
+<p>If we wanted to do analyses of Github profiles and activity, we could use the Github API to collect information about a group of users, and then analyze and compare the collected data.</p>
+</section>
+</section>
+</section>
+<section id="id2">
+<h2>Web Scraping<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<div class="alert alert-success">
+Web scraping is when you (programmatically) extract data from websites.
+</div>
+<div class="alert alert-info">
+<a href="https://en.wikipedia.org/wiki/Web_scraping" class="alert-link">Wikipedia</a>
+has a useful page on web scraping.
+</div><p>By web scraping, we typically mean something distinct from using the internet to access an API. Rather, web scraping refers to using code to systematically navigate the internet, and extract information of internet, from html or other available files. Note that in this case one is not interacting directly with a database, but simply exploring and collecting whatever is available on web pages.</p>
+<p>Note that the following section uses the ‘BeautifulSoup’ module, which is not part of the standard anaconda distribution.</p>
+<p>If you do not have BeautifulSoup, and want to get it to run this section, you can uncomment the cell below, and run it, to install BeautifulSoup in your current Python environment. You only have to do this once.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import sys</span>
+<span class="c1">#!conda install --yes --prefix {sys.prefix} beautifulsoup4</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import BeautifulSoup</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the URL for the page we wish to scrape</span>
+<span class="n">site_url</span> <span class="o">=</span> <span class="s1">&#39;https://en.wikipedia.org/wiki/Data_science&#39;</span>
+
+<span class="c1"># Launch the URL request, to get the page</span>
+<span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">site_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print out the first 1000 characters of the scraped web page</span>
+<span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1000</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;&lt;!DOCTYPE html&gt;\n&lt;html class=&quot;client-nojs&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;\n&lt;head&gt;\n&lt;meta charset=&quot;UTF-8&quot;/&gt;\n&lt;title&gt;Data science - Wikipedia&lt;/title&gt;\n&lt;script&gt;document.documentElement.className = document.documentElement.className.replace( /(^|\\s)client-nojs(\\s|$)/, &quot;$1client-js$2&quot; );&lt;/script&gt;\n&lt;script&gt;(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({&quot;wgCanonicalNamespace&quot;:&quot;&quot;,&quot;wgCanonicalSpecialPageName&quot;:false,&quot;wgNamespaceNumber&quot;:0,&quot;wgPageName&quot;:&quot;Data_science&quot;,&quot;wgTitle&quot;:&quot;Data science&quot;,&quot;wgCurRevisionId&quot;:822535327,&quot;wgRevisionId&quot;:822535327,&quot;wgArticleId&quot;:35458904,&quot;wgIsArticle&quot;:true,&quot;wgIsRedirect&quot;:false,&quot;wgAction&quot;:&quot;view&quot;,&quot;wgUserName&quot;:null,&quot;wgUserGroups&quot;:[&quot;*&quot;],&quot;wgCategories&quot;:[&quot;Use dmy dates from December 2012&quot;,&quot;Information science&quot;,&quot;Computer occupations&quot;,&quot;Computational fields of study&quot;,&quot;Data analysis&quot;],&quot;wgBreakFrames&quot;:false,&quot;wgPageContentLanguage&quot;:&quot;en&quot;,&quot;wgPageContentModel&quot;:&quot;wikitext&quot;,&quot;wgSeparatorTransformTable&quot;:[&quot;&quot;,&quot;&quot;],&quot;wgDigitTransformTable&quot;:[&quot;&quot;,&quot;&quot;],&quot;wgDefaultDateFormat&quot;:&quot;dmy&quot;,&quot;wgMonthNames&quot;:[&quot;&quot;,&quot;Ja&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the source of the scraped web-page is a messy pile of HTML.</p>
+<p>There is a lot of information in there, but with no clear organization. There is some structure in the page though, delineated by HTML tags, etc, we just need to use them to parse out the data. We can do that with BeautifulSoup, which takes in messy documents like this, and parses them based on a specified format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parse the webpage with Beautiful Soup, using a html parser</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># With the parsed soup object, we can select particular segments of the web page</span>
+
+<span class="c1"># Print out the page title</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;TITLE: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+
+<span class="c1"># Print out the first p-tag</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">P-TAG:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TITLE: 
+
+&lt;title&gt;Data science - Wikipedia&lt;/title&gt;
+
+P-TAG:
+
+&lt;p&gt;&lt;b&gt;Data science&lt;/b&gt;, also known as &lt;b&gt;data-driven science&lt;/b&gt;, is an interdisciplinary field of scientific methods, processes, and systems to extract &lt;a href=&quot;/wiki/Knowledge&quot; title=&quot;Knowledge&quot;&gt;knowledge&lt;/a&gt; or insights from &lt;a href=&quot;/wiki/Data&quot; title=&quot;Data&quot;&gt;data&lt;/a&gt; in various forms, either structured or unstructured,&lt;sup class=&quot;reference&quot; id=&quot;cite_ref-:0_1-0&quot;&gt;&lt;a href=&quot;#cite_note-:0-1&quot;&gt;[1]&lt;/a&gt;&lt;/sup&gt;&lt;sup class=&quot;reference&quot; id=&quot;cite_ref-2&quot;&gt;&lt;a href=&quot;#cite_note-2&quot;&gt;[2]&lt;/a&gt;&lt;/sup&gt; similar to &lt;a href=&quot;/wiki/Data_mining&quot; title=&quot;Data mining&quot;&gt;data mining&lt;/a&gt;.&lt;/p&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>From the soup object, you can explore the page in a more organized way, and start to extract particular components of interest.</p>
+<p>Note that it is still ‘messy’ in other ways, in that there might or might not be a systematic structure to how the page is laid out, and it still might take a lot of work to extract the particular information you want from it.</p>
+<section id="apis-vs-web-scraping">
+<h3>APIs vs. Web Scraping<a class="headerlink" href="#apis-vs-web-scraping" title="Permalink to this headline">#</a></h3>
+<p>Web scraping is distinct from using an API, even though many APIs may be accessed over the internet. Web scraping is different in that you are (programmatically) navigating through the internet, and extracting data of interest.</p>
+<p>Note:
+Be aware that scraping data from websites (without using APIs) can often be an involved project itself. Web scraping itself can take a considerable amount of time and work to get the data you want.</p>
+<p>Be aware that data presented on websites may not be well structured, and may not be in an organized format that lends itself to easy collection and analysis.</p>
+<p>If you try scraping websites, you should also check to make sure you are allowed to scrape the data, and follow the websites terms of service.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="03-DataAnalysis.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Data Analysis</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="06-DataWrangling.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Wrangling</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Julius Welzel<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
