@@ -22,5 +22,6 @@ parts:
   - file: tutorials/15-Clustering
   - file: tutorials/16-DimensionalityReduction
   - file: tutorials/17-Classification
+  - file: tutorials/19-EegMagic
   - file: tutorials/A1-PythonPackages
   - file: tutorials/A2-Git
