@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Set path and load data &#8212; Data science in practice</title>
+    <title>EEG magic &#8212; Data science in practice</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -206,7 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Set path and load data
+   EEG magic
   </a>
  </li>
  <li class="toctree-l1">
@@ -425,42 +425,42 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-path-and-load-data">
    Set path and load data
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#explore-the-loaded-data">
    Explore the loaded data
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#set-config-vars-for-mne">
    Set config vars for MNE
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#create-mne-object">
    Create MNE object
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prepare-epoching">
    Prepare epoching
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#defining-a-function">
    Defining a function
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#more-plotting">
    More plotting
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#find-features">
    Find features
   </a>
@@ -474,7 +474,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Set path and load data</h1>
+                <h1>EEG magic</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -484,42 +484,42 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-path-and-load-data">
    Set path and load data
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#explore-the-loaded-data">
    Explore the loaded data
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#set-config-vars-for-mne">
    Set config vars for MNE
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#create-mne-object">
    Create MNE object
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prepare-epoching">
    Prepare epoching
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#defining-a-function">
    Defining a function
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#more-plotting">
    More plotting
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#find-features">
    Find features
   </a>
@@ -534,7 +534,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="eeg-magic">
+<h1>EEG magic<a class="headerlink" href="#eeg-magic" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">import</span> <span class="nn">scipy.io</span> <span class="k">as</span> <span class="nn">sio</span>
@@ -568,8 +570,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="set-path-and-load-data">
-<h1>Set path and load data<a class="headerlink" href="#set-path-and-load-data" title="Permalink to this headline">#</a></h1>
+<section id="set-path-and-load-data">
+<h2>Set path and load data<a class="headerlink" href="#set-path-and-load-data" title="Permalink to this headline">#</a></h2>
 <p>First we will detect where the current script is located on our harddrive. We will points VS code to the location of the file we want to load. The raw data is in MatLab format, luckerly scipy can handle this issue.</p>
 <div class="alert alert-danger">
 Load data with relativ path (1 point).
@@ -585,8 +587,8 @@ Load data with relativ path (1 point).
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="explore-the-loaded-data">
-<h1>Explore the loaded data<a class="headerlink" href="#explore-the-loaded-data" title="Permalink to this headline">#</a></h1>
+<section id="explore-the-loaded-data">
+<h2>Explore the loaded data<a class="headerlink" href="#explore-the-loaded-data" title="Permalink to this headline">#</a></h2>
 <p>To understand the data we were handed please explore what the variable contains.</p>
 <div class="alert alert-danger">
 Determine the shape of the EEG data (1 point).
@@ -608,8 +610,8 @@ Label dimensions: (1, 288349)
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="set-config-vars-for-mne">
-<h1>Set config vars for MNE<a class="headerlink" href="#set-config-vars-for-mne" title="Permalink to this headline">#</a></h1>
+<section id="set-config-vars-for-mne">
+<h2>Set config vars for MNE<a class="headerlink" href="#set-config-vars-for-mne" title="Permalink to this headline">#</a></h2>
 <p>To process the data we have to hardcode a couple of information to pass to the MNE toolbox.
 For now these are channel names and types of our data, as well as the sampling rate.</p>
 <div class="cell docutils container">
@@ -627,8 +629,8 @@ For now these are channel names and types of our data, as well as the sampling r
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="create-mne-object">
-<h1>Create MNE object<a class="headerlink" href="#create-mne-object" title="Permalink to this headline">#</a></h1>
+<section id="create-mne-object">
+<h2>Create MNE object<a class="headerlink" href="#create-mne-object" title="Permalink to this headline">#</a></h2>
 <p>With the raw data loaded and the config variables defined, we can initiate the MNE object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -742,8 +744,8 @@ Designing a one-pass, zero-phase, non-causal bandpass filter:
 </table></div></div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="prepare-epoching">
-<h1>Prepare epoching<a class="headerlink" href="#prepare-epoching" title="Permalink to this headline">#</a></h1>
+<section id="prepare-epoching">
+<h2>Prepare epoching<a class="headerlink" href="#prepare-epoching" title="Permalink to this headline">#</a></h2>
 <p>To better understand the data, we want to find events in the raw data and epoch around these.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -823,8 +825,8 @@ Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="defining-a-function">
-<h1>Defining a function<a class="headerlink" href="#defining-a-function" title="Permalink to this headline">#</a></h1>
+<section id="defining-a-function">
+<h2>Defining a function<a class="headerlink" href="#defining-a-function" title="Permalink to this headline">#</a></h2>
 <p>because we will probably plot our data a trazillion times, lets define a function to make the code look cleaner and to help us keep an overview.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -882,12 +884,12 @@ Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/19-EegMagic_17_0.png" src="../_images/19-EegMagic_17_0.png" />
+<img alt="../_images/19-EegMagic_18_0.png" src="../_images/19-EegMagic_18_0.png" />
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="more-plotting">
-<h1>More plotting<a class="headerlink" href="#more-plotting" title="Permalink to this headline">#</a></h1>
+<section id="more-plotting">
+<h2>More plotting<a class="headerlink" href="#more-plotting" title="Permalink to this headline">#</a></h2>
 <p>“Why do you always plot your data?” <br>
 “Because I can” - <em>Immanuel Kant</em></p>
 <div class="cell docutils container">
@@ -910,12 +912,12 @@ Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 0.5)
 </pre></div>
 </div>
-<img alt="../_images/19-EegMagic_19_1.png" src="../_images/19-EegMagic_19_1.png" />
+<img alt="../_images/19-EegMagic_20_1.png" src="../_images/19-EegMagic_20_1.png" />
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="find-features">
-<h1>Find features<a class="headerlink" href="#find-features" title="Permalink to this headline">#</a></h1>
+<section id="find-features">
+<h2>Find features<a class="headerlink" href="#find-features" title="Permalink to this headline">#</a></h2>
 <p>For the classification we want to extract the P300 amplitude. Easy!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -943,7 +945,7 @@ Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Card : Queen of hearts&#39;)
 </pre></div>
 </div>
-<img alt="../_images/19-EegMagic_22_1.png" src="../_images/19-EegMagic_22_1.png" />
+<img alt="../_images/19-EegMagic_23_1.png" src="../_images/19-EegMagic_23_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -967,9 +969,10 @@ Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Was your card the Queen of hearts?
 </pre></div>
 </div>
-<img alt="../_images/19-EegMagic_23_1.png" src="../_images/19-EegMagic_23_1.png" />
+<img alt="../_images/19-EegMagic_24_1.png" src="../_images/19-EegMagic_24_1.png" />
 </div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
