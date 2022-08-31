@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Scientific Python
+# # s02: Scientific Python
 # 
 # Python has a large number of open source tools available for doing data science, sometimes referred to as 'scientific Python'. 
 # 

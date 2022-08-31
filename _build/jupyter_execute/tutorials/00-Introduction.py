@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Introduction
+# # s00: Introduction
 # 
 # Welcome to the hands on materials for psyM1-01a *(practical part)*.
 # This notebook will guide through getting the tools you will need for data science related tasks.

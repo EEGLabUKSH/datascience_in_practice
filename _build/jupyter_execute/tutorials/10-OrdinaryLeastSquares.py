@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Ordinary Least Squares
+# # s05: Ordinary Least Squares
 # 
 # If you recall, in an early notebook, we introduced the notion of fitting a line, or a linear model, to some data. We can then use the definition of that line to predict new data points. However, what we didn't dig into at that point was how we learn and evaluate our linear model, and how to learn the best model.
 # 

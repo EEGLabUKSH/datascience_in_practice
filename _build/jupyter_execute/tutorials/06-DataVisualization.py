@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Data Visualization
+# # s03: Data Visualization
 # 
 # Data Visualization can refer to a lot of different things. Here, we will start with making static 2D visualizations of data.
 # 

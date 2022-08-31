@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Testing Distributions 
+# # s04: Testing Distributions 
 # 
 # Knowing what distribution your data follow is important for knowing which statistical tests to apply to it. If you are using statistical tests that assume data to have a particular distribution, you need to test whether this is indeed the case.
 # 

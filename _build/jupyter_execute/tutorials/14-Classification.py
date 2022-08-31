@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Classification
+# # s06: Classification
 # 
 # Another general task in data analysis and machine learning is classification. 
 # 

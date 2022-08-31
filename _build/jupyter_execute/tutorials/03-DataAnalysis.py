@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Data Analysis
+# # s02: Data Analysis
 
 # This notebook goes through some minimal examples of the kinds of things we might want to do using data science approaches. 
 # 

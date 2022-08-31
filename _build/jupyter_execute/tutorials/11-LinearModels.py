@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Linear Models
+# # s05: Linear Models
 
 # <div class="alert alert-success">
 # Linear (regression) modelling is a method of predicting the value of an output value as a linear combination of weighted input values.

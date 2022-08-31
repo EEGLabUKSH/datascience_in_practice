@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Distributions
+# # s04: Distributions
 
 # <div class="alert alert-success">
 # Probability distributions reflect the probabilities of occurence for the possible outcomes of a function / data source. 

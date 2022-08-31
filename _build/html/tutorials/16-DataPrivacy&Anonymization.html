@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>s00: Introduction &#8212; Data science in practice</title>
+    <title>s08: Data Privacy &amp; Anonymization &#8212; Data science in practice</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="s01: Python" href="01-Python.html" />
-    <link rel="prev" title="Data Science in Practice or Neurophysiological Data" href="../intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -118,9 +116,9 @@ const thebe_selector_output = ".output, .cell_output"
   Tutorials
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="00-Introduction.html">
    s00: Introduction
   </a>
  </li>
@@ -268,7 +266,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/tutorials/00-Introduction.ipynb"
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/tutorials/16-DataPrivacy&Anonymization.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -328,7 +326,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftutorials/00-Introduction.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftutorials/16-DataPrivacy&Anonymization.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -356,7 +354,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/tutorials/00-Introduction.ipynb"
+        <a href="../_sources/tutorials/16-DataPrivacy&Anonymization.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -415,20 +413,49 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prerequisits">
-   Prerequisits
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   s08: Data Privacy &amp; Anonymization
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#prufungsordnung">
-     Prüfungsordnung
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#information-privacy">
+     Information Privacy
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tools">
-     Tools
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anonymization">
+     Anonymization
     </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regulations">
+   Regulations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#research-standards">
+     Research Standards
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hipaa-protection-for-health-related-information">
+     HIPAA - Protection for Health Related Information
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#safe-harbour-method">
+     Safe Harbour Method
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#unique-identifiers">
+       Unique Identifiers
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -441,7 +468,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>s00: Introduction</h1>
+                <h1>s08: Data Privacy & Anonymization</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -451,20 +478,49 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prerequisits">
-   Prerequisits
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   s08: Data Privacy &amp; Anonymization
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#prufungsordnung">
-     Prüfungsordnung
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#information-privacy">
+     Information Privacy
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tools">
-     Tools
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anonymization">
+     Anonymization
     </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regulations">
+   Regulations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#research-standards">
+     Research Standards
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hipaa-protection-for-health-related-information">
+     HIPAA - Protection for Health Related Information
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#safe-harbour-method">
+     Safe Harbour Method
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#unique-identifiers">
+       Unique Identifiers
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -478,115 +534,121 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="s00-introduction">
-<h1>s00: Introduction<a class="headerlink" href="#s00-introduction" title="Permalink to this headline">#</a></h1>
-<p>Welcome to the hands on materials for psyM1-01a <em>(practical part)</em>.
-This notebook will guide through getting the tools you will need for data science related tasks.</p>
-<section id="prerequisits">
-<h2>Prerequisits<a class="headerlink" href="#prerequisits" title="Permalink to this headline">#</a></h2>
-<p>Throughout these tutorials, you will see colored ‘alert’ text:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="s08-data-privacy-anonymization">
+<h1>s08: Data Privacy &amp; Anonymization<a class="headerlink" href="#s08-data-privacy-anonymization" title="Permalink to this headline">#</a></h1>
+<p>A lot of data, perhaps the vast majority of data typically used in data science, is, directly or indirectly, about people.</p>
+<p>Individuals have privacy rights regarding who can know or share information about specifically identified individuals. This is true in particular about certain classes of sensitive information. For example, health-related information has special protections. Regardless of the data type, data privacy and security should also be a key concern when analyzing human data.</p>
+<section id="information-privacy">
+<h2>Information Privacy<a class="headerlink" href="#information-privacy" title="Permalink to this headline">#</a></h2>
 <div class="alert alert-success">
-Green alerts provide key information and definitions.
+Information (or Data) Privacy refers to the legal, ethical, and practical issues of collecting, using and releasing data in which there is identifiable information about people included in the dataset. It also deals with when and how to deal with data privacy issues, and how to protect users' privacy.
 </div>
 <div class="alert alert-info">
-Blue alerts provide links out to further 
+<a href=https://en.wikipedia.org/wiki/Information_privacy class="alert-link">Wikipedia</a>
+has an overview of information privacy.
+</div></section>
+<section id="anonymization">
+<h2>Anonymization<a class="headerlink" href="#anonymization" title="Permalink to this headline">#</a></h2>
+<div class="alert alert-success">
+Data Anonymization is a type of information sanitization - that is the removal of sensitive information - for the purpose of privacy protection. It is a procedure to modify a data set such that the individuals it reflect are anonymous. Typically this means the removal or personally identifiable information from data sets such that the identify of individuals contained in the data set are anonymous.
 </div>
-<div class="alert alert-danger">
-Red alerts will indicate task necessary to do in order to pass the seminar. 
-</div><section id="prufungsordnung">
-<h3>Prüfungsordnung<a class="headerlink" href="#prufungsordnung" title="Permalink to this headline">#</a></h3>
-<p>First things first, why are you herewhat are you doing? A closer look in the <a class="reference external" href="http://www.studservice.uni-kiel.de/sta/fachpruefungsordnung-psychologie-master-1-fach.pdf">Prüfungsordnung</a> shed some lights on everything.</p>
-<br>
-<img src="img/moduloverview.png",width="250px">
-<br><p>Another excerpt from the Prüfungsordnung:</p>
-<blockquote>
-<div><p>Als zentrales Ziel des Masterstudiengangs sollen Voraussetzungen für das selbstständige und
-eigenverantwortliche Arbeiten in den Berufsfeldern der Psychologie geschaffen werden. Dabei
-werden auch Transferkompetenzen zur Verbindung wissenschaftlicher Erkenntnisse mit
-<strong>praktischen Handeln</strong> erworben. <br>
-<em>- FPO Psychologie <a class="reference external" href="http://M.Sc">M.Sc</a>. 2020 - Seite 3/17</em></p>
-</div></blockquote>
-<p>Therefore this seminar will provide you with some hands-on tools of psychological competence with a wide variety of used cases in the real-world.</p>
+<div class="alert alert-info">
+<a href="https://en.wikipedia.org/wiki/Data_anonymization" class="alert-link">Wikipedia</a>
+also has an overview of data anonymization.
+</div><p>Data protection and anonymization are interdisciplinary components of data science and data practice. Data protection includes everything from considerations of the ethics &amp; legalities of data use, to the practical and technical challenges of protecting and anonymizing data.</p>
+<p>Anonymizing data typically comes down to removing any personally identifiable data from a dataset, or, if this information must be kept, separating the identifiable data from sensitive information.</p>
+<p>Part of the difficulty of data anonymization is that while we can provably demonstrate that a given dataset is anonymized, this rests on particular assumptions. Most notably, datasets are only provably anonymized under the assumption that no extra external information is available to be used to attempt to de-identify it. In practice, this means that de-anonymization of data can often be done by combining multiple datasets. By using information from multiple information sources, one can often use processes of elimination to decode the individuals included in a particular dataset.</p>
 </section>
-<section id="tools">
-<h3>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">#</a></h3>
-<p>These tutorials presume that you do already have some basic knowledge of programming.</p>
-<p>If you are somewhat unfamiliar with Python, we will make sure you feel comfortable with Python by the end of the seminar.</p>
-<p>The following are a series of tools that you will need for this class</p>
-<ol class="simple">
-<li><p>Anaconda</p></li>
-<li><p>git &amp; GitHub Desktop</p></li>
-<li><p>Visual Studio Code</p></li>
-</ol>
-<p>Today we will go through them and how to set them up.</p>
-<p><strong>Already have Python</strong>?</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="regulations">
+<h1>Regulations<a class="headerlink" href="#regulations" title="Permalink to this headline">#</a></h1>
+<p>There are many official guidelines, rules and standards for data privacy and user identity protection, although much of it is case specific.</p>
+<p>At the minimum, what is legally required in terms of data protection depends, amongst other things, on:</p>
 <ul class="simple">
-<li><p>If you are running code locally, we recommend you install a new version of Python with Anaconda, as described below</p></li>
-<li><p>If you are on Mac, you have a native installation of python. This native installation of Python may be older, will not include the extra packages that you will need for this class, and is best left untouched.</p>
+<li><p>What the data is / contains, and who it is about,</p>
 <ul>
-<li><p>Downloading Anaconda will install a separate, independent install of Python, leaving your native install untouched.</p></li>
+<li><p>Certain data types, and/or populations may have special protections, for example health-related information.</p></li>
 </ul>
 </li>
-<li><p>Windows does not require Python natively and so it is not typically pre-installed.</p></li>
+<li><p>Who owns the data and in what capacity they are acting (company, university, etc.)</p>
+<ul>
+<li><p>For example, regulations for scientific research are different than those for companies</p></li>
 </ul>
-<br>
-<br>
-<img src="img/anaconda.png" width="350px">
-<br>
-<br><div class="alert alert-success">
-Anaconda is an open-source distribution of Python, designed for scientific computing, data science and machine learning. 
+</li>
+<li><p>User agreements / consent procedures that were in place when the data were collected.</p>
+<ul>
+<li><p>Individuals have a right to self-determination in terms of what their data is used for. Data should only be used for things that are covered by it’s terms of use / terms of collection / consent procedures.</p></li>
+</ul>
+</li>
+<li><p>What the data is to be used for.</p>
+<ul>
+<li><p>Often a combination of the what and the who, there may be specific regulations about how you must deal with, and what you can do, based on the goal of having and using the data.</p></li>
+</ul>
+</li>
+<li><p>Where the data was collected and where it is stored, and who it is about.</p>
+<ul>
+<li><p>Different regions (countries, etc) often have different regulations.</p></li>
+</ul>
+</li>
+</ul>
+<p>Much of these regulations apply more directly to the collection, storage, and release of datasets (rather than analysis), but aspects also apply to the use of datasets, including publicly available datasets. Available datasets often have a user agreement for using the data, and, in particular, attempting to identify individuals from datasets may at a minimum break user agreements, and/or (depending on the nature of the data) be illegal based on consumer and research subject protection laws.</p>
+<section id="research-standards">
+<h2>Research Standards<a class="headerlink" href="#research-standards" title="Permalink to this headline">#</a></h2>
+<div class="alert alert-success">
+Data collected and used for research purposes has it's own set of guidelines and requirements regarding the treatment of human subjects, and the collection, storage, use, and dissemination of data. These regulations focus, among other things, on the right to self-determination of human subjects to consent to what data is collected, and how it is used. Data collected for research purposes must follow restrictions based on these consent procedures. 
 </div>
 <div class="alert alert-info">
-The anaconda website is 
-<a href="https://www.anaconda.com" class="alert-link">here</a>,
-with the download page
-<a href="https://www.anaconda.com" class="alert-link">here</a>.
-</div><p>Anaconda itself is a distribution, meaning that is a version of Python with a collection of packages that are curated and maintained together.
-Using a pre-built distribution is useful, as it comes with the packages that you need for data science.
-Anaconda also comes with <code class="docutils literal notranslate"><span class="pre">conda</span></code>, which is a package manager, allowing you to download, install, and manage other packages.</p>
-<div class="alert alert-danger">
-Download and install Anaconda until the next session. (1 point)
-</div><br>
-<br>
-<img src="https://raw.githubusercontent.com/COGS108/Tutorials/master/img/git.png" width="300px">
-<br>
-<br><div class="alert alert-success">
-Git is a tool, a software package, for version control. 
+Research protections under the
+<a href="https://en.wikipedia.org/wiki/Declaration_of_Helsinki" class="alert-link">Declaration of Helsinki</a>.
+</div></section>
+<section id="hipaa-protection-for-health-related-information">
+<h2>HIPAA - Protection for Health Related Information<a class="headerlink" href="#hipaa-protection-for-health-related-information" title="Permalink to this headline">#</a></h2>
+<div class="alert alert-success">
+The Health Insurance Portability and Accountability Act (HIPAA) is a US federal government regulation that standardizes and protects individuals medical records and health related data. It includes terms for how data must be stored, and how they can be used & shared.
 </div>
 <div class="alert alert-info">
-Install 
-<a href="https://desktop.github.com/" class="alert-link">git</a>,
-if you don't already have it.
-</div><br>
-<br>
-<img src="img\ghdesktoplogo.png" width="300px">
-<br>
-<br><div class="alert alert-success">
-Github is an online hosting service that can be used with git, and offers online tools to use git. GitHub Desktop is the local IDE for git.
+The official US federal government HIPAA information
+<a href="https://www.hhs.gov/hipaa/" class="alert-link">guidelines</a>
+include an overview of HIPAA.
+</div></section>
+<section id="safe-harbour-method">
+<h2>Safe Harbour Method<a class="headerlink" href="#safe-harbour-method" title="Permalink to this headline">#</a></h2>
+<div class="alert alert-success">
+Safe Harbor is an official agreement regarding how to deal with datasets that have personal data. It describes specific guidelines on what information to remove from datasets in order to anonymize them. It is a single set of data protection requirements shared across many contexts and countries.
 </div>
 <div class="alert alert-info">
-Create an account on 
-<a href="https://github.com/" class="alert-link">Github</a>.
-</div><p>Git &amp; GitHub are not the same thing, though, in practice, they are commonly used together, whereby git is used as a tool to version control code and manage multiple copies stored across your computer, as well as on remote repositories that are stored on Github.</p>
-<div class="alert alert-danger">
-Download and install GitHub Desktop until the next session. (1 point)
-</div>
-<div class="alert alert-danger">
-Connect your Github account to your GitHub Desktop install. (1 point)
-</div><br>
-<br>
-<img src="img/visualstudiologo.png" width="300px">
-<br>
-<br><div class="alert alert-success">
-Visual Studio Code is a free graphical user interface (GUI) for coding. 
-</div>
-<div class="alert alert-info">
-Visual Studio Code is available 
-<a href="https://code.visualstudio.com/" class="alert-link">here</a>.
-</div>
-<div class="alert alert-danger">
-Download and install Visual Studio Code until the next session. (1 point)
-</div>
+The 
+<a href="https://www.hhs.gov/hipaa/for-professionals/privacy/special-topics/de-identification/" class="alert-link">official documentation</a>
+for Safe Harbour includes guidelines on how to anonymize data.
+</div><p>The Safe Harbor method requires that the following identifiers of the individuals be removed:</p>
+<ul class="simple">
+<li><p>Names</p></li>
+<li><p>Geographic Subdivisions smaller than a state**</p></li>
+<li><p>Dates (such as birth dates, etc), and all ages above 90</p></li>
+<li><p>Telephone Numbers</p></li>
+<li><p>Vehicle Identification Numbers</p></li>
+<li><p>Fax numbers</p></li>
+<li><p>Device identifiers and serial numbers</p></li>
+<li><p>Email addresses</p></li>
+<li><p>Web Universal Resource Locators (URLs)</p></li>
+<li><p>Social security numbers</p></li>
+<li><p>Internet Protocol (IP) addresses</p></li>
+<li><p>Medical record numbers</p></li>
+<li><p>Biometric identifiers, including finger and voice prints</p></li>
+<li><p>Health plan beneficiary numbers</p></li>
+<li><p>Full-face photographs and any comparable images</p></li>
+<li><p>Account numbers</p></li>
+<li><p>Certificate/license numbers</p></li>
+<li><p>Any other unique identifying number, characteristic, or code</p></li>
+</ul>
+<p>** The first three numbers of the zip code can be kept, provided that more than 20,000 people live in the region covered by all the zip codes that share the same initial three digits (the same geographic subdivision).</p>
+<section id="unique-identifiers">
+<h3>Unique Identifiers<a class="headerlink" href="#unique-identifiers" title="Permalink to this headline">#</a></h3>
+<p>The goal of Safe Harbor, and Data Anonymization in general, is to remove any unique information that could be used to identify you.</p>
+<p>This is perhaps most obvious for things like names. Other, perhaps less obvious specifications of Safe Harbour, are also based on the that this information being in a dataset creates a risk for identification of individuals contained in the dataset.</p>
+<p>For example, while it may be innocuous to talk about a 37 year old male who lives in Los Angeles (as there are many candidates, such that the specific individual is not revealed), it might actually be quite obvious who the person is when talking about a 37 year old male who lives in Potrero, California, a town of about 700 people. This is the same reason ages above 90 have to be removed - even in a fairly large area, say San Diego, it may be fairly obvious who the 98 year old female participant is.</p>
+<p>Basically - any information that makes you stand out is liable to identify you. Anonymization attempts to remove these kinds of indications from the data, such that individuals do not stand out in a way that lets someone figure out who they are.</p>
+<p>This also underlies the difficulty in protecting data in the face of multiple data sources, since collecting observations together makes it much easier to start to pick out people more uniquely. It may still be relatively easy to identify the 37 year old male from LA if you also happen to know (or figure out) that he has a poodle, is 5’6”, works at UCLA, and was at Griffith Park on Saturday, April 15th. All of this extra information may be relatively easy to figure out by combining publicly available, or easily obtainable, data.</p>
 </section>
 </section>
 </section>
@@ -618,20 +680,6 @@ Download and install Visual Studio Code until the next session. (1 point)
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Data Science in Practice or Neurophysiological Data</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="01-Python.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">s01: Python</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>

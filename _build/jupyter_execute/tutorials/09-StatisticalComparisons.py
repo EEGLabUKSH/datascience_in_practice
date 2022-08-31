@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Statistical Comparisons
+# # s04: Statistical Comparisons
 # 
 # Whenever we have data, we often want to use statistical analyses to explore, compare, and quantify our data. 
 # 
