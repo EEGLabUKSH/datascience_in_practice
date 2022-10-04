@@ -41,6 +41,20 @@
 # 
 # Therefore this seminar will provide you with some hands-on tools of psychological competence with a wide variety of used cases in the real-world.
 
+# ### Topics
+# 
+# 1. Python and how to write it (s00-s01)
+# 2. Basic data operations (s02-s03)
+# 3. Statistic in Python (s04-s06)
+# 4. Neurophysiological data (s07-?)
+# 
+# ### Dates
+# 14 seminar sessions in total. <br>
+# 25.10.2022 - 07.02.2023 (No sessions 27.12. & 03.01.)<br>
+# Tuesdays 10:15-11:45.<br>
+# Meet [here.](https://mediaportal01.rz.uni-kiel.de/b/wel-qyn-wtn-8rj)
+# 
+
 # ### Tools
 # 
 # These tutorials presume that you do already have some basic knowledge of programming. 
