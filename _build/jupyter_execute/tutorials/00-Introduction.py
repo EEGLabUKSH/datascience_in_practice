@@ -3,7 +3,7 @@
 
 # # s00: Introduction
 # 
-# Welcome to the hands on materials for psyM1-01a *(practical part)*.
+# Welcome to the hands on materials for psyM1-2 *(practical part)*.
 # This notebook will guide through getting the tools you will need for data science related tasks.
 
 # ## Prerequisits
@@ -24,7 +24,7 @@
 
 # ### Prüfungsordnung
 # 
-# First things first, why are you herewhat are you doing? A closer look in the [Prüfungsordnung](http://www.studservice.uni-kiel.de/sta/fachpruefungsordnung-psychologie-master-1-fach.pdf) shed some lights on everything.
+# First things first, why are you here and what are you doing? A closer look in the [Prüfungsordnung](http://www.studservice.uni-kiel.de/sta/fachpruefungsordnung-psychologie-master-1-fach.pdf) shed some lights on everything.
 # 
 
 # <br>
@@ -41,18 +41,7 @@
 # 
 # Therefore this seminar will provide you with some hands-on tools of psychological competence with a wide variety of used cases in the real-world.
 
-# ### Topics
 # 
-# 1. Python and how to write it (s00-s01)
-# 2. Basic data operations (s02-s03)
-# 3. Statistic in Python (s04-s06)
-# 4. Neurophysiological data (s07-?)
-# 
-# ### Dates
-# 14 seminar sessions in total. <br>
-# 25.10.2022 - 07.02.2023 (No sessions 27.12. & 03.01.)<br>
-# Tuesdays 10:15-11:45.<br>
-# Meet [here.](https://mediaportal01.rz.uni-kiel.de/b/wel-qyn-wtn-8rj)
 # 
 
 # ### Tools
@@ -115,6 +104,7 @@
 # <a href="https://desktop.github.com/" class="alert-link">git</a>,
 # if you don't already have it.
 # </div>
+# 
 
 # <br>
 # <br>
@@ -126,12 +116,12 @@
 # Github is an online hosting service that can be used with git, and offers online tools to use git. GitHub Desktop is the local IDE for git.
 # </div>
 # 
-# <div class="alert alert-info">
-# Create an account on 
-# <a href="https://github.com/" class="alert-link">Github</a>.
-# </div>
 
 # Git & GitHub are not the same thing, though, in practice, they are commonly used together, whereby git is used as a tool to version control code and manage multiple copies stored across your computer, as well as on remote repositories that are stored on Github.
+# 
+# <div class="alert alert-danger">
+# Create an account at <a href="https://github.com/" class="alert-link">Github</a>. (1 point)
+# </div>
 # 
 # <div class="alert alert-danger">
 # Download and install GitHub Desktop until the next session. (1 point)
@@ -140,23 +130,3 @@
 # <div class="alert alert-danger">
 # Connect your Github account to your GitHub Desktop install. (1 point)
 # </div>
-
-# <br>
-# <br>
-# <img src="img/visualstudiologo.png" width="300px">
-# <br>
-# <br>
-
-# <div class="alert alert-success">
-# Visual Studio Code is a free graphical user interface (GUI) for coding. 
-# </div>
-# 
-# <div class="alert alert-info">
-# Visual Studio Code is available 
-# <a href="https://code.visualstudio.com/" class="alert-link">here</a>.
-# </div>
-# 
-# <div class="alert alert-danger">
-# Download and install Visual Studio Code until the next session. (1 point)
-# </div>
-# 

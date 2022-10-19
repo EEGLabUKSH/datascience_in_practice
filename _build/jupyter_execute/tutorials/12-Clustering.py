@@ -163,7 +163,7 @@ d2 = np.array(iris.data[:, pw_ind])
 # 
 # One thing to keep in mind for clustering analyses, is that if different dimensions use different units (or have very different variances), then these differences can greatly impact the clustering. 
 # 
-# This is because K-means is isotropic, which means that it treats different in each direction as equally important. Because of this, if the units or variance of different features are very different, this is equivalent to weighting certain features / dimensions as more or less important.
+# This is because K-means is isotropic, which means that it treats differences in each direction as equally important. Because of this, if the units or variance of different features are very different, this is equivalent to weighting certain features / dimensions as more or less important.
 # 
 # To correct for this it is common, and sometimes necessary to 'whiten' the data. 'Whitening' data means normalizing each dimension by it's respective standard deviation. By transforming the data to be on the same scale (have the same variance), we can ensure that the clustering algorithm treats each dimension with the same importance. 
 

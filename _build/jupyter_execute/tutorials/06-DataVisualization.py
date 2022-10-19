@@ -30,18 +30,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 from numpy.random import rand
 
-from tueplots import axes, bundles
-
-# Increase the resolution of all the plots below
-bundles.beamer_moml()
-plt.rcParams.update({"figure.dpi": 200,"figure.facecolor":"w","figure.figsize": (15,10)})
-
-
 
 # ## Exercise
 # How many points to you count in the graph?
 
-# In[4]:
+# In[2]:
 
 
 
@@ -58,7 +51,7 @@ plt.ylim([-1,9])
 # 
 # First, we will create a simple line graph.
 
-# In[2]:
+# In[3]:
 
 
 # Let's create some fake data to plot
@@ -81,7 +74,7 @@ plt.plot(x, y)
 # 
 # To do so, we can simulate two groups of data, that we want to plot together on a scatter plot to compare.
 
-# In[3]:
+# In[4]:
 
 
 # Create some Data
@@ -99,14 +92,14 @@ y2 = rand(n)             # Randomly create 2nd group of y data points
 # 
 # Note there are lots of optional arguments we can add to 'plot' and 'scatter', that we will explore more later. 
 
-# In[4]:
+# In[5]:
 
 
 # Plot the first set of data
 plt.scatter(x, y1, color='blue')
 
 
-# In[5]:
+# In[6]:
 
 
 # Now, plot both sets of data together
@@ -126,7 +119,7 @@ plt.scatter(x, y2, color='red')
 # 
 # In the next cell, we will add lots of customization. It's a large set of code, but to explore how it all works, work through bit by bit, and try passing in different values, and see what it does to the resultant plot.
 
-# In[6]:
+# In[7]:
 
 
 # Create a new figure
@@ -198,7 +191,7 @@ ax.legend(loc='upper left', scatterpoints=1, frameon=False)
 #     - A figure can have multiple axes (though our figure above only has one)
 #     - To update a value on an axes object, you can call a `set_` method on the axes object, like we do above
 
-# In[7]:
+# In[8]:
 
 
 # 'fig' is a label for the figure we are working on.
@@ -208,7 +201,7 @@ print(fig)                   # This is the figure handle 'fig' we made before
 print(plt.gcf(), '\n')       # gcf grabs the current figure. In this case, current figure is same as 'fig'
 
 
-# In[8]:
+# In[9]:
 
 
 # 'ax' is a name for the current axes. A figure can have many axes (figures can have subplots)
@@ -224,7 +217,7 @@ print(ax)                    # This is the axes handle 'ax' that we made before
 #    
 # For example, we can get our figure back just by calling the figure object name. 
 
-# In[9]:
+# In[10]:
 
 
 # Redraw figure with 'fig' variable name
