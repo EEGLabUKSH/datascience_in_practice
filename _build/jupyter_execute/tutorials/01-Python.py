@@ -88,6 +88,7 @@
 # </div>
 
 # ## Scientific Python
+
 # 
 # When we say that Python is good for data science, and scientific computing, what we really mean is that there is a rich ecosystem of available open-source external packages, that greatly expand the capacities of the language beyond the standard library. 
 # 
@@ -105,3 +106,7 @@
 # Patrick J Mineault wrote a greate resource how to use virtual enviroments in data science 
 # <a href="https://goodresearch.dev/setup.html#set-up-a-virtual-environment" class="alert-link">here</a>.
 # </div>
+
+# ## Code Style
+
+# Well, of course you want to look stylish. Guess what, so does you code. However, for myself I would consider white shoes, a blue jeans and some greyish shirt seriously stylish, it is different for python code. [Here](https://google.github.io/styleguide/pyguide.html) is a great resource on how to be stylish and how to maintain style with your code. As in real life, it is mandatory but might help along the way. 
