@@ -45,7 +45,7 @@ If you have any find any bugs or issues, or have any suggestions for these mater
 
 ## Source Materials
 
-This set of materials is an openly available version the master course (psyM1-2) in psychology thaught at Kiel University.
+This set of materials is an openly available version of the master course (psyM1-2) in psychology thaught at Kiel University.
 
 Designing and curation of scientific data projects is based on [The Good Research Code Handbook by Patrick J Mineault](https://dx.doi.org/10.5281/zenodo.5796873).
 
