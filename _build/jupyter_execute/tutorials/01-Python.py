@@ -109,4 +109,4 @@
 
 # ## Code Style
 
-# Well, of course you want to look stylish. Guess what, so does you code. However, for myself I would consider white shoes, a blue jeans and some greyish shirt seriously stylish, it is different for python code. [Here](https://google.github.io/styleguide/pyguide.html) is a great resource on how to be stylish and how to maintain style with your code. As in real life, it is mandatory but might help along the way. 
+# Well, of course you want to look stylish. Guess what, so does your code. However, for myself I would consider white shoes, a blue jeans and some greyish shirt seriously stylish, it is different for python code. [Here](https://google.github.io/styleguide/pyguide.html) is a great resource on how to be stylish and how to maintain style with your code. As in real life, it is mandatory but might help along the way. 

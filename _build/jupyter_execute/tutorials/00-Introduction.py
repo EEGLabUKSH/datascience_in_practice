@@ -6,22 +6,6 @@
 # Welcome to the hands on materials for psyM1-2 *(practical part)*.
 # This notebook will guide through getting the tools you will need for data science related tasks.
 
-# ## Prerequisits
-# 
-# Throughout these tutorials, you will see colored 'alert' text:
-# 
-# <div class="alert alert-success">
-# Green alerts provide key information and definitions.
-# </div>
-# 
-# <div class="alert alert-info">
-# Blue alerts provide links out to further 
-# </div>
-# 
-# <div class="alert alert-danger">
-# Red alerts will indicate task necessary to do in order to pass the seminar. 
-# </div>
-
 # ### Prüfungsordnung
 # 
 # First things first, why are you here and what are you doing? A closer look in the [Prüfungsordnung](http://www.studservice.uni-kiel.de/sta/fachpruefungsordnung-psychologie-master-1-fach.pdf) shed some lights on everything.
@@ -54,7 +38,6 @@
 # 
 # 1. Anaconda
 # 2. git & GitHub Desktop
-# 3. Visual Studio Code
 # 
 # Today we will go through them and how to set them up.
 
@@ -130,3 +113,26 @@
 # <div class="alert alert-danger">
 # Connect your Github account to your GitHub Desktop install. (1 point)
 # </div>
+
+# In[1]:
+
+
+## Prerequisits
+
+Throughout these tutorials (as seen today), you will see colored 'alert' text:
+
+<div class="alert alert-success">
+Green alerts provide key information and definitions.
+
+</div>
+
+<div class="alert alert-info">
+Blue alerts provide links out to further sources.
+
+</div>
+
+<div class="alert alert-danger">
+Red alerts will indicate task necessary to do in order to pass the seminar. 
+
+</div>
+
