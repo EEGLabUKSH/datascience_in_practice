@@ -114,25 +114,21 @@
 # Connect your Github account to your GitHub Desktop install. (1 point)
 # </div>
 
-# In[1]:
-
-
-## Prerequisits
-
-Throughout these tutorials (as seen today), you will see colored 'alert' text:
-
-<div class="alert alert-success">
-Green alerts provide key information and definitions.
-
-</div>
-
-<div class="alert alert-info">
-Blue alerts provide links out to further sources.
-
-</div>
-
-<div class="alert alert-danger">
-Red alerts will indicate task necessary to do in order to pass the seminar. 
-
-</div>
-
+# ## Prerequisits
+# 
+# Throughout these tutorials (as seen today), you will see colored 'alert' text:
+# 
+# <div class="alert alert-success">
+# Green alerts provide key information and definitions.
+# 
+# </div>
+# 
+# <div class="alert alert-info">
+# Blue alerts provide links out to further sources.
+# 
+# </div>
+# 
+# <div class="alert alert-danger">
+# Red alerts will indicate task necessary to do in order to pass the seminar. 
+# 
+# </div>
