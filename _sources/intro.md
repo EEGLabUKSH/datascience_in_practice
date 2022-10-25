@@ -30,6 +30,12 @@ Available materials include:
 - **Assignments** which are problem sets that can be worked through
     - These can be used to practice key skills and ideas with code
 
+## Session plan
+1. Joined coding of old assignments as presentations *(~20-30-min)*
+2. New theory and assignments *(~45 min)*
+3. Feedback session *(15 min)*
+
+
 All the materials **for psyM1-2** are listed in the table of contents in the left sidebar.
 Note that these materials are not created as fully detailed descriptions or formal descriptions of the topics they introduce.
 
