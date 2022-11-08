@@ -467,6 +467,16 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#names">
+     Names
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-types">
+     Data types
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#autocomplete">
      Autocomplete
     </a>
@@ -549,6 +559,16 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#names">
+     Names
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-types">
+     Data types
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#autocomplete">
      Autocomplete
     </a>
@@ -586,6 +606,11 @@ The official documentation from project Jupyter is available
 <a href="https://jupyter-notebook.readthedocs.io/en/stable/" class="alert-link">here</a>
 and they also have some example notebooks 
 <a href="https://github.com/jupyter/notebook/tree/master/docs/source/examples/Notebook" class="alert-link">here</a>.
+</div><div class="alert alert-danger">
+Create a Jupyter Notebook using the Anaconda Navigator and name it "s01_jupyter_introduction". (1 point)
+</div>
+<div class="alert alert-danger">
+Close the Notebook and open it again. (0.5 point)
 </div><section id="menu-options-shortcuts">
 <h2>Menu Options &amp; Shortcuts<a class="headerlink" href="#menu-options-shortcuts" title="Permalink to this headline">#</a></h2>
 <p>To get a quick tour of the Jupyter user-interface, click on the ‘Help’ menu, then click ‘User Interface Tour’.</p>
@@ -745,6 +770,136 @@ my_string<span class="o">?</span>
 </div>
 </div>
 </section>
+<section id="names">
+<h2>Names<a class="headerlink" href="#names" title="Permalink to this headline">#</a></h2>
+<p>Names in Python are nothing more than names for certain objects (in other programming languages, names are usually called variables). For example, the assignment <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">1</span></code> can be interpreted as giving the name <code class="docutils literal notranslate"><span class="pre">a</span></code> to object <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<p>Names can contain letters and digits, but they must not start with a digit. In principle, lowercase letters should be used (Python is case-sensitive). Names may be of any length, but should be chosen as short as possible (but as long as necessary). In addition, the character _ (the underscore) may be used to make a name more readable, e.g. to separate parts of words.</p>
+<p>Names should be chosen sensibly, i.e. they should document the usage or the content (i.e. short names like i, n and x are only sensible in exceptional cases). It is also reasonable to use English names.</p>
+<p>Examples for valid names are:</p>
+<div class="alert alert-danger">
+Create two variables. One variable with name "one" which holds the numeric value 1. The other variable should be named "two" and has to contain a string of value "two". (1 point)
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number_of_students_in_class</span> <span class="o">=</span> <span class="mi">23</span>  <span class="c1"># to long</span>
+<span class="n">NumberOfStudents</span> <span class="o">=</span> <span class="mi">24</span>  <span class="c1"># Words should be separated with _</span>
+<span class="n">n_students</span> <span class="o">=</span> <span class="mi">25</span>  <span class="c1"># good name (short, meaningful)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">25</span>  <span class="c1"># less good (too unspecific), but OK in some cases</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-types">
+<h2>Data types<a class="headerlink" href="#data-types" title="Permalink to this headline">#</a></h2>
+<p>These are the main data types in python we are going to use</p>
+<ul class="simple">
+<li><p>bool (Logical)</p></li>
+<li><p>numeric</p>
+<ul>
+<li><p>int (Integers)</p></li>
+<li><p>float (Decimal numbers)</p></li>
+</ul>
+</li>
+<li><p>str (String/ Zeichenkette)</p></li>
+<li><p>list (List of objects)</p></li>
+</ul>
+<p>We can use the command <code class="docutils literal notranslate"><span class="pre">type()</span></code> to find out the data type of a variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">23.221</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float
+</pre></div>
+</div>
+</div>
+</div>
+<p>Due to the limited computational precision with which computers represent decimal numbers, rounding errors may occur (decimal numbers generally cannot be represented exactly). Example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">==</span> <span class="mf">0.3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.30000000000000004
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="s2">&quot;Python&quot;</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="s1">&#39;Python&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">s1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">s2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt;
+&lt;class &#39;str&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">18.33</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="mi">44</span><span class="p">]</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-danger">
+Create a list which contains at least one variable of types (bool,int,float,str). (1 point)
+</div></section>
 <section id="autocomplete">
 <h2>Autocomplete<a class="headerlink" href="#autocomplete" title="Permalink to this headline">#</a></h2>
 <div class="alert alert-success">
@@ -759,7 +914,7 @@ capacities, which can autocomplete what you are typing, and/or be used to explor
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]</span>
     <span class="n">np</span><span class="o">.</span>
        <span class="o">^</span>
 <span class="ne">SyntaxError</span>: invalid syntax
