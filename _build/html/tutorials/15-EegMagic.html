@@ -544,20 +544,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 9&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">tueplots</span> <span class="kn">import</span> <span class="n">axes</span><span class="p">,</span> <span class="n">bundles</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># Increase the resolution of all the plots below</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">bundles</span><span class="o">.</span><span class="n">beamer_moml</span><span class="p">()</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;tueplots&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <section id="set-path-and-load-data">
 <h2>Set path and load data<a class="headerlink" href="#set-path-and-load-data" title="Permalink to this headline">#</a></h2>
@@ -629,8 +615,12 @@ For now these are channel names and types of our data, as well as the sampling r
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Creating RawArray with float64 data, n_channels=8, n_times=288349
-    Range : 0 ... 288348 =      0.000 ...   140.795 secs
-Ready.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Range : 0 ... 288348 =      0.000 ...   140.795 secs
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ready.
 </pre></div>
 </div>
 </div>
@@ -645,18 +635,45 @@ Lets, already do some basic processing of the data.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filtering raw data in 1 contiguous segment
-Setting up band-pass filter from 0.5 - 20 Hz
-
-FIR filter parameters
----------------------
-Designing a one-pass, zero-phase, non-causal bandpass filter:
-- Windowed time-domain design (firwin) method
-- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
-- Lower passband edge: 0.50
-- Lower transition bandwidth: 0.50 Hz (-6 dB cutoff frequency: 0.25 Hz)
-- Upper passband edge: 20.00 Hz
-- Upper transition bandwidth: 5.00 Hz (-6 dB cutoff frequency: 22.50 Hz)
-- Filter length: 13517 samples (6.600 sec)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Setting up band-pass filter from 0.5 - 20 Hz
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FIR filter parameters
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Designing a one-pass, zero-phase, non-causal bandpass filter:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Windowed time-domain design (firwin) method
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Lower passband edge: 0.50
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Lower transition bandwidth: 0.50 Hz (-6 dB cutoff frequency: 0.25 Hz)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Upper passband edge: 20.00 Hz
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Upper transition bandwidth: 5.00 Hz (-6 dB cutoff frequency: 22.50 Hz)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Filter length: 13517 samples (6.600 sec)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=1)]: Using backend SequentialBackend with 1 concurrent workers.
@@ -778,13 +795,27 @@ Designing a one-pass, zero-phase, non-causal bandpass filter:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>270 events found
-Event IDs: [1 2 3 4 5 6 7 8 9]
-Not setting metadata
-270 matching events found
-Setting baseline interval to [-0.2001953125, 0.0] sec
-Applying baseline correction (mode: mean)
-0 projection items activated
-[ 7789  8790  9814 10838 11862 12886 13910 14934 15958 16982]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Event IDs: [1 2 3 4 5 6 7 8 9]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Not setting metadata
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>270 matching events found
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Setting baseline interval to [-0.2001953125, 0.0] sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Applying baseline correction (mode: mean)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 projection items activated
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 7789  8790  9814 10838 11862 12886 13910 14934 15958 16982]
 Number of onsets: 270
 Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
 </pre></div>

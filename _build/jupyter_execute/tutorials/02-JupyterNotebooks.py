@@ -22,6 +22,14 @@
 # <a href="https://github.com/jupyter/notebook/tree/master/docs/source/examples/Notebook" class="alert-link">here</a>.
 # </div>
 
+# <div class="alert alert-danger">
+# Create a Jupyter Notebook using the Anaconda Navigator and name it "s01_jupyter_introduction". (1 point)
+# </div>
+# 
+# <div class="alert alert-danger">
+# Close the Notebook and open it again. (0.5 point)
+# </div>
+
 # ## Menu Options & Shortcuts
 # 
 # To get a quick tour of the Jupyter user-interface, click on the 'Help' menu, then click 'User Interface Tour'.
@@ -146,6 +154,97 @@ print(my_list)
 get_ipython().run_line_magic('pinfo', 'my_string')
 
 
+# ## Names
+
+# Names in Python are nothing more than names for certain objects (in other programming languages, names are usually called variables). For example, the assignment `a = 1` can be interpreted as giving the name `a` to object `1`.
+
+# Names can contain letters and digits, but they must not start with a digit. In principle, lowercase letters should be used (Python is case-sensitive). Names may be of any length, but should be chosen as short as possible (but as long as necessary). In addition, the character _ (the underscore) may be used to make a name more readable, e.g. to separate parts of words.
+# 
+# Names should be chosen sensibly, i.e. they should document the usage or the content (i.e. short names like i, n and x are only sensible in exceptional cases). It is also reasonable to use English names.
+# 
+# Examples for valid names are:
+
+# <div class="alert alert-danger">
+# Create two variables. One variable with name "one" which holds the numeric value 1. The other variable should be named "two" and has to contain a string of value "two". (1 point)
+# </div>
+
+# In[9]:
+
+
+number_of_students_in_class = 23  # to long
+NumberOfStudents = 24  # Words should be separated with _
+n_students = 25  # good name (short, meaningful)
+n = 25  # less good (too unspecific), but OK in some cases
+
+
+# ## Data types
+
+# These are the main data types in python we are going to use
+# 
+# * bool (Logical)
+# * numeric 
+#     * int (Integers)
+#     * float (Decimal numbers)
+# * str (String/ Zeichenkette)
+# * list (List of objects)
+# 
+# We can use the command `type()` to find out the data type of a variable.
+
+# In[10]:
+
+
+b = True
+type(b)
+
+
+# In[11]:
+
+
+a = 17
+type(a)
+
+
+# In[12]:
+
+
+a = 23.221
+type(a)
+
+
+# Due to the limited computational precision with which computers represent decimal numbers, rounding errors may occur (decimal numbers generally cannot be represented exactly). Example:
+
+# In[13]:
+
+
+0.1 + 0.2 == 0.3
+
+
+# In[14]:
+
+
+0.1 + 0.2
+
+
+# In[15]:
+
+
+s1 = "Python"
+s2 = 'Python'
+print(type(s1))
+print(type(s2))
+
+
+# In[16]:
+
+
+k = [1, 2, 18.33, "Python", 44]
+type(k)
+
+
+# <div class="alert alert-danger">
+# Create a list which contains at least one variable of types (bool,int,float,str). (1 point)
+# </div>
+
 # ## Autocomplete
 
 # <div class="alert alert-success">
@@ -154,7 +253,7 @@ get_ipython().run_line_magic('pinfo', 'my_string')
 # capacities, which can autocomplete what you are typing, and/or be used to explore what code is available.  
 # </div>
 
-# In[9]:
+# In[17]:
 
 
 # Move your cursor just after the period, press the first letter of the command you want to execute or tab for all avaliable commands, and a drop menu will appear showing all possible completions
