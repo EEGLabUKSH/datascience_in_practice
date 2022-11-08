@@ -164,10 +164,6 @@ get_ipython().run_line_magic('pinfo', 'my_string')
 # 
 # Examples for valid names are:
 
-# <div class="alert alert-danger">
-# Create two variables. One variable with name "one" which holds the numeric value 1. The other variable should be named "two" and has to contain a string of value "two". (1 point)
-# </div>
-
 # In[9]:
 
 
@@ -176,6 +172,10 @@ NumberOfStudents = 24  # Words should be separated with _
 n_students = 25  # good name (short, meaningful)
 n = 25  # less good (too unspecific), but OK in some cases
 
+
+# <div class="alert alert-danger">
+# Create two variables. One variable with name "one" which holds the numeric value 1. The other variable should be named "two" and has to contain a string of value "two". (1 point)
+# </div>
 
 # ## Data types
 
