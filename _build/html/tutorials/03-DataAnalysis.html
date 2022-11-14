@@ -525,7 +525,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<section id="prediction">
+<div class="alert alert-danger">
+Import the numpy package as np and create a variable with a meaningfull name. The variable should hold an 1darray with number as integers from 1 to 10. (2 points)
+</div><section id="prediction">
 <h2>Prediction<a class="headerlink" href="#prediction" title="Permalink to this headline">#</a></h2>
 <div class="alert alert-success">
 Prediction is the use of current (training) data to make predictions about future observations.
@@ -554,7 +556,7 @@ Prediction is the use of current (training) data to make predictions about futur
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03-DataAnalysis_7_0.png" src="../_images/03-DataAnalysis_7_0.png" />
+<img alt="../_images/03-DataAnalysis_8_0.png" src="../_images/03-DataAnalysis_8_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -590,7 +592,7 @@ Prediction is the use of current (training) data to make predictions about futur
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03-DataAnalysis_10_0.png" src="../_images/03-DataAnalysis_10_0.png" />
+<img alt="../_images/03-DataAnalysis_11_0.png" src="../_images/03-DataAnalysis_11_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -638,13 +640,13 @@ Classification (or clustering) is the process of trying to discover a systematic
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize our data!</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Height (cm)&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Weight (kg)&#39;</span><span class="p">,</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Height (cm)&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Weight (g)&#39;</span><span class="p">,</span>
        <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">1700</span><span class="p">]);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03-DataAnalysis_17_0.png" src="../_images/03-DataAnalysis_17_0.png" />
+<img alt="../_images/03-DataAnalysis_18_0.png" src="../_images/03-DataAnalysis_18_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -678,7 +680,7 @@ Classification (or clustering) is the process of trying to discover a systematic
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 0, 1, 1, 0, 1, 0, 0, 1, 0])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 0, 0, 1, 0, 1, 1, 0, 1])
 </pre></div>
 </div>
 </div>
@@ -698,19 +700,27 @@ Classification (or clustering) is the process of trying to discover a systematic
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cl_1</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cl_1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;.b&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cl_2</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cl_2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;.r&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Height (cm)&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Weight (kg)&#39;</span><span class="p">,</span>
-       <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">1700</span><span class="p">]);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Height (cm)&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Weight (g)&#39;</span><span class="p">,</span>
+       <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">1700</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03-DataAnalysis_22_0.png" src="../_images/03-DataAnalysis_22_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(0.5, 0, &#39;Height (cm)&#39;),
+ Text(0, 0.5, &#39;Weight (g)&#39;),
+ (0.0, 25.0),
+ (300.0, 1700.0)]
+</pre></div>
+</div>
+<img alt="../_images/03-DataAnalysis_23_1.png" src="../_images/03-DataAnalysis_23_1.png" />
 </div>
 </div>
 <p>In the above example, we tried to see if partition the data into two groups worked well and, visually, it looks quite reasonable!</p>
 <p>Note, however, that properly evaluating classification is difficult. That is especially true in this case, since we don’t know the answer. That means this example is unsupervised - we don’t know the answer, or have any labels to learn these patterns in the data.</p>
 <p>So, in this case, the answer looks plausible, but it’s hard to know if there really are two groups here. There could be more, or fewer. We’ll come back to how these analyses actually work and how to evaluate what you get out of them.</p>
-</section>
+<div class="alert alert-danger">
+Add data for a third species of squirrels. Run the k-means algorithm again for three clusters and see how it influences your outcome. To do so, plot the new data with three clusters. (3 points)
+</div></section>
 </section>
 <section id="knowledge-discovery">
 <h2>Knowledge Discovery<a class="headerlink" href="#knowledge-discovery" title="Permalink to this headline">#</a></h2>

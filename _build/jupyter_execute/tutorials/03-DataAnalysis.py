@@ -26,6 +26,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+# <div class="alert alert-danger">
+# Import the numpy package as np and create a variable with a meaningfull name. The variable should hold an 1darray with number as integers from 1 to 10. (2 points)
+# </div>
+
 # ## Prediction
 
 # <div class="alert alert-success">
@@ -130,7 +134,7 @@ data = np.array([[10., 600.], [16., 1200], [6., 800], [12., 700.], [17., 1400.],
 # Visualize our data!
 fig, ax = plt.subplots()
 ax.plot(data[:, 0], data[:, 1], '.', ms=12)
-ax.set(xlabel='Height (cm)', ylabel='Weight (kg)',
+ax.set(xlabel='Height (cm)', ylabel='Weight (g)',
        xlim=[0, 25], ylim=[300, 1700]);
 
 
@@ -171,8 +175,8 @@ cl_2 = data[kmeans.labels_ == 1]
 fig, ax = plt.subplots()
 ax.plot(cl_1[:, 0], cl_1[:, 1], '.b', ms=12)
 ax.plot(cl_2[:, 0], cl_2[:, 1], '.r', ms=12)
-ax.set(xlabel='Height (cm)', ylabel='Weight (kg)',
-       xlim=[0, 25], ylim=[300, 1700]);
+ax.set(xlabel='Height (cm)', ylabel='Weight (g)',
+       xlim=[0, 25], ylim=[300, 1700])
 
 
 # In the above example, we tried to see if partition the data into two groups worked well and, visually, it looks quite reasonable!
@@ -180,6 +184,10 @@ ax.set(xlabel='Height (cm)', ylabel='Weight (kg)',
 # Note, however, that properly evaluating classification is difficult. That is especially true in this case, since we don't know the answer. That means this example is unsupervised - we don't know the answer, or have any labels to learn these patterns in the data.
 # 
 # So, in this case, the answer looks plausible, but it's hard to know if there really are two groups here. There could be more, or fewer. We'll come back to how these analyses actually work and how to evaluate what you get out of them. 
+
+# <div class="alert alert-danger">
+# Add data for a third species of squirrels. Run the k-means algorithm again for three clusters and see how it influences your outcome. To do so, plot the new data with three clusters. (3 points)
+# </div>
 
 # ## Knowledge Discovery
 
