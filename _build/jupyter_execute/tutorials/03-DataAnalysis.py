@@ -27,7 +27,11 @@ import matplotlib.pyplot as plt
 
 
 # <div class="alert alert-danger">
-# Import the numpy package as np and create a variable with a meaningful name. The variable should hold an 1darray with number as integers from 1 to 10. (2 points)
+# Task 2.1: Import the numpy package as np and create a variable with a meaningful name. The variable should hold an 1darray with number as integers from 1 to 10. (2 points)
+# </div>
+
+# <div class="alert alert-danger">
+# Task 2.2: Using numpy create a 1darray of random integers (np.random.randint). Find the min, max, and mean of the array and print them in the command line using a formatted string. (2 points)
 # </div>
 
 # ## Prediction
