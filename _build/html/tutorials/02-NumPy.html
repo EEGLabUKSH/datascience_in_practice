@@ -518,8 +518,12 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="s01-numpy">
 <h1>s01: numpy<a class="headerlink" href="#s01-numpy" title="Permalink to this headline">#</a></h1>
-<p>This is a quick introduction to the Numpy package.</p>
-<section id="objectives-of-this-session">
+<br>
+<br>
+<img src="img/numpy_logo.png" width="200px">
+<br>
+<br>
+This is a quick introduction to the Numpy package.<section id="objectives-of-this-session">
 <h2>Objectives of this session:<a class="headerlink" href="#objectives-of-this-session" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Understand the Numpy array object</p></li>
@@ -542,19 +546,25 @@ title="Print to PDF"
 <p>NumPy is the most used library for scientific computing. Even if you are not using it directly, chances are high that some library uses it in the background. NumPy provides the high-performance multidimensional array object and tools to use it.</p>
 <p>An array is a ‘grid’ of values, with all the same types. It is indexed by tuples of non negative indices and provides the framework for multiple dimensions. An array has:</p>
 <ul class="simple">
+<li><p>data - raw data storage in memory.</p></li>
 <li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.dtypes.html#arrays-dtypes">dtype</a> - data type. Arrays always contain one type</p></li>
 <li><p><a class="reference external" href="https://numpy.org/doc/stable/glossary.html#term-shape">shape</a> - shape of the data, for example 3×2 or 3×2×500 or even 500 (one dimensional) or <code class="docutils literal notranslate"><span class="pre">[]</span></code> (zero dimensional).</p></li>
-<li><p>data - raw data storage in memory. This can be passed to C or Fortran code for efficient calculations.</p></li>
 </ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">np.arange(1,17,1)</span></code>
+$<span class="math notranslate nohighlight">\(
+\begin{bmatrix}
+1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 &amp; 8 &amp; 9 &amp; 10 &amp; 11 &amp; 12 &amp; 13 &amp; 14 &amp; 15 &amp; 16
+\end{bmatrix}
+\)</span>$</p>
+<p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">np.arange(1,17,1).reshape(4,</span> <span class="pre">4)</span></code>
+$<span class="math notranslate nohighlight">\(
 \begin{bmatrix}
 1 &amp; 2 &amp; 3 &amp; 4\\
 5 &amp; 6 &amp; 7 &amp; 8\\
 9 &amp; 10 &amp; 11 &amp; 12\\
 13 &amp; 14 &amp; 15 &amp; 16
 \end{bmatrix}
-\end{split}\]</div>
+\)</span>$</p>
 </section>
 <section id="creating-arrays">
 <h2>Creating arrays<a class="headerlink" href="#creating-arrays" title="Permalink to this headline">#</a></h2>
@@ -586,20 +596,6 @@ title="Print to PDF"
 
 <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;bool&#39;</span><span class="p">)</span>  <span class="c1"># 3x2 boolean array</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ True,  True],
-       [ True,  True],
-       [ True,  True]])
 </pre></div>
 </div>
 </div>
@@ -646,10 +642,24 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p>Imagine you have the numpy array as a variable (<code class="docutils literal notranslate"><span class="pre">data</span></code>  in the example below). On this array you can perform numpy functions such as <code class="docutils literal notranslate"><span class="pre">max</span></code>, <code class="docutils literal notranslate"><span class="pre">min</span></code> or <code class="docutils literal notranslate"><span class="pre">sum</span></code>, just to name a few.
+<br>
+<br>
+<img src="img/np_aggregation.png">
+<br>
+<br></p>
 </section>
 <section id="indexing-and-slicing">
 <h2>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">#</a></h2>
 <p>See also <a class="reference external" href="https://numpy.org/doc/stable/user/basics.indexing.html#basics-indexing">Numpy basic indexing docs</a></p>
+<p>Using positional indexing, you can select a subset of the array by adressing row and/or columns using brackets (<code class="docutils literal notranslate"><span class="pre">[]</span></code>). See the example below.
+<br>
+<br>
+<img src="img/np_matrix_indexing.png">
+<br>
+<br>
+In positional indexing you can specify up to three inputs. The basic syntax is <code class="docutils literal notranslate"><span class="pre">[i:j:k]</span></code> where <code class="docutils literal notranslate"><span class="pre">i</span></code> is the starting index, <code class="docutils literal notranslate"><span class="pre">j</span></code> is the stopping index, and <code class="docutils literal notranslate"><span class="pre">k</span></code> is the step.
+See the <a class="reference external" href="https://numpy.org/doc/stable/user/basics.indexing.html#basics-indexing">examples</a> provided by numpy.</p>
 <p>NumPy has many ways to extract values out of arrays:</p>
 <ul class="simple">
 <li><p>You can select a single element</p></li>
@@ -668,22 +678,10 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([13, 14, 15, 16])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">)</span>      <span class="c1"># creates boolean matrix of same size as a</span>
 <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>             <span class="c1"># array with matching values of above criterion</span>
 
-<span class="n">a</span><span class="p">[</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>           <span class="c1"># same as above in one line</span>
+<span class="n">a</span><span class="p">[</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">]</span>           <span class="c1"># same as above in one line</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
 </pre></div>
@@ -698,7 +696,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
+<div class="alert alert-danger">
+Task 2.4: Create a random array with elements between 0 and 1. Then add 10 to all elements in the range [0.2, 0.7). (2 points)
+</div></section>
 <section id="types-of-operations">
 <h2>Types of operations<a class="headerlink" href="#types-of-operations" title="Permalink to this headline">#</a></h2>
 <p>There are different types of standard operations in NumPy:</p>
@@ -706,41 +706,40 @@ title="Print to PDF"
 <li><p>One, two, or three input arguments</p></li>
 <li><p>For example, <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code> is similar to <code class="docutils literal notranslate"><span class="pre">np.add(a,</span> <span class="pre">b)</span></code> but the ufunc has more control.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">out</span> <span class="pre">=</span></code> output argument, store output in this array (rather than make a new array) - saves copying data!</p></li>
-<li><p>See the <a class="reference external" href="https://numpy.org/doc/stable/reference/ufuncs.html">full reference</a></p></li>
+<li><p>A very comprehensiv and easy overview can be found <a class="reference external" href="https://numpy.org/doc/stable/user/absolute_beginners.html">here</a></p></li>
 </ul>
+<p>If you have a multiple dimensional array, you can specify the axis over which the operations should be done using the key <code class="docutils literal notranslate"><span class="pre">axis</span> <span class="pre">=</span> </code> in the numpy functions.
+<br>
+<br>
+<img src="img/np_matrix_aggregation_row.png">
+<br>
+<br></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">x</span>                   <span class="c1">#  array([[ 0,  1,  2,  3],</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+                    <span class="c1">#  array([[ 0,  1,  2,  3],</span>
                     <span class="c1">#         [ 4,  5,  6,  7],</span>
                     <span class="c1">#         [ 8,  9, 10, 11]])</span>
+
 <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>             <span class="c1">#  11</span>
 <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>       <span class="c1">#  array([ 8,  9, 10, 11])</span>
 <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>       <span class="c1">#  array([ 3,  7, 11])</span>
+
+<span class="n">x</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 3,  7, 11])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0,  1,  2,  3],
+       [ 4,  5,  6,  7],
+       [ 8,  9, 10, 11]])
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10])
-</pre></div>
-</div>
-</div>
-</div>
-</section>
+<div class="alert alert-danger">
+Task 2.5: Create a (8, 8)-array called chess with a chessboard pattern (use the values 0 and 1 for this). There are many possible solutions, feel free to give several variants. For example, see the help for the function np.tile, or first create an array of all zeros and then insert ones at the appropriate places (e.g. by indexing appropriately). (3 points)
+</div></section>
 </section>
 
     <script type="text/x-thebe-config">

@@ -27,11 +27,11 @@ import matplotlib.pyplot as plt
 
 
 # <div class="alert alert-danger">
-# Task 2.1: Import the numpy package as np and create a variable with a meaningful name. The variable should hold an 1darray with number as integers from 1 to 10. (2 points)
+# Task 3.1: Import the numpy package as np and create a variable with a meaningful name. The variable should hold an 1darray with number as integers from 1 to 10. (2 points)
 # </div>
 
 # <div class="alert alert-danger">
-# Task 2.2: Using numpy create a 1darray of random integers (np.random.randint). Find the min, max, and mean of the array and print them in the command line using a formatted string. (2 points)
+# Task 3.2: Using numpy create a 1darray of random integers (np.random.randint). Find the min, max, and mean of the array and print them in the command line using a formatted string. (2 points)
 # </div>
 
 # ## Prediction
@@ -190,7 +190,7 @@ ax.set(xlabel='Height (cm)', ylabel='Weight (g)',
 # So, in this case, the answer looks plausible, but it's hard to know if there really are two groups here. There could be more, or fewer. We'll come back to how these analyses actually work and how to evaluate what you get out of them. 
 
 # <div class="alert alert-danger">
-# Add data for a third species of squirrels. Run the k-means algorithm again for three clusters and see how it influences your outcome. To do so, plot the new data with three clusters. (3 points)
+# Task 3.3: Add data for a third species of squirrels. Run the k-means algorithm again for three clusters and see how it influences your outcome. To do so, plot the new data with three clusters. (3 points)
 # </div>
 
 # ## Knowledge Discovery
