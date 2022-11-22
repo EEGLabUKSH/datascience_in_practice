@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="s03: Data Cleaning" href="05-DataCleaning.html" />
-    <link rel="prev" title="s01: Jupyter Notebooks" href="02-JupyterNotebooks.html" />
+    <link rel="prev" title="s01: Plotting" href="02-Plotting.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -132,6 +132,16 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="02-JupyterNotebooks.html">
    s01: Jupyter Notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-NumPy.html">
+   s01: numpy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-Plotting.html">
+   s01: Plotting
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -668,7 +678,7 @@ Classification (or clustering) is the process of trying to discover a systematic
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\User\anaconda3\lib\site-packages\sklearn\cluster\_kmeans.py:1332: UserWarning: KMeans is known to have a memory leak on Windows with MKL, when there are less chunks than available threads. You can avoid it by setting the environment variable OMP_NUM_THREADS=1.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\User\anaconda3\lib\site-packages\sklearn\cluster\_kmeans.py:1334: UserWarning: KMeans is known to have a memory leak on Windows with MKL, when there are less chunks than available threads. You can avoid it by setting the environment variable OMP_NUM_THREADS=1.
   warnings.warn(
 </pre></div>
 </div>
@@ -682,7 +692,7 @@ Classification (or clustering) is the process of trying to discover a systematic
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 0, 1, 1, 0, 1, 0, 0, 1, 0])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 0, 0, 1, 0, 1, 1, 0, 1])
 </pre></div>
 </div>
 </div>
@@ -772,11 +782,11 @@ Students were placed into two groups. The students in the first group were asked
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="02-JupyterNotebooks.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="02-Plotting.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">s01: Jupyter Notebooks</p>
+            <p class="prev-next-title">s01: Plotting</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="05-DataCleaning.html" title="next page">

@@ -32,6 +32,16 @@ import numpy as np
 # - [shape](https://numpy.org/doc/stable/glossary.html#term-shape) - shape of the data, for example 3×2 or 3×2×500 or even 500 (one dimensional) or `[]` (zero dimensional).
 # - data - raw data storage in memory. This can be passed to C or Fortran code for efficient calculations.
 
+# $$
+# \begin{bmatrix}
+# 1 & 2 & 3 & 4\\
+# 5 & 6 & 7 & 8\\
+# 9 & 10 & 11 & 12\\
+# 13 & 14 & 15 & 16
+# \end{bmatrix}
+# $$
+# 
+
 # ## Creating arrays
 # 
 # There are different ways of creating arrays (numpy.array(), numpy.ndarray.shape, numpy.ndarray.size):
@@ -46,15 +56,9 @@ b.shape                             # the shape (rows,columns)
 b.size                              # number of elements
 
 
-# In[3]:
-
-
-b.size
-
-
 # In addition to above ways of creating arrays, there are many other ways of creating arrays depending on content (`numpy.zeros()`, `numpy.ones()`, `numpy.arange()`, `numpy.linspace()`):
 
-# In[4]:
+# In[3]:
 
 
 np.zeros((2, 3))             # 2x3 array with all elements 0
@@ -67,7 +71,7 @@ c = np.ones((3,3))
 d = np.ones((3, 2), 'bool')  # 3x2 boolean array
 
 
-# In[5]:
+# In[4]:
 
 
 d
@@ -75,7 +79,7 @@ d
 
 # In many occasions (especially when something goes different than expected) it is useful to check and control the datatype of the array (numpy.ndarray.dtype, numpy.ndarray.astype()):
 
-# In[6]:
+# In[5]:
 
 
 d.dtype                    # datatype of the array
@@ -90,7 +94,7 @@ d.astype('int')            # change datatype from boolean to integer
 # 
 # 
 
-# In[7]:
+# In[6]:
 
 
 a = np.array([[1,2],[3,4]])
@@ -115,29 +119,7 @@ print("The mean of d is {}".format(d_mean))
 # - You can select rows or columns
 # - You can select ranges where a condition is true.
 
-# How are vectors and matrices represented in numpy?:
-# 
-# `np.arange(1,17,1)`:
-# 
-# | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 |
-# |---|---|---|---|---|---|---|---|---|----|----|----|----|----|----|----|
-# 
-# 
-# 
-# <br>
-# 
-# `a = np.arange(1,17,1).reshape(4, 4)`:
-# 
-# | **1**  | **2**  | **3**  | **4**  |
-# |--------|--------|--------|--------|
-# | **5**  | _6_    | _7_    | **8**  |
-# | **9**  | _10_   | _11_   | **12** |
-# | **13** | **14** | **15** | **16** |
-# 
-# 
-# 
-
-# In[8]:
+# In[7]:
 
 
 a = np.arange(1,17,1).reshape(4, 4)  # 4x4 matrix from 0 to 15
@@ -146,19 +128,13 @@ a[:,0]                           # first column
 b = a[1:3,1:3]                   # middle 2x2 array
 
 
-# In[9]:
-
-
-a
-
-
-# In[10]:
+# In[8]:
 
 
 np.max(a, axis=0)
 
 
-# In[11]:
+# In[9]:
 
 
 idx = (a > 5)      # creates boolean matrix of same size as a
@@ -180,7 +156,7 @@ print(idx)
 # 
 # 
 
-# In[12]:
+# In[10]:
 
 
 x = np.arange(12)
@@ -193,7 +169,7 @@ x.max(axis=0)       #  array([ 8,  9, 10, 11])
 x.max(axis=1)       #  array([ 3,  7, 11])
 
 
-# In[13]:
+# In[11]:
 
 
 import numpy as np
