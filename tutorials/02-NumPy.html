@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="s01: Plotting" href="02-Plotting.html" />
@@ -544,6 +546,15 @@ title="Print to PDF"
 <li><p><a class="reference external" href="https://numpy.org/doc/stable/glossary.html#term-shape">shape</a> - shape of the data, for example 3×2 or 3×2×500 or even 500 (one dimensional) or <code class="docutils literal notranslate"><span class="pre">[]</span></code> (zero dimensional).</p></li>
 <li><p>data - raw data storage in memory. This can be passed to C or Fortran code for efficient calculations.</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+1 &amp; 2 &amp; 3 &amp; 4\\
+5 &amp; 6 &amp; 7 &amp; 8\\
+9 &amp; 10 &amp; 11 &amp; 12\\
+13 &amp; 14 &amp; 15 &amp; 16
+\end{bmatrix}
+\end{split}\]</div>
 </section>
 <section id="creating-arrays">
 <h2>Creating arrays<a class="headerlink" href="#creating-arrays" title="Permalink to this headline">#</a></h2>
