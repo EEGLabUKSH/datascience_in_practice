@@ -7,6 +7,8 @@ parts:
   - file: tutorials/00-Introduction
   - file: tutorials/01-Python
   - file: tutorials/02-JupyterNotebooks
+  - file: tutorials/02-NumPy
+  - file: tutorials/02-Plotting
   - file: tutorials/03-DataAnalysis
   - file: tutorials/04-DataSciencePython
   - file: tutorials/05-DataCleaning
