@@ -2,11 +2,6 @@
 # coding: utf-8
 
 # # s01: numpy
-# <br>
-# <br>
-# <img src="img/numpy_logo.png" width="200px">
-# <br>
-# <br>
 # 
 # This is a quick introduction to the Numpy package.
 
@@ -51,15 +46,19 @@ b.shape                             # the shape (rows,columns)
 b.size                              # number of elements
 
 
+# In[3]:
+
+
+b.size
+
+
 # In addition to above ways of creating arrays, there are many other ways of creating arrays depending on content (`numpy.zeros()`, `numpy.ones()`, `numpy.arange()`, `numpy.linspace()`):
 
-# In[3]:
+# In[4]:
 
 
 np.zeros((2, 3))             # 2x3 array with all elements 0
 np.ones((1,2))               # 1x2 array with all elements 1
-np.full((2,2),7)             # 2x2 array with all elements 7
-np.eye(2)                    # 2x2 identity matrix
 
 np.arange(10)                # Evenly spaced values in an interval
 np.linspace(0,9,10)          # same as above, see exercise
@@ -68,9 +67,15 @@ c = np.ones((3,3))
 d = np.ones((3, 2), 'bool')  # 3x2 boolean array
 
 
+# In[5]:
+
+
+d
+
+
 # In many occasions (especially when something goes different than expected) it is useful to check and control the datatype of the array (numpy.ndarray.dtype, numpy.ndarray.astype()):
 
-# In[4]:
+# In[6]:
 
 
 d.dtype                    # datatype of the array
@@ -83,9 +88,9 @@ d.astype('int')            # change datatype from boolean to integer
 # 
 # By default, basic arithmetic (+, -, *, /) in NumPy is element-by-element. That is, the operation is performed for each element in the array without you having to write a loop. We say an operation is “vectorized” when the looping over elements is carried out by NumPy internally, which uses specialized CPU instructions for this that greatly outperform a regular Python loop.
 # 
-# Note that unlike Matlab, where * means matrix multiplication, NumPy uses * to perform element-by-element multiplication and uses the @ symbol to perform matrix multiplication:
+# 
 
-# In[5]:
+# In[7]:
 
 
 a = np.array([[1,2],[3,4]])
@@ -96,8 +101,8 @@ c = a + b
 d = np.add(a,b)
 
 # Standard stats
-d_mean = d.mean()
-print(f"The mean of d is {d_mean}")
+d_mean = np.mean(d)
+print("The mean of d is {}".format(d_mean))
 
 
 # ## Indexing and Slicing
@@ -106,9 +111,9 @@ print(f"The mean of d is {d_mean}")
 
 # NumPy has many ways to extract values out of arrays:
 # 
-# -You can select a single element
-# -You can select rows or columns
-# -You can select ranges where a condition is true.
+# - You can select a single element
+# - You can select rows or columns
+# - You can select ranges where a condition is true.
 
 # How are vectors and matrices represented in numpy?:
 # 
@@ -116,6 +121,10 @@ print(f"The mean of d is {d_mean}")
 # 
 # | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 |
 # |---|---|---|---|---|---|---|---|---|----|----|----|----|----|----|----|
+# 
+# \begin{bmatrix}
+# 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16
+# \end{bmatrix}
 # 
 # <br>
 # 
@@ -127,9 +136,15 @@ print(f"The mean of d is {d_mean}")
 # | **9**  | _10_   | _11_   | **12** |
 # | **13** | **14** | **15** | **16** |
 # 
+# \begin{bmatrix}
+# 1 & 2 & 3 & 4\\
+# 5 & 6 & 7 & 8\\
+# 9 & 10 & 11 & 12\\
+# 13 & 14 & 15 & 16
+# \end{bmatrix}
 # 
 
-# In[6]:
+# In[8]:
 
 
 a = np.arange(1,17,1).reshape(4, 4)  # 4x4 matrix from 0 to 15
@@ -138,10 +153,22 @@ a[:,0]                           # first column
 b = a[1:3,1:3]                   # middle 2x2 array
 
 
-# In[7]:
+# In[9]:
 
 
-idx = (a > 0)      # creates boolean matrix of same size as a
+a
+
+
+# In[10]:
+
+
+np.max(a, axis=0)
+
+
+# In[11]:
+
+
+idx = (a > 5)      # creates boolean matrix of same size as a
 a[idx]             # array with matching values of above criterion
 
 a[a > 0]           # same as above in one line
@@ -160,7 +187,7 @@ print(idx)
 # 
 # 
 
-# In[8]:
+# In[12]:
 
 
 x = np.arange(12)
@@ -171,4 +198,11 @@ x                   #  array([[ 0,  1,  2,  3],
 x.max()             #  11
 x.max(axis=0)       #  array([ 8,  9, 10, 11])
 x.max(axis=1)       #  array([ 3,  7, 11])
+
+
+# In[13]:
+
+
+import numpy as np
+np.arange(1,11)
 
