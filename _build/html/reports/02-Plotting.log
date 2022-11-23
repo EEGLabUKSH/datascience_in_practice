@@ -1,0 +1,41 @@
+Traceback (most recent call last):
+  File "C:\Users\User\anaconda3\lib\site-packages\jupyter_cache\executors\utils.py", line 51, in single_nb_execution
+    executenb(
+  File "C:\Users\User\anaconda3\lib\site-packages\nbclient\client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\User\anaconda3\lib\site-packages\nbclient\util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "C:\Users\User\anaconda3\lib\site-packages\nbclient\util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "C:\Users\User\anaconda3\lib\asyncio\base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "C:\Users\User\anaconda3\lib\site-packages\nbclient\client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\User\anaconda3\lib\site-packages\nbclient\client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\User\anaconda3\lib\site-packages\nbclient\client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+%matplotlib inline # this line tells Jupyter to display matplotlib figures in the notebook
+
+import matplotlib.pyplot as plt
+
+# this is dataset 1 from
+# https://en.wikipedia.org/wiki/Anscombe%27s_quartet
+data_x = [10.0, 8.0, 13.0, 9.0, 11.0, 14.0, 6.0, 4.0, 12.0, 7.0, 5.0]
+data_y = [8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68]
+
+fig, ax = plt.subplots() # this creates the figure objects we are working with
+
+ax.scatter(x=data_x, y=data_y, c="#E69F00") # #NNNNNN is the HEX color representation, you can create color themes here: https://color.adobe.com/de/create/color-wheel
+
+ax.set_xlabel("we should label the x axis")
+ax.set_ylabel("we should label the y axis")
+ax.set_title("some title")
+
+------------------
+
+
+UsageError: unrecognized arguments: # this line tells Jupyter to display matplotlib figures in the notebook
+

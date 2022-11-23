@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="s02: Data Analysis" href="03-DataAnalysis.html" />
-    <link rel="prev" title="s01: numpy" href="02-NumPy.html" />
+    <link rel="prev" title="s01: NumPy" href="02-NumPy.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -136,7 +136,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="02-NumPy.html">
-   s01: numpy
+   s01: NumPy
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -441,13 +441,28 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#getting-started-with-matplotlib">
-   Getting started with Matplotlib
+  <a class="reference internal nav-link" href="#x-y-plots">
+   x/y-Plots
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#histograms">
+   Histograms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-more-comfortable-with-matplotlib">
+   Getting more comfortable with Matplotlib
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matplotlib-has-two-different-interfaces">
    Matplotlib has two different interfaces
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#subplots">
+   Subplots
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -490,13 +505,28 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#getting-started-with-matplotlib">
-   Getting started with Matplotlib
+  <a class="reference internal nav-link" href="#x-y-plots">
+   x/y-Plots
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#histograms">
+   Histograms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-more-comfortable-with-matplotlib">
+   Getting more comfortable with Matplotlib
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matplotlib-has-two-different-interfaces">
    Matplotlib has two different interfaces
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#subplots">
+   Subplots
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -537,9 +567,7 @@ ready to be sent to the printer, no manual post-processing needed.</em></p>
 <section id="repeatability-reproducibility">
 <h2>Repeatability/reproducibility<a class="headerlink" href="#repeatability-reproducibility" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p><strong>No manual post-processing</strong>. This will bite you when you need to regenerate 50
-figures one day before submission deadline or regenerate a set of figures
-after the person who created them left the group.</p></li>
+<li><p><strong>No manual post-processing</strong>. This will bite you when you need to regenerate 50 figures one day before a deadline or regenerate a set of figures after changes in your analysis.</p></li>
 <li><p>Within Python, many libraries exist:</p>
 <ul>
 <li><p><a class="reference external" href="https://matplotlib.org/gallery/index.html">Matplotlib</a>:
@@ -560,20 +588,91 @@ R users will be more at home</p></li>
 </section>
 <section id="why-are-we-starting-with-matplotlib">
 <h2>Why are we starting with Matplotlib?<a class="headerlink" href="#why-are-we-starting-with-matplotlib" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>Matplotlib is perhaps the most “standard” Python plotting library.</p></li>
-<li><p>Many libraries build on top of Matplotlib.</p></li>
-<li><p>Even if you choose to use another library (see above list), chances are high
-that you need to adapt a Matplotlib plot of somebody else.</p></li>
-</ul>
+<p>Matplotlib is perhaps the most “standard” Python plotting library. Many libraries build on top of Matplotlib. Even if you choose to use another library (see above list), chances are high that you need to adapt a Matplotlib plot of somebody else.</p>
 </section>
-<section id="getting-started-with-matplotlib">
-<h2>Getting started with Matplotlib<a class="headerlink" href="#getting-started-with-matplotlib" title="Permalink to this headline">#</a></h2>
-<p>Let us create our first plot using <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.subplots</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.scatter</span></code>, and some other methods on the <code class="docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code> object:</p>
+<section id="x-y-plots">
+<h2>x/y-Plots<a class="headerlink" href="#x-y-plots" title="Permalink to this headline">#</a></h2>
+<p>One of the most important functions in Matplotlib is <code class="docutils literal notranslate"><span class="pre">plot</span></code>. A simple line graph can be obtained as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this line tells Jupyter to display matplotlib figures in the notebook</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10 20 30 40 50 60 70 80 90]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2428a6da970&gt;]
+</pre></div>
+</div>
+<img alt="../_images/02-Plotting_5_2.png" src="../_images/02-Plotting_5_2.png" />
+</div>
+</div>
+<p>You can also plot this data as a point graphic and only have to pass appropriate arguments here. In the example below, an <code class="docutils literal notranslate"><span class="pre">&quot;o&quot;</span></code> is passed as the format argument, which changes the representation of the data accordingly. In this format string you can change the symbols as well as the colors. In the <a class="reference external" href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot">documentation</a> there is an overview of all possible values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2428a72bd30&gt;]
+</pre></div>
+</div>
+<img alt="../_images/02-Plotting_7_1.png" src="../_images/02-Plotting_7_1.png" />
+</div>
+</div>
+</section>
+<section id="histograms">
+<h2>Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">#</a></h2>
+<p>With the function <code class="docutils literal notranslate"><span class="pre">plt.hist</span></code> you can create histograms.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">15</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([  26.,  136.,  631., 1718., 2743., 2644., 1468.,  531.,   91.,
+          12.]),
+ array([ 46.12101162,  57.09309218,  68.06517273,  79.03725329,
+         90.00933385, 100.9814144 , 111.95349496, 122.92557551,
+        133.89765607, 144.86973662, 155.84181718]),
+ &lt;BarContainer object of 10 artists&gt;)
+</pre></div>
+</div>
+<img alt="../_images/02-Plotting_9_1.png" src="../_images/02-Plotting_9_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Histogramm&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Histogramm&#39;)
+</pre></div>
+</div>
+<img alt="../_images/02-Plotting_10_1.png" src="../_images/02-Plotting_10_1.png" />
+</div>
+</div>
+</section>
+<section id="getting-more-comfortable-with-matplotlib">
+<h2>Getting more comfortable with Matplotlib<a class="headerlink" href="#getting-more-comfortable-with-matplotlib" title="Permalink to this headline">#</a></h2>
+<p>In the previous plots the x-axis was created automatically - but you can also specify it explicitly and thus create a scatterplot. Create a plot using <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.subplots</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.scatter</span></code>, and some other methods on the <code class="docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code> object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline # this line tells Jupyter to display matplotlib figures in the notebook
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -582,9 +681,9 @@ that you need to adapt a Matplotlib plot of somebody else.</p></li>
 <span class="n">data_x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">13.0</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="mf">11.0</span><span class="p">,</span> <span class="mf">14.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">]</span>
 <span class="n">data_y</span> <span class="o">=</span> <span class="p">[</span><span class="mf">8.04</span><span class="p">,</span> <span class="mf">6.95</span><span class="p">,</span> <span class="mf">7.58</span><span class="p">,</span> <span class="mf">8.81</span><span class="p">,</span> <span class="mf">8.33</span><span class="p">,</span> <span class="mf">9.96</span><span class="p">,</span> <span class="mf">7.24</span><span class="p">,</span> <span class="mf">4.26</span><span class="p">,</span> <span class="mf">10.84</span><span class="p">,</span> <span class="mf">4.82</span><span class="p">,</span> <span class="mf">5.68</span><span class="p">]</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span> <span class="c1"># this creates the figure objects we are working with</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">data_y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;#E69F00&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">data_y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;#E69F00&quot;</span><span class="p">)</span> <span class="c1"># #NNNNNN is the HEX color representation, you can create color themes here: https://color.adobe.com/de/create/color-wheel</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;we should label the x axis&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;we should label the y axis&quot;</span><span class="p">)</span>
@@ -593,10 +692,9 @@ that you need to adapt a Matplotlib plot of somebody else.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;some title&#39;)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UsageError: unrecognized arguments: # this line tells Jupyter to display matplotlib figures in the notebook
 </pre></div>
 </div>
-<img alt="../_images/02-Plotting_5_1.png" src="../_images/02-Plotting_5_1.png" />
 </div>
 </div>
 </section>
@@ -624,26 +722,34 @@ that you need to adapt a Matplotlib plot of somebody else.</p></li>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;some title&#39;)
 </pre></div>
 </div>
-<img alt="../_images/02-Plotting_8_1.png" src="../_images/02-Plotting_8_1.png" />
+<img alt="../_images/02-Plotting_15_1.png" src="../_images/02-Plotting_15_1.png" />
 </div>
 </div>
 <p>When searching for help on the internet, you will find both approaches, they can also be mixed. Although the pyplot interface looks more compact, <strong>recommend to learn and use is the object oriented interface</strong>.</p>
+</section>
+<section id="subplots">
+<h2>Subplots<a class="headerlink" href="#subplots" title="Permalink to this headline">#</a></h2>
+<p>Note that here one can plot directly with the axes method ax.plot and not as before with <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code>.
+If there are several plots in a figure, <code class="docutils literal notranslate"><span class="pre">plt.subplots</span></code> returns a list of axes. In these you can now create the desired plots:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>  <span class="c1"># 1 row, 3 columns</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s2">&quot;o&quot;</span><span class="p">)</span>  <span class="c1"># left</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>  <span class="c1"># middle</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">360</span><span class="p">)))</span>  <span class="c1"># right</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="styling-and-customizing-plots">
 <h2>Styling and customizing plots<a class="headerlink" href="#styling-and-customizing-plots" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><strong>Do not customize “manually”</strong> using a graphical program (not easily repeatable/reproducible).</p></li>
-<li><p><strong>No manual post-processing</strong>. This will bite you when you need to regenerate 50
-figures one day before submission deadline or regenerate a set of figures
-after the person who created them left the group.</p></li>
 <li><p>Matplotlib and also all the other libraries allow to customize almost every aspect of a plot.</p></li>
-<li><p>It is useful to study <a class="reference external" href="https://matplotlib.org/faq/usage_faq.html#parts-of-a-figure">Matplotlib parts of a figure</a>
-so that we know what to search for to customize things.</p></li>
+<li><p>It is useful to study <a class="reference external" href="https://matplotlib.org/stable/tutorials/introductory/quick_start.html#parts-of-a-figure">Matplotlib parts of a figure</a> so that we know what to search for to customize things.</p></li>
 <li><p>Matplotlib cheatsheets: <a class="reference external" href="https://github.com/matplotlib/cheatsheets">https://github.com/matplotlib/cheatsheets</a></p></li>
-<li><p>You can also select among pre-defined themes/
-<a class="reference external" href="https://matplotlib.org/3.1.1/gallery/style_sheets/style_sheets_reference.html">style
-sheets</a>
-with<code class="docutils literal notranslate"><span class="pre">matplotlib.style.use</span></code>, for instance:</p></li>
+<li><p>You can also select among pre-defined themes/<a class="reference external" href="https://matplotlib.org/3.1.1/gallery/style_sheets/style_sheets_reference.html">style sheets</a> with <code class="docutils literal notranslate"><span class="pre">matplotlib.style.use</span></code>, for instance:</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -680,7 +786,7 @@ with<code class="docutils literal notranslate"><span class="pre">matplotlib.styl
  (300.0, 1700.0)]
 </pre></div>
 </div>
-<img alt="../_images/02-Plotting_13_1.png" src="../_images/02-Plotting_13_1.png" />
+<img alt="../_images/02-Plotting_22_1.png" src="../_images/02-Plotting_22_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -702,7 +808,7 @@ with<code class="docutils literal notranslate"><span class="pre">matplotlib.styl
  (300.0, 1700.0)]
 </pre></div>
 </div>
-<img alt="../_images/02-Plotting_14_1.png" src="../_images/02-Plotting_14_1.png" />
+<img alt="../_images/02-Plotting_23_1.png" src="../_images/02-Plotting_23_1.png" />
 </div>
 </div>
 <div class="alert alert-info"> 
@@ -742,7 +848,7 @@ For all the different presets of styles in Matplotlib see:
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">s01: numpy</p>
+            <p class="prev-next-title">s01: NumPy</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="03-DataAnalysis.html" title="next page">

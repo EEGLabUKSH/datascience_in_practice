@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # s01: numpy
+# # s01: NumPy
 # <br>
 # <br>
 # <img src="img/numpy_logo.png" width="200px">
@@ -37,21 +37,28 @@ import numpy as np
 # - [shape](https://numpy.org/doc/stable/glossary.html#term-shape) - shape of the data, for example 3×2 or 3×2×500 or even 500 (one dimensional) or `[]` (zero dimensional).
 
 # `a = np.arange(1,17,1)`
+# 
+# 
 # $$
+# 
 # \begin{bmatrix}
 # 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16
 # \end{bmatrix}
+# 
 # $$
 # 
 # 
 # `a = np.arange(1,17,1).reshape(4, 4)`
+# 
 # $$
+# 
 # \begin{bmatrix}
 # 1 & 2 & 3 & 4\\
 # 5 & 6 & 7 & 8\\
 # 9 & 10 & 11 & 12\\
 # 13 & 14 & 15 & 16
 # \end{bmatrix}
+# 
 # $$
 # 
 

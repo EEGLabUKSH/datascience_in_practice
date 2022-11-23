@@ -22,9 +22,7 @@
 # - Know that other tools exist
 
 # ## Repeatability/reproducibility
-# - **No manual post-processing**. This will bite you when you need to regenerate 50
-#   figures one day before submission deadline or regenerate a set of figures
-#   after the person who created them left the group.
+# - **No manual post-processing**. This will bite you when you need to regenerate 50 figures one day before a deadline or regenerate a set of figures after changes in your analysis.
 # - Within Python, many libraries exist:
 #   - [Matplotlib](https://matplotlib.org/gallery/index.html):
 #     probably the most standard and most widely used
@@ -42,21 +40,56 @@
 # 
 
 # ## Why are we starting with Matplotlib?
-# 
-# - Matplotlib is perhaps the most "standard" Python plotting library.
-# - Many libraries build on top of Matplotlib.
-# - Even if you choose to use another library (see above list), chances are high
-#   that you need to adapt a Matplotlib plot of somebody else.
+# Matplotlib is perhaps the most "standard" Python plotting library. Many libraries build on top of Matplotlib. Even if you choose to use another library (see above list), chances are high that you need to adapt a Matplotlib plot of somebody else.
 
-# ## Getting started with Matplotlib
-# 
-# Let us create our first plot using `matplotlib.pyplot.subplots`, `matplotlib.axes.Axes.scatter`, and some other methods on the `matplotlib.axes.Axes` object:
+# ## x/y-Plots
+# One of the most important functions in Matplotlib is `plot`. A simple line graph can be obtained as follows:
 
 # In[1]:
 
 
-# this line tells Jupyter to display matplotlib figures in the notebook
-get_ipython().run_line_magic('matplotlib', 'inline')
+import matplotlib.pyplot as plt
+import numpy as np
+
+y = np.arange(10, 100, 10)
+print(y)
+plt.plot(y)
+
+
+# You can also plot this data as a point graphic and only have to pass appropriate arguments here. In the example below, an `"o"` is passed as the format argument, which changes the representation of the data accordingly. In this format string you can change the symbols as well as the colors. In the [documentation](http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot) there is an overview of all possible values.
+
+# In[2]:
+
+
+plt.plot(y, "o")
+
+
+# ## Histograms
+# With the function `plt.hist` you can create histograms.
+
+# In[3]:
+
+
+mu, sigma = 100, 15
+x = mu + sigma * np.random.randn(10000)
+plt.hist(x)
+
+
+# In[4]:
+
+
+plt.hist(x, bins=50, density=True)
+plt.title("Histogramm")
+
+
+# ## Getting more comfortable with Matplotlib
+# 
+# In the previous plots the x-axis was created automatically - but you can also specify it explicitly and thus create a scatterplot. Create a plot using `matplotlib.pyplot.subplots`, `matplotlib.axes.Axes.scatter`, and some other methods on the `matplotlib.axes.Axes` object:
+
+# In[5]:
+
+
+get_ipython().run_line_magic('matplotlib', 'inline # this line tells Jupyter to display matplotlib figures in the notebook')
 
 import matplotlib.pyplot as plt
 
@@ -65,9 +98,9 @@ import matplotlib.pyplot as plt
 data_x = [10.0, 8.0, 13.0, 9.0, 11.0, 14.0, 6.0, 4.0, 12.0, 7.0, 5.0]
 data_y = [8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68]
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots() # this creates the figure objects we are working with
 
-ax.scatter(x=data_x, y=data_y, c="#E69F00")
+ax.scatter(x=data_x, y=data_y, c="#E69F00") # #NNNNNN is the HEX color representation, you can create color themes here: https://color.adobe.com/de/create/color-wheel
 
 ax.set_xlabel("we should label the x axis")
 ax.set_ylabel("we should label the y axis")
@@ -78,7 +111,7 @@ ax.set_title("some title")
 
 # The more traditional option uses the pyplot interface (`plt.<matplotlib.pyplot>` carries the global settings):
 
-# In[2]:
+# In[19]:
 
 
 import matplotlib.pyplot as plt
@@ -97,28 +130,34 @@ plt.title("some title")
 
 # When searching for help on the internet, you will find both approaches, they can also be mixed. Although the pyplot interface looks more compact, **recommend to learn and use is the object oriented interface**.
 
+# ## Subplots
+# Note that here one can plot directly with the axes method ax.plot and not as before with `plt.plot`.
+# If there are several plots in a figure, `plt.subplots` returns a list of axes. In these you can now create the desired plots:
+
+# In[ ]:
+
+
+fig, axes = plt.subplots(1, 3, figsize=(10, 3))  # 1 row, 3 columns
+axes[0].plot([1, 2, 3], "o")  # left
+axes[1].hist(np.random.randn(100))  # middle
+axes[2].plot(np.sin(np.arange(0, 2 * np.pi, 1/360)))  # right
+
+
 # ## Styling and customizing plots
 # 
 # - **Do not customize "manually"** using a graphical program (not easily repeatable/reproducible).
-# - **No manual post-processing**. This will bite you when you need to regenerate 50
-#   figures one day before submission deadline or regenerate a set of figures
-#   after the person who created them left the group.
 # - Matplotlib and also all the other libraries allow to customize almost every aspect of a plot.
-# - It is useful to study [Matplotlib parts of a figure](https://matplotlib.org/faq/usage_faq.html#parts-of-a-figure)
-#   so that we know what to search for to customize things.
+# - It is useful to study [Matplotlib parts of a figure](https://matplotlib.org/stable/tutorials/introductory/quick_start.html#parts-of-a-figure) so that we know what to search for to customize things.
 # - Matplotlib cheatsheets: <https://github.com/matplotlib/cheatsheets>
-# - You can also select among pre-defined themes/
-#   [style
-#   sheets](https://matplotlib.org/3.1.1/gallery/style_sheets/style_sheets_reference.html)
-#   with`matplotlib.style.use`, for instance:
+# - You can also select among pre-defined themes/[style sheets](https://matplotlib.org/3.1.1/gallery/style_sheets/style_sheets_reference.html) with `matplotlib.style.use`, for instance:
 
-# In[3]:
+# In[20]:
 
 
 plt.style.use('ggplot')
 
 
-# In[4]:
+# In[21]:
 
 
 import numpy as np 
@@ -128,7 +167,7 @@ data = np.array([[10., 600.], [16., 1200], [6., 800], [12., 700.], [17., 1400.],
                 [8., 500.], [20., 1500.], [21., 1300.], [11., 800.], [18., 1100.]])
 
 
-# In[5]:
+# In[22]:
 
 
 # Visualize our data!
@@ -138,7 +177,7 @@ ax.set(xlabel='Height (cm)', ylabel='Weight (g)',
     xlim=[0, 25], ylim=[300, 1700])
 
 
-# In[6]:
+# In[23]:
 
 
 plt.style.use('seaborn')

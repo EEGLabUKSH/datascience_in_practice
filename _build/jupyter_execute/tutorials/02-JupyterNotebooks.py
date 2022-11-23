@@ -11,6 +11,12 @@
 # 
 # This is a quick introduction to Jupyter notebooks.
 
+# ## Objectives of this session:
+# - Be able to work with jupyter notebook interface
+# - Know how to create and run cells
+# - Understand difference between markdown and code
+# - Learn how to use the documentation and shortcuts
+
 # <div class="alert alert-success">
 # Jupyter notebooks are a way to combine executable code, code outputs, and text into one connected file.
 # </div>
