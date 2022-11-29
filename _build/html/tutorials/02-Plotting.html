@@ -608,7 +608,7 @@ R users will be more at home</p></li>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10 20 30 40 50 60 70 80 90]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2428a6da970&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2123cb0cf40&gt;]
 </pre></div>
 </div>
 <img alt="../_images/02-Plotting_5_2.png" src="../_images/02-Plotting_5_2.png" />
@@ -622,7 +622,7 @@ R users will be more at home</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2428a72bd30&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2123eb61a60&gt;]
 </pre></div>
 </div>
 <img alt="../_images/02-Plotting_7_1.png" src="../_images/02-Plotting_7_1.png" />
@@ -641,11 +641,11 @@ R users will be more at home</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([  26.,  136.,  631., 1718., 2743., 2644., 1468.,  531.,   91.,
-          12.]),
- array([ 46.12101162,  57.09309218,  68.06517273,  79.03725329,
-         90.00933385, 100.9814144 , 111.95349496, 122.92557551,
-        133.89765607, 144.86973662, 155.84181718]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([2.000e+00, 1.800e+01, 2.490e+02, 1.049e+03, 2.576e+03, 3.145e+03,
+        2.128e+03, 7.110e+02, 1.140e+02, 8.000e+00]),
+ array([ 33.03624879,  45.54107268,  58.04589657,  70.55072046,
+         83.05554435,  95.56036824, 108.06519213, 120.57001602,
+        133.07483991, 145.5796638 , 158.08448769]),
  &lt;BarContainer object of 10 artists&gt;)
 </pre></div>
 </div>
@@ -672,7 +672,8 @@ R users will be more at home</p></li>
 <p>In the previous plots the x-axis was created automatically - but you can also specify it explicitly and thus create a scatterplot. Create a plot using <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.subplots</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.scatter</span></code>, and some other methods on the <code class="docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code> object:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline # this line tells Jupyter to display matplotlib figures in the notebook
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this line tells Jupyter to display matplotlib figures in the notebook</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -692,9 +693,10 @@ R users will be more at home</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UsageError: unrecognized arguments: # this line tells Jupyter to display matplotlib figures in the notebook
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;some title&#39;)
 </pre></div>
 </div>
+<img alt="../_images/02-Plotting_12_1.png" src="../_images/02-Plotting_12_1.png" />
 </div>
 </div>
 </section>
@@ -739,6 +741,12 @@ If there are several plots in a figure, <code class="docutils literal notranslat
 <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">360</span><span class="p">)))</span>  <span class="c1"># right</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2123ff12df0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/02-Plotting_18_1.png" src="../_images/02-Plotting_18_1.png" />
 </div>
 </div>
 </section>

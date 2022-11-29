@@ -89,7 +89,8 @@ plt.title("Histogramm")
 # In[5]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline # this line tells Jupyter to display matplotlib figures in the notebook')
+# this line tells Jupyter to display matplotlib figures in the notebook
+get_ipython().run_line_magic('matplotlib', 'inline')
 
 import matplotlib.pyplot as plt
 
@@ -111,7 +112,7 @@ ax.set_title("some title")
 
 # The more traditional option uses the pyplot interface (`plt.<matplotlib.pyplot>` carries the global settings):
 
-# In[19]:
+# In[6]:
 
 
 import matplotlib.pyplot as plt
@@ -134,7 +135,7 @@ plt.title("some title")
 # Note that here one can plot directly with the axes method ax.plot and not as before with `plt.plot`.
 # If there are several plots in a figure, `plt.subplots` returns a list of axes. In these you can now create the desired plots:
 
-# In[ ]:
+# In[7]:
 
 
 fig, axes = plt.subplots(1, 3, figsize=(10, 3))  # 1 row, 3 columns
@@ -151,13 +152,13 @@ axes[2].plot(np.sin(np.arange(0, 2 * np.pi, 1/360)))  # right
 # - Matplotlib cheatsheets: <https://github.com/matplotlib/cheatsheets>
 # - You can also select among pre-defined themes/[style sheets](https://matplotlib.org/3.1.1/gallery/style_sheets/style_sheets_reference.html) with `matplotlib.style.use`, for instance:
 
-# In[20]:
+# In[8]:
 
 
 plt.style.use('ggplot')
 
 
-# In[21]:
+# In[9]:
 
 
 import numpy as np 
@@ -167,7 +168,7 @@ data = np.array([[10., 600.], [16., 1200], [6., 800], [12., 700.], [17., 1400.],
                 [8., 500.], [20., 1500.], [21., 1300.], [11., 800.], [18., 1100.]])
 
 
-# In[22]:
+# In[10]:
 
 
 # Visualize our data!
@@ -177,7 +178,7 @@ ax.set(xlabel='Height (cm)', ylabel='Weight (g)',
     xlim=[0, 25], ylim=[300, 1700])
 
 
-# In[23]:
+# In[11]:
 
 
 plt.style.use('seaborn')
