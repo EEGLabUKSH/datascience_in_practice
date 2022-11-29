@@ -470,6 +470,11 @@ title="Print to PDF"
    Styling and customizing plots
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -532,6 +537,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#styling-and-customizing-plots">
    Styling and customizing plots
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
   </a>
  </li>
 </ul>
@@ -608,7 +618,7 @@ R users will be more at home</p></li>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10 20 30 40 50 60 70 80 90]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2123cb0cf40&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x200e40fcf40&gt;]
 </pre></div>
 </div>
 <img alt="../_images/02-Plotting_5_2.png" src="../_images/02-Plotting_5_2.png" />
@@ -622,7 +632,7 @@ R users will be more at home</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2123eb61a60&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x200e6151a60&gt;]
 </pre></div>
 </div>
 <img alt="../_images/02-Plotting_7_1.png" src="../_images/02-Plotting_7_1.png" />
@@ -641,11 +651,11 @@ R users will be more at home</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([2.000e+00, 1.800e+01, 2.490e+02, 1.049e+03, 2.576e+03, 3.145e+03,
-        2.128e+03, 7.110e+02, 1.140e+02, 8.000e+00]),
- array([ 33.03624879,  45.54107268,  58.04589657,  70.55072046,
-         83.05554435,  95.56036824, 108.06519213, 120.57001602,
-        133.07483991, 145.5796638 , 158.08448769]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([   4.,   46.,  321., 1183., 2568., 2963., 1993.,  760.,  139.,
+          23.]),
+ array([ 37.57830435,  49.36131582,  61.14432728,  72.92733875,
+         84.71035022,  96.49336168, 108.27637315, 120.05938462,
+        131.84239608, 143.62540755, 155.40841901]),
  &lt;BarContainer object of 10 artists&gt;)
 </pre></div>
 </div>
@@ -743,7 +753,7 @@ If there are several plots in a figure, <code class="docutils literal notranslat
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2123ff12df0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x200e7501df0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/02-Plotting_18_1.png" src="../_images/02-Plotting_18_1.png" />
@@ -823,6 +833,55 @@ If there are several plots in a figure, <code class="docutils literal notranslat
 For all the different presets of styles in Matplotlib see: 
 <a href=https://matplotlib.org/stable/gallery/style_sheets/style_sheets_reference.html class="alert-link">the gallery.</a>
 </div></section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<p>First load data from the scikit package as a pandas dataframe. You can adress each column in a dataframe via <code class="docutils literal notranslate"><span class="pre">df[&quot;columnname&quot;]</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">iris</span><span class="p">[</span><span class="s1">&#39;feature_names&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="o">.</span><span class="n">from_codes</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;sepal length (cm)&#39;, &#39;sepal width (cm)&#39;, &#39;petal length (cm)&#39;,
+       &#39;petal width (cm)&#39;, &#39;species&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get one feature</span>
+<span class="n">length_sep</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;sepal length (cm)&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-danger">
+Task 2.6: Make a scatterplot of sepal length against petal length and color each dot according to its species (numeric keys can be found in iris.target) (2 points). Add labels to the x and y axis (1 point).
+<br>
+</div><div class="alert alert-danger">
+Task 2.7: This is a great exercise which is very close to real life. (3 points)
+<p>Your task is to select one visualization library (some need to be installed first - indoubt choose Matplotlib or Seaborn since they are part of Anaconda installation):
+(i) <a href=https://matplotlib.org/stable/gallery/index.html class="alert-link">Matplotlib</a>: probably the most standard and most widely used
+(ii) <a href=https://seaborn.pydata.org/examples/index.html class="alert-link">Seaborn</a>: probably the most standard and most widely used
+(iii) <a href=https://yhat.github.io/ggpy/ class="alert-link">ggplot</a>: probably the most standard and most widely used</p>
+<ul class="simple">
+<li><p>Browse the various example galleries (links above).</p></li>
+<li><p>Select one example that simply interests you.</p></li>
+<li><p>First try to reproduce this example in the Jupyter notebook.</p></li>
+<li><p>Then try to print out the data that is used in this example just before the call of the plotting function to learn about its structure. Is it a pandas dataframe? Is it a NumPy array? Is it a dictionary? A list or a list of lists?</p></li>
+</ul>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

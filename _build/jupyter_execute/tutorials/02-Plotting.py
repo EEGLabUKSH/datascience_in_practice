@@ -195,3 +195,47 @@ ax.set(xlabel='Height (cm)', ylabel='Weight (g)',
 # For all the different presets of styles in Matplotlib see: 
 # <a href=https://matplotlib.org/stable/gallery/style_sheets/style_sheets_reference.html class="alert-link">the gallery.</a>
 # </div>
+
+# ## Exercises
+
+# First load data from the scikit package as a pandas dataframe. You can adress each column in a dataframe via `df["columnname"]`.
+
+# In[12]:
+
+
+from sklearn.datasets import load_iris
+import pandas as pd
+
+iris = load_iris()
+df = pd.DataFrame(iris['data'], columns=iris['feature_names'])
+df['species'] = pd.Categorical.from_codes(iris.target, iris.target_names)
+
+print(df.columns)
+
+
+# In[13]:
+
+
+# get one feature
+length_sep = df["sepal length (cm)"]
+
+
+# <div class="alert alert-danger">
+# Task 2.6: Make a scatterplot of sepal length against petal length and color each dot according to its species (numeric keys can be found in iris.target) (2 points). Add labels to the x and y axis (1 point).
+# <br>
+# </div>
+
+# <div class="alert alert-danger">
+# Task 2.7: This is a great exercise which is very close to real life. (3 points)
+# 
+# Your task is to select one visualization library (some need to be installed first - indoubt choose Matplotlib or Seaborn since they are part of Anaconda installation):
+# (i) <a href=https://matplotlib.org/stable/gallery/index.html class="alert-link">Matplotlib</a>: probably the most standard and most widely used
+# (ii) <a href=https://seaborn.pydata.org/examples/index.html class="alert-link">Seaborn</a>: probably the most standard and most widely used
+# (iii) <a href=https://yhat.github.io/ggpy/ class="alert-link">ggplot</a>: probably the most standard and most widely used
+# 
+# - Browse the various example galleries (links above).
+# - Select one example that simply interests you.
+# - First try to reproduce this example in the Jupyter notebook.
+# - Then try to print out the data that is used in this example just before the call of the plotting function to learn about its structure. Is it a pandas dataframe? Is it a NumPy array? Is it a dictionary? A list or a list of lists?
+# </div>
+# 
