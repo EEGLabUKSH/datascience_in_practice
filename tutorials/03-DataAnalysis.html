@@ -136,7 +136,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="02-NumPy.html">
-   s01: numpy
+   s01: NumPy
   </a>
  </li>
  <li class="toctree-l1">
@@ -678,8 +678,91 @@ Classification (or clustering) is the process of trying to discover a systematic
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\User\anaconda3\lib\site-packages\sklearn\cluster\_kmeans.py:1334: UserWarning: KMeans is known to have a memory leak on Windows with MKL, when there are less chunks than available threads. You can avoid it by setting the environment variable OMP_NUM_THREADS=1.
-  warnings.warn(
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="nn">Input In [11],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Apply K-means clustering</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1">#   We&#39;ll come back to how this algorithm works later</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\lib\site-packages\sklearn\cluster\_kmeans.py:1404,</span> in <span class="ni">KMeans.fit</span><span class="nt">(self, X, y, sample_weight)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1402</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1403</span>     <span class="n">kmeans_single</span> <span class="o">=</span> <span class="n">_kmeans_single_lloyd</span>
+<span class="ne">-&gt; </span><span class="mi">1404</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_check_mkl_vcomp</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="g g-Whitespace">   </span><span class="mi">1406</span> <span class="n">best_inertia</span><span class="p">,</span> <span class="n">best_labels</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1408</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_n_init</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1409</span>     <span class="c1"># Initialize centers</span>
+
+<span class="nn">File ~\anaconda3\lib\site-packages\sklearn\cluster\_kmeans.py:874,</span> in <span class="ni">_BaseKMeans._check_mkl_vcomp</span><span class="nt">(self, X, n_samples)</span>
+<span class="g g-Whitespace">    </span><span class="mi">872</span> <span class="n">n_active_threads</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">n_samples</span> <span class="o">/</span> <span class="n">CHUNK_SIZE</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">873</span> <span class="k">if</span> <span class="n">n_active_threads</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_n_threads</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">874</span>     <span class="n">modules</span> <span class="o">=</span> <span class="n">threadpool_info</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">875</span>     <span class="n">has_vcomp</span> <span class="o">=</span> <span class="s2">&quot;vcomp&quot;</span> <span class="ow">in</span> <span class="p">[</span><span class="n">module</span><span class="p">[</span><span class="s2">&quot;prefix&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">modules</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">876</span>     <span class="n">has_mkl</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;mkl&quot;</span><span class="p">,</span> <span class="s2">&quot;intel&quot;</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span>
+<span class="g g-Whitespace">    </span><span class="mi">877</span>         <span class="p">(</span><span class="n">module</span><span class="p">[</span><span class="s2">&quot;internal_api&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;threading_layer&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">878</span>         <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">modules</span>
+<span class="g g-Whitespace">    </span><span class="mi">879</span>     <span class="p">]</span>
+
+<span class="nn">File ~\anaconda3\lib\site-packages\sklearn\utils\fixes.py:162,</span> in <span class="ni">threadpool_info</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">160</span>     <span class="k">return</span> <span class="n">controller</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">161</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">162</span>     <span class="k">return</span> <span class="n">threadpoolctl</span><span class="o">.</span><span class="n">threadpool_info</span><span class="p">()</span>
+
+<span class="nn">File ~\anaconda3\lib\site-packages\threadpoolctl.py:124,</span> in <span class="ni">threadpool_info</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="nd">@_format_docstring</span><span class="p">(</span><span class="n">USER_APIS</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">_ALL_USER_APIS</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span>                    <span class="n">INTERNAL_APIS</span><span class="o">=</span><span class="n">_ALL_INTERNAL_APIS</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">109</span> <span class="k">def</span> <span class="nf">threadpool_info</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span>     <span class="sd">&quot;&quot;&quot;Return the maximal number of threads for each detected library.</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span><span class="sd">     Return a list with all the supported modules that have been found. Each</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span><span class="sd">     In addition, each module may contain internal_api specific entries.</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">124</span>     <span class="k">return</span> <span class="n">_ThreadpoolInfo</span><span class="p">(</span><span class="n">user_api</span><span class="o">=</span><span class="n">_ALL_USER_APIS</span><span class="p">)</span><span class="o">.</span><span class="n">todicts</span><span class="p">()</span>
+
+<span class="nn">File ~\anaconda3\lib\site-packages\threadpoolctl.py:340,</span> in <span class="ni">_ThreadpoolInfo.__init__</span><span class="nt">(self, user_api, prefixes, modules)</span>
+<span class="g g-Whitespace">    </span><span class="mi">337</span>     <span class="bp">self</span><span class="o">.</span><span class="n">user_api</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">user_api</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">user_api</span>
+<span class="g g-Whitespace">    </span><span class="mi">339</span>     <span class="bp">self</span><span class="o">.</span><span class="n">modules</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">--&gt; </span><span class="mi">340</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_load_modules</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">341</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_warn_if_incompatible_openmp</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">342</span> <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">File ~\anaconda3\lib\site-packages\threadpoolctl.py:373,</span> in <span class="ni">_ThreadpoolInfo._load_modules</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">371</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_find_modules_with_dyld</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">372</span> <span class="k">elif</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s2">&quot;win32&quot;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">373</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_find_modules_with_enum_process_module_ex</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">374</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">375</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_find_modules_with_dl_iterate_phdr</span><span class="p">()</span>
+
+<span class="nn">File ~\anaconda3\lib\site-packages\threadpoolctl.py:485,</span> in <span class="ni">_ThreadpoolInfo._find_modules_with_enum_process_module_ex</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">482</span>         <span class="n">filepath</span> <span class="o">=</span> <span class="n">buf</span><span class="o">.</span><span class="n">value</span>
+<span class="g g-Whitespace">    </span><span class="mi">484</span>         <span class="c1"># Store the module if it is supported and selected</span>
+<span class="ne">--&gt; </span><span class="mi">485</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_make_module_from_path</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">486</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">487</span>     <span class="n">kernel_32</span><span class="o">.</span><span class="n">CloseHandle</span><span class="p">(</span><span class="n">h_process</span><span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\lib\site-packages\threadpoolctl.py:515,</span> in <span class="ni">_ThreadpoolInfo._make_module_from_path</span><span class="nt">(self, filepath)</span>
+<span class="g g-Whitespace">    </span><span class="mi">513</span> <span class="k">if</span> <span class="n">prefix</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefixes</span> <span class="ow">or</span> <span class="n">user_api</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_api</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">514</span>     <span class="n">module_class</span> <span class="o">=</span> <span class="nb">globals</span><span class="p">()[</span><span class="n">module_class</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">515</span>     <span class="n">module</span> <span class="o">=</span> <span class="n">module_class</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">user_api</span><span class="p">,</span> <span class="n">internal_api</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">516</span>     <span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\lib\site-packages\threadpoolctl.py:606,</span> in <span class="ni">_Module.__init__</span><span class="nt">(self, filepath, prefix, user_api, internal_api)</span>
+<span class="g g-Whitespace">    </span><span class="mi">604</span> <span class="bp">self</span><span class="o">.</span><span class="n">internal_api</span> <span class="o">=</span> <span class="n">internal_api</span>
+<span class="g g-Whitespace">    </span><span class="mi">605</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dynlib</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">CDLL</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">_RTLD_NOLOAD</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">606</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_version</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">607</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_threads</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_num_threads</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">608</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_extra_info</span><span class="p">()</span>
+
+<span class="nn">File ~\anaconda3\lib\site-packages\threadpoolctl.py:646,</span> in <span class="ni">_OpenBLASModule.get_version</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">643</span> <span class="n">get_config</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dynlib</span><span class="p">,</span> <span class="s2">&quot;openblas_get_config&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">644</span>                      <span class="k">lambda</span><span class="p">:</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">645</span> <span class="n">get_config</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_char_p</span>
+<span class="ne">--&gt; </span><span class="mi">646</span> <span class="n">config</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">647</span> <span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;OpenBLAS&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">648</span>     <span class="k">return</span> <span class="n">config</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+<span class="ne">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;split&#39;
 </pre></div>
 </div>
 </div>
@@ -692,7 +775,7 @@ Classification (or clustering) is the process of trying to discover a systematic
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 0, 0, 1, 0, 1, 1, 0, 1])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 0, 1, 1, 0, 1, 0, 0, 1, 0], dtype=int32)
 </pre></div>
 </div>
 </div>
@@ -718,21 +801,13 @@ Classification (or clustering) is the process of trying to discover a systematic
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(0.5, 0, &#39;Height (cm)&#39;),
- Text(0, 0.5, &#39;Weight (g)&#39;),
- (0.0, 25.0),
- (300.0, 1700.0)]
-</pre></div>
-</div>
-<img alt="../_images/03-DataAnalysis_24_1.png" src="../_images/03-DataAnalysis_24_1.png" />
+<img alt="../_images/03-DataAnalysis_24_0.png" src="../_images/03-DataAnalysis_24_0.png" />
 </div>
 </div>
 <p>In the above example, we tried to see if partition the data into two groups worked well and, visually, it looks quite reasonable!</p>
 <p>Note, however, that properly evaluating classification is difficult. That is especially true in this case, since we don’t know the answer. That means this example is unsupervised - we don’t know the answer, or have any labels to learn these patterns in the data.</p>
 <p>So, in this case, the answer looks plausible, but it’s hard to know if there really are two groups here. There could be more, or fewer. We’ll come back to how these analyses actually work and how to evaluate what you get out of them.</p>
-<div class="alert alert-danger">
-Task 3.3: Add data for a third species of squirrels. Run the k-means algorithm again for three clusters and see how it influences your outcome. To do so, plot the new data with three clusters. (3 points)
-</div></section>
+</section>
 </section>
 <section id="knowledge-discovery">
 <h2>Knowledge Discovery<a class="headerlink" href="#knowledge-discovery" title="Permalink to this headline">#</a></h2>
