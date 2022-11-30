@@ -190,6 +190,27 @@ ax.set(xlabel='Height (cm)', ylabel='Weight (g)',
     xlim=[0, 25], ylim=[300, 1700])
 
 
+# You can control different from your `axis` object by either addresing all at once using `ax.set( key=value )` or individually by `ax.set_key(value)`.  
+
+# In[12]:
+
+
+fig, ax = plt.subplots()
+ax.plot(data[:, 0], data[:, 1], '.', ms=12)
+ax.set(xlabel='Height (cm)', ylabel='Weight (g)', title='Squirrel data')
+
+
+# In[13]:
+
+
+
+fig, ax = plt.subplots()
+ax.plot(data[:, 0], data[:, 1], '.', ms=12)
+ax.set_xlabel("Height (cm)")
+ax.set_ylabel("Weight (g)")
+ax.set_title ("Squirrel data")
+
+
 # 
 # <div class="alert alert-info"> 
 # For all the different presets of styles in Matplotlib see: 
@@ -200,7 +221,7 @@ ax.set(xlabel='Height (cm)', ylabel='Weight (g)',
 
 # First load data from the scikit package as a pandas dataframe. You can adress each column in a dataframe via `df["columnname"]`.
 
-# In[12]:
+# In[14]:
 
 
 from sklearn.datasets import load_iris
@@ -213,7 +234,7 @@ df['species'] = pd.Categorical.from_codes(iris.target, iris.target_names)
 print(df.columns)
 
 
-# In[13]:
+# In[15]:
 
 
 # get one feature

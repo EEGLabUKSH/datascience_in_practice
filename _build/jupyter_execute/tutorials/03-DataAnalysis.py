@@ -189,10 +189,6 @@ ax.set(xlabel='Height (cm)', ylabel='Weight (g)',
 # 
 # So, in this case, the answer looks plausible, but it's hard to know if there really are two groups here. There could be more, or fewer. We'll come back to how these analyses actually work and how to evaluate what you get out of them. 
 
-# <div class="alert alert-danger">
-# Task 3.3: Add data for a third species of squirrels. Run the k-means algorithm again for three clusters and see how it influences your outcome. To do so, plot the new data with three clusters. (3 points)
-# </div>
-
 # ## Knowledge Discovery
 
 # <div class="alert alert-success">

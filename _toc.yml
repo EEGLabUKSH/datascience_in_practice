@@ -9,6 +9,7 @@ parts:
   - file: tutorials/02-JupyterNotebooks
   - file: tutorials/02-NumPy
   - file: tutorials/02-Plotting
+  - file: tutorials/02-Pandas
   - file: tutorials/03-DataAnalysis
   - file: tutorials/04-DataSciencePython
   - file: tutorials/05-DataCleaning
