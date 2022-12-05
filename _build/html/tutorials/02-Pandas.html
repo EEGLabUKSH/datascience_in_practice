@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>s01: PANDAS &#8212; Data science in practice</title>
+    <title>s01: Pandas &#8212; Data science in practice</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -146,7 +146,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   s01: PANDAS
+   s01: Pandas
   </a>
  </li>
  <li class="toctree-l1">
@@ -459,7 +459,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>s01: PANDAS</h1>
+                <h1>s01: Pandas</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -500,7 +500,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="s01-pandas">
-<h1>s01: PANDAS<a class="headerlink" href="#s01-pandas" title="Permalink to this headline">#</a></h1>
+<h1>s01: Pandas<a class="headerlink" href="#s01-pandas" title="Permalink to this headline">#</a></h1>
 <br>
 <br>
 <img src="img/pandas_logo.png" width="200px">
@@ -1136,7 +1136,7 @@ Name: flipper_length_mm, Length: 344, dtype: float64
 </div></div></div>
 </div>
 <div class="alert alert-danger">
-Task 2.7: Using boolean indexing, compute the mean flipper length among pengouins over and under the average body mass. (2 points).
+Task 2.8: Using boolean indexing, compute the mean flipper length among pengouins over and under the average body mass. (2 points).
 <p> </p>
 </div></section>
 <section id="tidy-data">
@@ -1311,8 +1311,11 @@ between variables.</p>
 
 <span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span>
 
-<span class="n">nms_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span><span class="s1">&#39;height&#39;</span><span class="p">,</span><span class="s1">&#39;MoCA&#39;</span><span class="p">]</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nms_cols</span><span class="p">)),</span> <span class="n">index</span><span class="o">=</span><span class="n">ids</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">nms_cols</span><span class="p">)</span>
+<span class="n">nms_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="s1">&#39;height&#39;</span><span class="p">,</span><span class="s1">&#39;MoCA&#39;</span><span class="p">]</span>
+<span class="n">rand_age</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">99</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="n">rand_height</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="n">rand_moca</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">rand_age</span><span class="p">,</span> <span class="n">rand_height</span><span class="p">,</span> <span class="n">rand_moca</span><span class="p">)),</span> <span class="n">index</span><span class="o">=</span><span class="n">ids</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">nms_cols</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1337,46 +1340,40 @@ between variables.</p>
     <tr style="text-align: right;">
       <th></th>
       <th>age</th>
-      <th>sex</th>
       <th>height</th>
       <th>MoCA</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>LBSGU</th>
-      <td>-0.475735</td>
-      <td>-0.383961</td>
-      <td>-0.966822</td>
-      <td>0.299078</td>
+      <th>JNZKM</th>
+      <td>46</td>
+      <td>159</td>
+      <td>3</td>
     </tr>
     <tr>
-      <th>1N9SC</th>
-      <td>2.209933</td>
-      <td>1.568609</td>
-      <td>-1.158681</td>
-      <td>0.610032</td>
+      <th>UAOJF</th>
+      <td>44</td>
+      <td>194</td>
+      <td>4</td>
     </tr>
     <tr>
-      <th>RLJB6</th>
-      <td>0.964378</td>
-      <td>-0.118790</td>
-      <td>1.331852</td>
-      <td>-0.889177</td>
+      <th>9VPMV</th>
+      <td>43</td>
+      <td>190</td>
+      <td>5</td>
     </tr>
     <tr>
-      <th>OSG0T</th>
-      <td>0.276897</td>
-      <td>0.077816</td>
-      <td>0.069922</td>
-      <td>0.875113</td>
+      <th>0ZCNH</th>
+      <td>67</td>
+      <td>150</td>
+      <td>22</td>
     </tr>
     <tr>
-      <th>E72R6</th>
-      <td>-1.204410</td>
-      <td>0.070786</td>
-      <td>-0.021629</td>
-      <td>0.459092</td>
+      <th>9HD1T</th>
+      <td>67</td>
+      <td>162</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
@@ -1411,7 +1408,7 @@ Name: flipper_length_mm, dtype: float64
 </div>
 </div>
 <div class="alert alert-danger">
-Task 2.8: How many pengouins per species live on which island? (2 points).
+Task 2.9: How many pengouins per species live on which island? Store the answer in a new variable. (2 points).
 <p> </p>
 </div></section>
 </section>

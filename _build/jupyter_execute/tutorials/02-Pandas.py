@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # s01: PANDAS
+# # s01: Pandas
 # 
 # <br>
 # <br>
@@ -165,7 +165,7 @@ pengs[pengs["body_mass_g"] > 4500]
 
 
 # <div class="alert alert-danger">
-# Task 2.7: Using boolean indexing, compute the mean flipper length among pengouins over and under the average body mass. (2 points).
+# Task 2.8: Using boolean indexing, compute the mean flipper length among pengouins over and under the average body mass. (2 points).
 # <p> </p>
 # </div>
 
@@ -234,8 +234,11 @@ n = 6
 
 ids = [''.join(random.choices(string.ascii_uppercase + string.digits, k=5)) for i in range(0,n)]
 
-nms_cols = ['age','sex','height','MoCA']
-df = pd.DataFrame(np.random.randn(n, len(nms_cols)), index=ids, columns=nms_cols)
+nms_cols = ['age','height','MoCA']
+rand_age = np.random.randint(18,99,n)
+rand_height = np.random.randint(150,200,n)
+rand_moca = np.random.randint(0,30,n)
+df = pd.DataFrame(list(zip(rand_age, rand_height, rand_moca)), index=ids, columns=nms_cols)
 df.head()
 
 
@@ -256,6 +259,6 @@ pengs.groupby(["species", "child"])["flipper_length_mm"].mean()
 
 
 # <div class="alert alert-danger">
-# Task 2.8: How many pengouins per species live on which island? (2 points).
+# Task 2.9: How many pengouins per species live on which island? Store the answer in a new variable. (2 points).
 # <p> </p>
 # </div>

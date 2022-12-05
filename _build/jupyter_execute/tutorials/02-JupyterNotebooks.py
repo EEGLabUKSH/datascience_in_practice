@@ -29,12 +29,15 @@
 # </div>
 
 # <div class="alert alert-danger">
-# Task 2.1: Create a Jupyter Notebook using the Anaconda Navigator and name it "s01_jupyter_introduction". (1 point)
+# Task 1.1: Create a Jupyter Notebook using the Anaconda Navigator and name it "s01_jupyter_introduction". (1 point)
+# <p> </p>
 # </div>
 # 
 # <div class="alert alert-danger">
-# Task 2.2: Close the Notebook and open it again. (0.5 point)
+# Task 1.2: Close the Notebook and open it again. (0.5 point)
+# <p> </p>
 # </div>
+# 
 
 # ## Menu Options & Shortcuts
 # 
@@ -181,6 +184,7 @@ n = 25  # less good (too unspecific), but OK in some cases
 
 # <div class="alert alert-danger">
 # Task 1.3: Create two variables. One variable with name "one" which holds the numeric value 1. The other variable should be named "two" and has to contain a string of value "two". (1 point)
+# <p> </p>
 # </div>
 
 # ## Data types
@@ -248,7 +252,8 @@ type(k)
 
 
 # <div class="alert alert-danger">
-# Task 2.3: Create a list which contains at least one variable of types (bool,int,float,str). (1 point)
+# Task 1.4: Create a list which contains at least one variable of types (bool,int,float,str). (1 point)
+# <p> </p>
 # </div>
 
 # ## Autocomplete

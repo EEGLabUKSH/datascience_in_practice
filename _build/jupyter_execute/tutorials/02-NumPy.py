@@ -171,6 +171,7 @@ print(idx)
 
 # <div class="alert alert-danger">
 # Task 2.4: Create a random array with elements between 0 and 1. Then add 10 to all elements in the range [0.2, 0.7). (2 points)
+# <p> </p>
 # </div>
 
 # ## Types of operations
@@ -208,4 +209,5 @@ x
 
 # <div class="alert alert-danger">
 # Task 2.5: Create a (8, 8)-array called chess with a chessboard pattern (use the values 0 and 1 for this). There are many possible solutions, feel free to give several variants. For example, see the help for the function np.tile, or first create an array of all zeros and then insert ones at the appropriate places (e.g. by indexing appropriately). (3 points)
+# <p> </p>
 # </div>
