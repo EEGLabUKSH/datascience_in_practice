@@ -645,7 +645,6 @@ example dataset containing the passenger list from the penguins, which is often 
 <section id="whats-in-a-dataframe">
 <h2>What’s in a dataframe?<a class="headerlink" href="#whats-in-a-dataframe" title="Permalink to this headline">#</a></h2>
 <p>Clearly, pandas dataframes allows us to do advanced analysis with very few commands, but it takes a while to get used to how dataframes work so let’s get back to basics.</p>
-<p>Series and DataFrames have a lot functionality, but how can we find out what methods are available and how they work? One way is to visit the API reference and reading through the list. Another way is to use the autocompletion feature in Jupyter and type e.g. <code class="docutils literal notranslate"><span class="pre">pengs[&quot;island&quot;]</span></code>. in a notebook and then hit TAB twice - this should open up a list menu of available methods and attributes.</p>
 <p>As we saw above, pandas dataframes are a powerful tool for working with tabular data. A pandas <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> is composed of rows and columns:</p>
 <br>
 <img src="img/02_pd_table_dataframe.svg" width="400px">
@@ -771,10 +770,10 @@ Name: body_mass_g, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&lt;AxesSubplot:title={&#39;center&#39;:&#39;body_mass_g&#39;}&gt;]], dtype=object)
 </pre></div>
 </div>
-<img alt="../_images/02-Pandas_17_1.png" src="../_images/02-Pandas_17_1.png" />
+<img alt="../_images/02-Pandas_16_1.png" src="../_images/02-Pandas_16_1.png" />
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">groupby</span></code> is a powerful method which splits a dataframe and aggregates data in groups. To see what’s possible, let’s return to the pengs dataset. We start by creating a new column <code class="docutils literal notranslate"><span class="pre">child</span></code> to indicate whether a pengouin was a child or not, based on the existing <code class="docutils literal notranslate"><span class="pre">body_mass_g</span></code> column. For this example, let’s assume that you are a child when you weight less than 4500 g:</p>
+<p><code class="docutils literal notranslate"><span class="pre">groupby</span></code> is a powerful method which splits a dataframe and aggregates data in groups. We start by creating a new column <code class="docutils literal notranslate"><span class="pre">child</span></code> to indicate whether a pengouin was a child or not, based on the existing <code class="docutils literal notranslate"><span class="pre">body_mass_g</span></code> column. For this example, let’s assume that you are a child when you weight less than 4500 g:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pengs</span><span class="p">[</span><span class="s2">&quot;child&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pengs</span><span class="p">[</span><span class="s2">&quot;body_mass_g&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">4000</span>
@@ -802,24 +801,6 @@ Name: flipper_length_mm, dtype: float64
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>&lt;div class=&quot;alert alert-danger&quot;&gt;
-Task 2.8: How many pengouins per species live on which island? Store the answer in a new variable. (2 points).
-&lt;p&gt; &lt;/p&gt;
-&lt;/div&gt;
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]</span>
-    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;alert alert-danger&quot;</span><span class="o">&gt;</span>
-    <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
-</div>
-</div>
-</div>
 <p>Each column of a dataframe is a <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> object - a dataframe is thus a collection of series:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -831,7 +812,7 @@ Task 2.8: How many pengouins per species live on which island? Store the answer 
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 RangeIndex: 344 entries, 0 to 343
-Data columns (total 7 columns):
+Data columns (total 8 columns):
  #   Column             Non-Null Count  Dtype  
 ---  ------             --------------  -----  
  0   species            344 non-null    object 
@@ -841,8 +822,9 @@ Data columns (total 7 columns):
  4   flipper_length_mm  342 non-null    float64
  5   body_mass_g        342 non-null    float64
  6   sex                333 non-null    object 
-dtypes: float64(4), object(3)
-memory usage: 18.9+ KB
+ 7   child              344 non-null    bool   
+dtypes: bool(1), float64(4), object(3)
+memory usage: 19.3+ KB
 </pre></div>
 </div>
 </div>
@@ -851,6 +833,13 @@ memory usage: 18.9+ KB
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pengs</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;species&#39;, &#39;island&#39;, &#39;bill_length_mm&#39;, &#39;bill_depth_mm&#39;,
+       &#39;flipper_length_mm&#39;, &#39;body_mass_g&#39;, &#39;sex&#39;, &#39;child&#39;],
+      dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
@@ -947,6 +936,7 @@ A single column of a data frame is often refered to as a "Series".
       <th>flipper_length_mm</th>
       <th>body_mass_g</th>
       <th>sex</th>
+      <th>child</th>
       <th>is_animal</th>
     </tr>
   </thead>
@@ -960,6 +950,7 @@ A single column of a data frame is often refered to as a "Series".
       <td>195.0</td>
       <td>4675.0</td>
       <td>Male</td>
+      <td>False</td>
       <td>True</td>
     </tr>
     <tr>
@@ -971,6 +962,7 @@ A single column of a data frame is often refered to as a "Series".
       <td>184.0</td>
       <td>4650.0</td>
       <td>Male</td>
+      <td>False</td>
       <td>True</td>
     </tr>
     <tr>
@@ -982,6 +974,7 @@ A single column of a data frame is often refered to as a "Series".
       <td>190.0</td>
       <td>4600.0</td>
       <td>Male</td>
+      <td>False</td>
       <td>True</td>
     </tr>
     <tr>
@@ -993,6 +986,7 @@ A single column of a data frame is often refered to as a "Series".
       <td>196.0</td>
       <td>4700.0</td>
       <td>Male</td>
+      <td>False</td>
       <td>True</td>
     </tr>
     <tr>
@@ -1004,10 +998,12 @@ A single column of a data frame is often refered to as a "Series".
       <td>203.0</td>
       <td>4725.0</td>
       <td>Male</td>
+      <td>False</td>
       <td>True</td>
     </tr>
     <tr>
       <th>...</th>
+      <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -1026,6 +1022,7 @@ A single column of a data frame is often refered to as a "Series".
       <td>214.0</td>
       <td>4925.0</td>
       <td>Female</td>
+      <td>False</td>
       <td>True</td>
     </tr>
     <tr>
@@ -1037,6 +1034,7 @@ A single column of a data frame is often refered to as a "Series".
       <td>215.0</td>
       <td>4850.0</td>
       <td>Female</td>
+      <td>False</td>
       <td>True</td>
     </tr>
     <tr>
@@ -1048,6 +1046,7 @@ A single column of a data frame is often refered to as a "Series".
       <td>222.0</td>
       <td>5750.0</td>
       <td>Male</td>
+      <td>False</td>
       <td>True</td>
     </tr>
     <tr>
@@ -1059,6 +1058,7 @@ A single column of a data frame is often refered to as a "Series".
       <td>212.0</td>
       <td>5200.0</td>
       <td>Female</td>
+      <td>False</td>
       <td>True</td>
     </tr>
     <tr>
@@ -1070,15 +1070,19 @@ A single column of a data frame is often refered to as a "Series".
       <td>213.0</td>
       <td>5400.0</td>
       <td>Male</td>
+      <td>False</td>
       <td>True</td>
     </tr>
   </tbody>
 </table>
-<p>115 rows × 8 columns</p>
+<p>115 rows × 9 columns</p>
 </div></div></div>
 </div>
 <p>Using the boolean index <code class="docutils literal notranslate"><span class="pre">idx_big</span></code>, we can select specific row from an entire <code class="docutils literal notranslate"><span class="pre">df</span></code> based on values from a single column.</p>
 <div class="alert alert-danger">
+Task 2.8: How many pengouins per species live on which island? Store the answer in a new variable. (2 points).
+<p> </p>
+</div><div class="alert alert-danger">
 Task 2.9: Using boolean indexing, compute the mean flipper length among pengouins over and under the average body mass. (2 points).
 <p> </p>
 </div></section>
@@ -1289,34 +1293,34 @@ between variables.</p>
   </thead>
   <tbody>
     <tr>
-      <th>SAT7C</th>
-      <td>24</td>
-      <td>180</td>
-      <td>14</td>
+      <th>PIVFP</th>
+      <td>37</td>
+      <td>167</td>
+      <td>8</td>
     </tr>
     <tr>
-      <th>Z1XKG</th>
-      <td>24</td>
-      <td>153</td>
-      <td>5</td>
+      <th>WX6KR</th>
+      <td>81</td>
+      <td>177</td>
+      <td>17</td>
     </tr>
     <tr>
-      <th>7PSH5</th>
-      <td>43</td>
-      <td>173</td>
+      <th>A7FIS</th>
+      <td>18</td>
+      <td>176</td>
       <td>10</td>
     </tr>
     <tr>
-      <th>PM0V5</th>
-      <td>59</td>
-      <td>161</td>
-      <td>1</td>
+      <th>Q2RVA</th>
+      <td>42</td>
+      <td>154</td>
+      <td>4</td>
     </tr>
     <tr>
-      <th>TF4L1</th>
-      <td>79</td>
-      <td>177</td>
-      <td>1</td>
+      <th>2G14J</th>
+      <td>49</td>
+      <td>176</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
