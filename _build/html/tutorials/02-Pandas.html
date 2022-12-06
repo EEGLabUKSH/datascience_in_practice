@@ -451,8 +451,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#working-with-dataframes">
-   Working with dataframes
+  <a class="reference internal nav-link" href="#creating-dataframes-from-scratch">
+   Creating dataframes from scratch
   </a>
  </li>
 </ul>
@@ -490,8 +490,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#working-with-dataframes">
-   Working with dataframes
+  <a class="reference internal nav-link" href="#creating-dataframes-from-scratch">
+   Creating dataframes from scratch
   </a>
  </li>
 </ul>
@@ -641,6 +641,15 @@ example dataset containing the passenger list from the penguins, which is often 
 </table>
 </div></div></div>
 </div>
+</section>
+<section id="whats-in-a-dataframe">
+<h2>What’s in a dataframe?<a class="headerlink" href="#whats-in-a-dataframe" title="Permalink to this headline">#</a></h2>
+<p>Clearly, pandas dataframes allows us to do advanced analysis with very few commands, but it takes a while to get used to how dataframes work so let’s get back to basics.</p>
+<p>Series and DataFrames have a lot functionality, but how can we find out what methods are available and how they work? One way is to visit the API reference and reading through the list. Another way is to use the autocompletion feature in Jupyter and type e.g. <code class="docutils literal notranslate"><span class="pre">pengs[&quot;island&quot;]</span></code>. in a notebook and then hit TAB twice - this should open up a list menu of available methods and attributes.</p>
+<p>As we saw above, pandas dataframes are a powerful tool for working with tabular data. A pandas <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> is composed of rows and columns:</p>
+<br>
+<img src="img/02_pd_table_dataframe.svg" width="400px">
+<br><p>Lets get some detailed information about the numerical data of the <code class="docutils literal notranslate"><span class="pre">df</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print summary statistics for each column</span>
@@ -734,8 +743,8 @@ example dataset containing the passenger list from the penguins, which is often 
 </table>
 </div></div></div>
 </div>
-<p>Ok, so we have information on passenger names, survival (0 or 1), age, ticket fare, number of siblings/spouses, etc. With the summary statistics we see that the average age is 29.7 years, maximum ticket price is 512 USD, 38% of passengers survived, etc.</p>
-<p>Let’s say we’re interested in the survival probability of different age groups. With two one-liners, we can find the average age of those who survived or didn’t survive, and plot corresponding histograms of the age distribution (<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame.groupby()</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame.hist()</span></code>):</p>
+<p>Ok, so we have information on pengouins data. With the summary statistics we see that the body mass is 4201 g, maximum flipper length is 231 mm, etc.</p>
+<p>Let’s say we’re interested in the mean boddy mass per species. With two one-liners, we can find the average body mass and plot corresponding histograms (<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame.groupby()</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame.hist()</span></code>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pengs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;species&quot;</span><span class="p">)[</span><span class="s2">&quot;body_mass_g&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
@@ -762,18 +771,56 @@ Name: body_mass_g, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&lt;AxesSubplot:title={&#39;center&#39;:&#39;body_mass_g&#39;}&gt;]], dtype=object)
 </pre></div>
 </div>
-<img alt="../_images/02-Pandas_12_1.png" src="../_images/02-Pandas_12_1.png" />
+<img alt="../_images/02-Pandas_17_1.png" src="../_images/02-Pandas_17_1.png" />
 </div>
 </div>
-<p>Clearly, pandas dataframes allows us to do advanced analysis with very few commands, but it takes a while to get used to how dataframes work so let’s get back to basics.</p>
-<p>Series and DataFrames have a lot functionality, but how can we find out what methods are available and how they work? One way is to visit the API reference and reading through the list. Another way is to use the autocompletion feature in Jupyter and type e.g. <code class="docutils literal notranslate"><span class="pre">pengs[&quot;island&quot;]</span></code>. in a notebook and then hit TAB twice - this should open up a list menu of available methods and attributes.</p>
-</section>
-<section id="whats-in-a-dataframe">
-<h2>What’s in a dataframe?<a class="headerlink" href="#whats-in-a-dataframe" title="Permalink to this headline">#</a></h2>
-<p>As we saw above, pandas dataframes are a powerful tool for working with tabular data. A pandas <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> is composed of rows and columns:</p>
-<br>
-<img src="img/02_pd_table_dataframe.svg" width="400px">
-<br><p>Each column of a dataframe is a <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> object - a dataframe is thus a collection of series:</p>
+<p><code class="docutils literal notranslate"><span class="pre">groupby</span></code> is a powerful method which splits a dataframe and aggregates data in groups. To see what’s possible, let’s return to the pengs dataset. We start by creating a new column <code class="docutils literal notranslate"><span class="pre">child</span></code> to indicate whether a pengouin was a child or not, based on the existing <code class="docutils literal notranslate"><span class="pre">body_mass_g</span></code> column. For this example, let’s assume that you are a child when you weight less than 4500 g:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pengs</span><span class="p">[</span><span class="s2">&quot;child&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pengs</span><span class="p">[</span><span class="s2">&quot;body_mass_g&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">4000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can test the if the flipper length is different for childs by grouping the data on <code class="docutils literal notranslate"><span class="pre">species</span></code> and then creating further sub-groups based on <code class="docutils literal notranslate"><span class="pre">child</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pengs</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="s2">&quot;child&quot;</span><span class="p">])[</span><span class="s2">&quot;flipper_length_mm&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>species    child
+Adelie     False    195.282051
+           True     188.098214
+Chinstrap  False    203.062500
+           True     193.596154
+Gentoo     False    217.262295
+           True     208.000000
+Name: flipper_length_mm, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>&lt;div class=&quot;alert alert-danger&quot;&gt;
+Task 2.8: How many pengouins per species live on which island? Store the answer in a new variable. (2 points).
+&lt;p&gt; &lt;/p&gt;
+&lt;/div&gt;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]</span>
+    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;alert alert-danger&quot;</span><span class="o">&gt;</span>
+    <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+<p>Each column of a dataframe is a <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> object - a dataframe is thus a collection of series:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print some information about the columns</span>
@@ -796,6 +843,14 @@ Data columns (total 7 columns):
  6   sex                333 non-null    object 
 dtypes: float64(4), object(3)
 memory usage: 18.9+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can already see what columns are present in the <code class="docutils literal notranslate"><span class="pre">df</span></code>. Any easier way jsut to display the column names is to use the function <code class="docutils literal notranslate"><span class="pre">df.columns</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pengs</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 </div>
 </div>
@@ -826,34 +881,10 @@ Name: flipper_length_mm, Length: 344, dtype: float64
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">pengs</span><span class="p">[</span><span class="s2">&quot;flipper_length_mm&quot;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
-</pre></div>
-</div>
-</div>
-</div>
-<p>The columns have names. Here’s how to get them (<code class="docutils literal notranslate"><span class="pre">columns</span></code>):</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pengs</span><span class="o">.</span><span class="n">columns</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;species&#39;, &#39;island&#39;, &#39;bill_length_mm&#39;, &#39;bill_depth_mm&#39;,
-       &#39;flipper_length_mm&#39;, &#39;body_mass_g&#39;, &#39;sex&#39;],
-      dtype=&#39;object&#39;)
-</pre></div>
-</div>
-</div>
-</div>
-<p>However, the rows also have names! This is what Pandas calls the <code class="docutils literal notranslate"><span class="pre">index</span></code>:</p>
+<div class="alert alert-success">
+A single column of a data frame is often refered to as a "Series". 
+<p></p>
+</div><p>Now let us adress not just a single column, but also include the rows as well. Adressing a row with numbers is what Pandas calls the <code class="docutils literal notranslate"><span class="pre">index</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pengs</span><span class="o">.</span><span class="n">index</span>
@@ -882,105 +913,11 @@ Name: flipper_length_mm, Length: 344, dtype: float64
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pengs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> <span class="c1"># notice how flipper_length_mm changed</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>species</th>
-      <th>island</th>
-      <th>bill_length_mm</th>
-      <th>bill_depth_mm</th>
-      <th>flipper_length_mm</th>
-      <th>body_mass_g</th>
-      <th>sex</th>
-      <th>is_animal</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Adelie</td>
-      <td>Torgersen</td>
-      <td>39.1</td>
-      <td>18.7</td>
-      <td>42.0</td>
-      <td>3750.0</td>
-      <td>Male</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Adelie</td>
-      <td>Torgersen</td>
-      <td>39.5</td>
-      <td>17.4</td>
-      <td>186.0</td>
-      <td>3800.0</td>
-      <td>Female</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Adelie</td>
-      <td>Torgersen</td>
-      <td>40.3</td>
-      <td>18.0</td>
-      <td>195.0</td>
-      <td>3250.0</td>
-      <td>Female</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Adelie</td>
-      <td>Torgersen</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Adelie</td>
-      <td>Torgersen</td>
-      <td>36.7</td>
-      <td>19.3</td>
-      <td>193.0</td>
-      <td>3450.0</td>
-      <td>Female</td>
-      <td>True</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
 <p>Dataframes also support boolean indexing, just like we saw for <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pengs</span><span class="p">[</span><span class="n">pengs</span><span class="p">[</span><span class="s2">&quot;body_mass_g&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">4500</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idx_big</span> <span class="o">=</span> <span class="n">pengs</span><span class="p">[</span><span class="s2">&quot;body_mass_g&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">4500</span> 
+<span class="n">pengs</span><span class="p">[</span><span class="n">idx_big</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1140,8 +1077,9 @@ Name: flipper_length_mm, Length: 344, dtype: float64
 <p>115 rows × 8 columns</p>
 </div></div></div>
 </div>
+<p>Using the boolean index <code class="docutils literal notranslate"><span class="pre">idx_big</span></code>, we can select specific row from an entire <code class="docutils literal notranslate"><span class="pre">df</span></code> based on values from a single column.</p>
 <div class="alert alert-danger">
-Task 2.8: Using boolean indexing, compute the mean flipper length among pengouins over and under the average body mass. (2 points).
+Task 2.9: Using boolean indexing, compute the mean flipper length among pengouins over and under the average body mass. (2 points).
 <p> </p>
 </div></section>
 <section id="tidy-data">
@@ -1302,8 +1240,8 @@ between variables.</p>
 <p>The opposite of melting is to <em>pivot</em> data, which can be useful to view data in different ways as we’ll see below.</p>
 <p>For a detailed exposition of data tidying, have a look at <a class="reference external" href="http://vita.had.co.nz/papers/tidy-data.pdf">this article</a>.</p>
 </section>
-<section id="working-with-dataframes">
-<h2>Working with dataframes<a class="headerlink" href="#working-with-dataframes" title="Permalink to this headline">#</a></h2>
+<section id="creating-dataframes-from-scratch">
+<h2>Creating dataframes from scratch<a class="headerlink" href="#creating-dataframes-from-scratch" title="Permalink to this headline">#</a></h2>
 <p>We saw above how one can read in data into a dataframe using the read_csv() function. Pandas also understands multiple other formats, for example using read_excel, read_json, etc. (and corresponding methods to write to file: to_csv, to_excel, to_json, etc.)</p>
 <p>But sometimes you would want to create a dataframe from scratch. Also this can be done in multiple ways, for example starting with a numpy array (see <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame"><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> docs</a></p>
 <p>Let’s create a <code class="docutils literal notranslate"><span class="pre">df</span></code> for our study and fill it with random numbers which do not make <strong>any</strong> sense at all.</p>
@@ -1314,7 +1252,7 @@ between variables.</p>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">6</span>
 
-<span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span>
+<span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span> <span class="c1"># this line generates IDs from Uppercase letters A-Z and Number 0-9 of length 5</span>
 
 <span class="n">nms_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="s1">&#39;height&#39;</span><span class="p">,</span><span class="s1">&#39;MoCA&#39;</span><span class="p">]</span>
 <span class="n">rand_age</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">99</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
@@ -1351,71 +1289,40 @@ between variables.</p>
   </thead>
   <tbody>
     <tr>
-      <th>27B54</th>
-      <td>65</td>
-      <td>163</td>
-      <td>0</td>
+      <th>SAT7C</th>
+      <td>24</td>
+      <td>180</td>
+      <td>14</td>
     </tr>
     <tr>
-      <th>9GS1Q</th>
-      <td>53</td>
+      <th>Z1XKG</th>
+      <td>24</td>
       <td>153</td>
       <td>5</td>
     </tr>
     <tr>
-      <th>8G9BP</th>
-      <td>37</td>
-      <td>151</td>
-      <td>13</td>
+      <th>7PSH5</th>
+      <td>43</td>
+      <td>173</td>
+      <td>10</td>
     </tr>
     <tr>
-      <th>PNJ85</th>
-      <td>38</td>
-      <td>179</td>
-      <td>24</td>
+      <th>PM0V5</th>
+      <td>59</td>
+      <td>161</td>
+      <td>1</td>
     </tr>
     <tr>
-      <th>1LOR4</th>
-      <td>62</td>
-      <td>183</td>
-      <td>21</td>
+      <th>TF4L1</th>
+      <td>79</td>
+      <td>177</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">groupby</span></code> is a powerful method which splits a dataframe and aggregates data in groups. To see what’s possible, let’s return to the pengs dataset. We start by creating a new column <code class="docutils literal notranslate"><span class="pre">child</span></code> to indicate whether a pengouin was a child or not, based on the existing <code class="docutils literal notranslate"><span class="pre">body_mass_g</span></code> column. For this example, let’s assume that you are a child when you weight less than 4500 g:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pengs</span><span class="p">[</span><span class="s2">&quot;child&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pengs</span><span class="p">[</span><span class="s2">&quot;body_mass_g&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">4000</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now we can test the if the flipper length is different for childs by grouping the data on <code class="docutils literal notranslate"><span class="pre">species</span></code> and then creating further sub-groups based on <code class="docutils literal notranslate"><span class="pre">child</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pengs</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="s2">&quot;child&quot;</span><span class="p">])[</span><span class="s2">&quot;flipper_length_mm&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>species    child
-Adelie     False    195.282051
-           True     186.857143
-Chinstrap  False    203.062500
-           True     193.596154
-Gentoo     False    217.262295
-           True     208.000000
-Name: flipper_length_mm, dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="alert alert-danger">
-Task 2.9: How many pengouins per species live on which island? Store the answer in a new variable. (2 points).
-<p> </p>
-</div></section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

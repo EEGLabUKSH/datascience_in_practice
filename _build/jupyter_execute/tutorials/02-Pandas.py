@@ -57,6 +57,20 @@ pengs = sns.load_dataset("penguins")
 pengs.head()
 
 
+# ## What’s in a dataframe?
+
+# Clearly, pandas dataframes allows us to do advanced analysis with very few commands, but it takes a while to get used to how dataframes work so let’s get back to basics.
+
+# Series and DataFrames have a lot functionality, but how can we find out what methods are available and how they work? One way is to visit the API reference and reading through the list. Another way is to use the autocompletion feature in Jupyter and type e.g. `pengs["island"]`. in a notebook and then hit TAB twice - this should open up a list menu of available methods and attributes.
+
+# As we saw above, pandas dataframes are a powerful tool for working with tabular data. A pandas `pandas.DataFrame` is composed of rows and columns:
+# 
+# <br>
+# <img src="img/02_pd_table_dataframe.svg" width="400px">
+# <br>
+
+# Lets get some detailed information about the numerical data of the `df`.
+
 # In[4]:
 
 
@@ -64,9 +78,9 @@ pengs.head()
 pengs.describe()
 
 
-# Ok, so we have information on passenger names, survival (0 or 1), age, ticket fare, number of siblings/spouses, etc. With the summary statistics we see that the average age is 29.7 years, maximum ticket price is 512 USD, 38% of passengers survived, etc.
+# Ok, so we have information on pengouins data. With the summary statistics we see that the body mass is 4201 g, maximum flipper length is 231 mm, etc.
 # 
-# Let’s say we’re interested in the survival probability of different age groups. With two one-liners, we can find the average age of those who survived or didn’t survive, and plot corresponding histograms of the age distribution (`pandas.DataFrame.groupby()`, `pandas.DataFrame.hist()`):
+# Let’s say we’re interested in the mean boddy mass per species. With two one-liners, we can find the average body mass and plot corresponding histograms (`pandas.DataFrame.groupby()`, `pandas.DataFrame.hist()`):
 
 # In[5]:
 
@@ -80,55 +94,67 @@ print(pengs.groupby("species")["body_mass_g"].mean())
 pengs.hist(column='body_mass_g', bins=25)
 
 
-# Clearly, pandas dataframes allows us to do advanced analysis with very few commands, but it takes a while to get used to how dataframes work so let’s get back to basics.
+# `groupby` is a powerful method which splits a dataframe and aggregates data in groups. To see what’s possible, let’s return to the pengs dataset. We start by creating a new column `child` to indicate whether a pengouin was a child or not, based on the existing `body_mass_g` column. For this example, let’s assume that you are a child when you weight less than 4500 g:
 
-# Series and DataFrames have a lot functionality, but how can we find out what methods are available and how they work? One way is to visit the API reference and reading through the list. Another way is to use the autocompletion feature in Jupyter and type e.g. `pengs["island"]`. in a notebook and then hit TAB twice - this should open up a list menu of available methods and attributes.
+# In[7]:
 
-# ## What’s in a dataframe?
 
-# As we saw above, pandas dataframes are a powerful tool for working with tabular data. A pandas `pandas.DataFrame` is composed of rows and columns:
-# 
-# <br>
-# <img src="img/02_pd_table_dataframe.svg" width="400px">
-# <br>
+pengs["child"] = pengs["body_mass_g"] < 4000
+
+
+# Now we can test the if the flipper length is different for childs by grouping the data on `species` and then creating further sub-groups based on `child`:
+
+# In[8]:
+
+
+pengs.groupby(["species", "child"])["flipper_length_mm"].mean()
+
+
+# In[9]:
+
+
+<div class="alert alert-danger">
+Task 2.8: How many pengouins per species live on which island? Store the answer in a new variable. (2 points).
+<p> </p>
+</div>
+
 
 # Each column of a dataframe is a `pandas.Series` object - a dataframe is thus a collection of series:
 
-# In[7]:
+# In[8]:
 
 
 # print some information about the columns
 pengs.info()
 
 
+# Now we can already see what columns are present in the `df`. Any easier way jsut to display the column names is to use the function `df.columns`.
+
+# In[ ]:
+
+
+pengs.columns
+
+
 # Unlike a NumPy array, a dataframe can combine multiple data types, such as numbers and text, but the data in each column is of the same type. So we say a column is of type `int64` or of type `object`.
 # 
 # Let’s inspect one column of the penguin data (first downloading and reading the datafile into a dataframe if needed, see above):
 
-# In[8]:
+# In[9]:
 
 
 pengs["flipper_length_mm"]
 pengs.flipper_length_mm          # same as above
 
 
-# In[9]:
+# <div class="alert alert-success">
+# A single column of a data frame is often refered to as a "Series". 
+# <p></p>
+# </div>
 
+# Now let us adress not just a single column, but also include the rows as well. Adressing a row with numbers is what Pandas calls the `index`:
 
-type(pengs["flipper_length_mm"])
-
-
-# The columns have names. Here’s how to get them (`columns`):
-
-# In[10]:
-
-
-pengs.columns
-
-
-# However, the rows also have names! This is what Pandas calls the `index`:
-
-# In[11]:
+# In[12]:
 
 
 pengs.index
@@ -136,7 +162,7 @@ pengs.index
 
 # We saw above how to select a single column, but there are many ways of selecting (and setting) single or multiple rows, columns and values. We can refer to columns and rows either by number or by their name (`loc`, `iloc`, `at`, `iat`):
 
-# In[12]:
+# In[13]:
 
 
 pengs.loc[0,"island"]          # select single value by row and column
@@ -150,22 +176,19 @@ pengs.iat[0,5]                           # select same value by row and column *
 pengs["is_animal"] = True             # set a whole column
 
 
-# In[13]:
-
-
-pengs.head() # notice how flipper_length_mm changed
-
-
 # Dataframes also support boolean indexing, just like we saw for `numpy` arrays:
 
-# In[14]:
+# In[15]:
 
 
-pengs[pengs["body_mass_g"] > 4500]
+idx_big = pengs["body_mass_g"] > 4500 
+pengs[idx_big]
 
+
+# Using the boolean index `idx_big`, we can select specific row from an entire `df` based on values from a single column. 
 
 # <div class="alert alert-danger">
-# Task 2.8: Using boolean indexing, compute the mean flipper length among pengouins over and under the average body mass. (2 points).
+# Task 2.9: Using boolean indexing, compute the mean flipper length among pengouins over and under the average body mass. (2 points).
 # <p> </p>
 # </div>
 
@@ -177,7 +200,7 @@ pengs[pengs["body_mass_g"] > 4500]
 # 
 # What would untidy data look like? Here’s an example from some run time statistics from a 1500 m running event:
 
-# In[15]:
+# In[16]:
 
 
 runners = pd.DataFrame([
@@ -187,13 +210,13 @@ runners = pd.DataFrame([
             ])
 
 
-# In[16]:
+# In[17]:
 
 
 runners.head()
 
 
-# In[17]:
+# In[18]:
 
 
 runners = pd.melt(runners, id_vars="Runner",
@@ -203,7 +226,7 @@ runners = pd.melt(runners, id_vars="Runner",
             )
 
 
-# In[18]:
+# In[19]:
 
 
 runners.head()
@@ -216,7 +239,7 @@ runners.head()
 # 
 # For a detailed exposition of data tidying, have a look at [this article](http://vita.had.co.nz/papers/tidy-data.pdf).
 
-# ## Working with dataframes
+# ## Creating dataframes from scratch
 
 # We saw above how one can read in data into a dataframe using the read_csv() function. Pandas also understands multiple other formats, for example using read_excel, read_json, etc. (and corresponding methods to write to file: to_csv, to_excel, to_json, etc.)
 # 
@@ -224,7 +247,7 @@ runners.head()
 
 # Let's create a `df` for our study and fill it with random numbers which do not make **any** sense at all.
 
-# In[19]:
+# In[23]:
 
 
 import random
@@ -232,7 +255,7 @@ import string
 
 n = 6
 
-ids = [''.join(random.choices(string.ascii_uppercase + string.digits, k=5)) for i in range(0,n)]
+ids = [''.join(random.choices(string.ascii_uppercase + string.digits, k=5)) for i in range(0,n)] # this line generates IDs from Uppercase letters A-Z and Number 0-9 of length 5
 
 nms_cols = ['age','height','MoCA']
 rand_age = np.random.randint(18,99,n)
@@ -241,24 +264,3 @@ rand_moca = np.random.randint(0,30,n)
 df = pd.DataFrame(list(zip(rand_age, rand_height, rand_moca)), index=ids, columns=nms_cols)
 df.head()
 
-
-# `groupby` is a powerful method which splits a dataframe and aggregates data in groups. To see what’s possible, let’s return to the pengs dataset. We start by creating a new column `child` to indicate whether a pengouin was a child or not, based on the existing `body_mass_g` column. For this example, let’s assume that you are a child when you weight less than 4500 g:
-
-# In[20]:
-
-
-pengs["child"] = pengs["body_mass_g"] < 4000
-
-
-# Now we can test the if the flipper length is different for childs by grouping the data on `species` and then creating further sub-groups based on `child`:
-
-# In[21]:
-
-
-pengs.groupby(["species", "child"])["flipper_length_mm"].mean()
-
-
-# <div class="alert alert-danger">
-# Task 2.9: How many pengouins per species live on which island? Store the answer in a new variable. (2 points).
-# <p> </p>
-# </div>
