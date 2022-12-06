@@ -1,0 +1,873 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Appendix: Adventcalender solutions &#8212; Data science in practice</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Appendix: Data Wrangling" href="A3-DataWrangling.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data science in practice</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Data Science in Practice or Neurophysiological Data
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="00-Introduction.html">
+   s00: Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-Python.html">
+   s01: Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-JupyterNotebooks.html">
+   s01: Jupyter Notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-NumPy.html">
+   s01: NumPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-Plotting.html">
+   s01: Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-Pandas.html">
+   s01: Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-DataAnalysis.html">
+   s02: Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05-DataCleaning.html">
+   s03: Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06-DataVisualization.html">
+   s03: Data Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07-Distributions.html">
+   s04: Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08-TestingDistributions.html">
+   s04: Testing Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09-StatisticalComparisons.html">
+   s04: Statistical Comparisons
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10-OrdinaryLeastSquares.html">
+   s05: Ordinary Least Squares
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11-LinearModels.html">
+   s05: Linear Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12-Clustering.html">
+   s05: Clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13-DimensionalityReduction.html">
+   s06: Dimensionality Reduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14-Classification.html">
+   s06: Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="15-EegMagic.html">
+   s07: EEG magic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A1-PythonPackages.html">
+   Appendix: Python Packages
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A2-Git.html">
+   Appendix: Version Control
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A3-DataWrangling.html">
+   Appendix: Data Wrangling
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Appendix: Adventcalender solutions
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/tutorials/A4-AdventSolutions.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftutorials/A4-AdventSolutions.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/tutorials/A4-AdventSolutions.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filenames-examples">
+   Filenames examples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-1">
+   Example 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-2">
+   Example 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-3">
+   Example 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#one-of-many-solutions">
+   One of many solutions
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Appendix: Adventcalender solutions</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filenames-examples">
+   Filenames examples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-1">
+   Example 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-2">
+   Example 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-3">
+   Example 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#one-of-many-solutions">
+   One of many solutions
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="appendix-adventcalender-solutions">
+<h1>Appendix: Adventcalender solutions<a class="headerlink" href="#appendix-adventcalender-solutions" title="Permalink to this headline">#</a></h1>
+<p>Ab morgen geht in der WG der Adventskalender los. Leider gibt es noch keine Reihenfolge, wer wann ein Päckchen  öffnen darf.</p>
+<p>Natürlich kann seit diesem Jahr auch Python genutzt werden um das Problem zu lösen. Wer eine Lösung einer randomisierten Ziehung für die Mitbewohnenden (mitbewohner_innen = [“Charlotte”, “Elli”, “Malena”, “Felix”, “Vanessa”, “Julius”]) - 01.12. bis 24.12.- bis nächste Woche zum Seminar einsendet, bekommt einen Joker für eine Woche Aufgaben. Alle sollten natürlich gleich viele Päckchen bekommen.</p>
+<section id="filenames-examples">
+<h2>Filenames examples<a class="headerlink" href="#filenames-examples" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">good</span> <span class="o">=</span> <span class="s1">&#39;this_is_a_good_file.ipynb&#39;</span> <span class="c1"># all lower case and seperated by underscore</span>
+<span class="n">bad</span> <span class="o">=</span> <span class="s1">&#39;This is a bad filename, by Julius.Welzel.ipynb&#39;</span> <span class="c1"># includes whitespace and comma</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-1">
+<h2>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#variable erstellen, die zum Lösungsversuch mit np.random,choice passt</span>
+<span class="n">mitbewohner_innen</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span> <span class="p">([</span><span class="s2">&quot;Charlotte&quot;</span><span class="p">,</span> <span class="s2">&quot;Elli&quot;</span><span class="p">,</span> <span class="s2">&quot;Malena&quot;</span><span class="p">,</span> <span class="s2">&quot;Felix&quot;</span><span class="p">,</span> <span class="s2">&quot;Vanessa&quot;</span><span class="p">,</span> <span class="s2">&quot;Julius&quot;</span><span class="p">],</span> <span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">mitbewohner_innen</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Charlotte&#39;, &#39;Elli&#39;, &#39;Malena&#39;, &#39;Felix&#39;, &#39;Vanessa&#39;, &#39;Julius&#39;,
+       &#39;Charlotte&#39;, &#39;Elli&#39;, &#39;Malena&#39;, &#39;Felix&#39;, &#39;Vanessa&#39;, &#39;Julius&#39;,
+       &#39;Charlotte&#39;, &#39;Elli&#39;, &#39;Malena&#39;, &#39;Felix&#39;, &#39;Vanessa&#39;, &#39;Julius&#39;,
+       &#39;Charlotte&#39;, &#39;Elli&#39;, &#39;Malena&#39;, &#39;Felix&#39;, &#39;Vanessa&#39;, &#39;Julius&#39;],
+      dtype=&#39;&lt;U9&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kalendertürchen verteilen. Es wird ein Array ausgegeben, der die Reihenfolge der Türchenöffnenden angibt. </span>
+<span class="n">verteilen</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">mitbewohner_innen</span> <span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span> <span class="n">replace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">)])</span>
+<span class="n">verteilen</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Elli&#39;, &#39;Malena&#39;, &#39;Charlotte&#39;, &#39;Felix&#39;, &#39;Elli&#39;, &#39;Felix&#39;, &#39;Felix&#39;,
+       &#39;Elli&#39;, &#39;Vanessa&#39;, &#39;Elli&#39;, &#39;Elli&#39;, &#39;Vanessa&#39;, &#39;Charlotte&#39;,
+       &#39;Malena&#39;, &#39;Vanessa&#39;, &#39;Elli&#39;, &#39;Malena&#39;, &#39;Malena&#39;, &#39;Charlotte&#39;,
+       &#39;Malena&#39;, &#39;Elli&#39;, &#39;Julius&#39;, &#39;Vanessa&#39;, &#39;Felix&#39;], dtype=&#39;&lt;U9&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kalendertürchen verteilen. Es wird ein Array ausgegeben, der die Reihenfolge der Türchenöffnenden angibt. </span>
+<span class="n">n_tuerchen</span> <span class="o">=</span> <span class="mi">24</span>
+<span class="n">verteilen</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">mitbewohner_innen</span> <span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">n_tuerchen</span><span class="p">,</span> <span class="n">replace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="o">/</span><span class="n">n_tuerchen</span><span class="p">)]</span> <span class="o">*</span> <span class="n">n_tuerchen</span><span class="p">)</span>
+<span class="n">verteilen</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Elli&#39;, &#39;Felix&#39;, &#39;Felix&#39;, &#39;Julius&#39;, &#39;Elli&#39;, &#39;Vanessa&#39;, &#39;Elli&#39;,
+       &#39;Elli&#39;, &#39;Felix&#39;, &#39;Felix&#39;, &#39;Charlotte&#39;, &#39;Malena&#39;, &#39;Julius&#39;,
+       &#39;Charlotte&#39;, &#39;Charlotte&#39;, &#39;Vanessa&#39;, &#39;Vanessa&#39;, &#39;Malena&#39;, &#39;Elli&#39;,
+       &#39;Malena&#39;, &#39;Elli&#39;, &#39;Malena&#39;, &#39;Vanessa&#39;, &#39;Felix&#39;], dtype=&#39;&lt;U9&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-2">
+<h2>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">mitbewohner_innen</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Charlotte&quot;</span><span class="p">,</span> <span class="s2">&quot;Elli&quot;</span><span class="p">,</span> <span class="s2">&quot;Malena&quot;</span><span class="p">,</span> <span class="s2">&quot;Felix&quot;</span><span class="p">,</span> <span class="s2">&quot;Vanessa&quot;</span><span class="p">,</span> <span class="s2">&quot;Julius&quot;</span><span class="p">]</span>
+
+<span class="n">datum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">)</span>
+<span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">datum</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ind1</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ind2</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mitbewohner_innen</span><span class="p">:</span>
+    <span class="n">ind2</span> <span class="o">=</span> <span class="n">ind2</span> <span class="o">+</span> <span class="mi">4</span>
+    <span class="nb">list</span> <span class="o">=</span> <span class="n">datum</span><span class="p">[</span><span class="n">ind1</span><span class="p">:</span><span class="n">ind2</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mitbewohner_innen</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">ind1</span> <span class="o">=</span> <span class="n">ind2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Charlotte
+[13  7 21  6]
+Elli
+[ 1  9 14 17]
+Malena
+[ 2 20  8 18]
+Felix
+[23 19 10  3]
+Vanessa
+[ 5 15  4 11]
+Julius
+[12 22 16 24]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_test_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;christmas&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [7],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">new_test_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;christmas&#39;</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: &#39;numpy.ndarray&#39; object is not callable
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="nb">list</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">mitbewohner_innen</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Charlotte&quot;</span><span class="p">,</span> <span class="s2">&quot;Elli&quot;</span><span class="p">,</span> <span class="s2">&quot;Malena&quot;</span><span class="p">,</span> <span class="s2">&quot;Felix&quot;</span><span class="p">,</span> <span class="s2">&quot;Vanessa&quot;</span><span class="p">,</span> <span class="s2">&quot;Julius&quot;</span><span class="p">]</span>
+
+<span class="n">datum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">)</span>
+<span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">datum</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ind1</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ind2</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mitbewohner_innen</span><span class="p">:</span>
+    <span class="n">ind2</span> <span class="o">=</span> <span class="n">ind2</span> <span class="o">+</span> <span class="mi">4</span>
+    <span class="n">date_list</span> <span class="o">=</span> <span class="n">datum</span><span class="p">[</span><span class="n">ind1</span><span class="p">:</span><span class="n">ind2</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mitbewohner_innen</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">date_list</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">ind1</span> <span class="o">=</span> <span class="n">ind2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Charlotte
+[16  9 13  3]
+Elli
+[ 5 10 14 15]
+Malena
+[21 22  6  1]
+Felix
+[24 23 12  4]
+Vanessa
+[ 2  7  8 18]
+Julius
+[20 11 17 19]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_test_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s2">&quot;x-mas&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_test_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;x&#39;, &#39;-&#39;, &#39;m&#39;, &#39;a&#39;, &#39;s&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-3">
+<h2>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">)</span>
+<span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="s2">&quot;Charlotte&quot;</span><span class="p">,</span> <span class="s2">&quot;Elli&quot;</span><span class="p">,</span> <span class="s2">&quot;Malena&quot;</span><span class="p">,</span> <span class="s2">&quot;Felix&quot;</span><span class="p">,</span> <span class="s2">&quot;Vanessa&quot;</span><span class="p">,</span> <span class="s2">&quot;Julius&quot;</span><span class="p">],</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+    
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">))</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dates</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;2</span><span class="si">}</span><span class="s2">.12.2022: </span><span class="si">{</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 1.12.2022: Elli
+ 2.12.2022: Felix
+ 3.12.2022: Charlotte
+ 4.12.2022: Malena
+ 5.12.2022: Julius
+ 6.12.2022: Charlotte
+ 7.12.2022: Malena
+ 8.12.2022: Elli
+ 9.12.2022: Elli
+10.12.2022: Felix
+11.12.2022: Charlotte
+12.12.2022: Felix
+13.12.2022: Malena
+14.12.2022: Felix
+15.12.2022: Elli
+16.12.2022: Vanessa
+17.12.2022: Vanessa
+18.12.2022: Julius
+19.12.2022: Malena
+20.12.2022: Vanessa
+21.12.2022: Julius
+22.12.2022: Vanessa
+23.12.2022: Charlotte
+24.12.2022: Julius
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="one-of-many-solutions">
+<h2>One of many solutions<a class="headerlink" href="#one-of-many-solutions" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">shuffle</span>
+
+<span class="n">mitbewohner_innen</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Charlotte&quot;</span><span class="p">,</span> <span class="s2">&quot;Elli&quot;</span><span class="p">,</span> <span class="s2">&quot;Malena&quot;</span><span class="p">,</span> <span class="s2">&quot;Felix&quot;</span><span class="p">,</span> <span class="s2">&quot;Vanessa&quot;</span><span class="p">,</span> <span class="s2">&quot;Julius&quot;</span><span class="p">]</span>
+
+<span class="n">n_days</span> <span class="o">=</span> <span class="mi">24</span>
+<span class="n">n_bewohner_innen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mitbewohner_innen</span><span class="p">)</span>
+<span class="n">n_draws</span> <span class="o">=</span> <span class="n">n_days</span> <span class="o">//</span> <span class="n">n_bewohner_innen</span>
+<span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n_days</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="n">adv_cal</span> <span class="o">=</span> <span class="n">mitbewohner_innen</span> <span class="o">*</span> <span class="n">n_draws</span>
+
+<span class="n">shuffle</span><span class="p">(</span><span class="n">adv_cal</span><span class="p">)</span>
+
+<span class="n">pd_cal</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">adv_cal</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">days</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;Adventskalender&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd_cal</span><span class="p">)</span>
+
+<span class="n">n_my_draws</span> <span class="o">=</span> <span class="n">pd_cal</span><span class="p">[</span><span class="s2">&quot;Adventskalender&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;Julius&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Julius bekommt </span><span class="si">{</span><span class="n">n_my_draws</span><span class="si">}</span><span class="s2"> Päckchen&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Adventskalender
+1        Charlotte
+2             Elli
+3            Felix
+4        Charlotte
+5           Julius
+6           Julius
+7          Vanessa
+8        Charlotte
+9           Malena
+10          Julius
+11            Elli
+12         Vanessa
+13           Felix
+14           Felix
+15         Vanessa
+16         Vanessa
+17          Malena
+18           Felix
+19          Malena
+20            Elli
+21          Julius
+22       Charlotte
+23            Elli
+24          Malena
+
+ Julius bekommt 4 Päckchen
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="A3-DataWrangling.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Appendix: Data Wrangling</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Julius Welzel<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
