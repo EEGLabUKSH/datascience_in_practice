@@ -26,3 +26,4 @@ parts:
   - file: tutorials/A1-PythonPackages
   - file: tutorials/A2-Git
   - file: tutorials/A3-DataWrangling
+  - file: tutorials/A4-AdventSolutions
