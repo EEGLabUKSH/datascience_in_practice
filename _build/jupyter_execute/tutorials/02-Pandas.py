@@ -61,8 +61,6 @@ pengs.head()
 
 # Clearly, pandas dataframes allows us to do advanced analysis with very few commands, but it takes a while to get used to how dataframes work so let’s get back to basics.
 
-# Series and DataFrames have a lot functionality, but how can we find out what methods are available and how they work? One way is to visit the API reference and reading through the list. Another way is to use the autocompletion feature in Jupyter and type e.g. `pengs["island"]`. in a notebook and then hit TAB twice - this should open up a list menu of available methods and attributes.
-
 # As we saw above, pandas dataframes are a powerful tool for working with tabular data. A pandas `pandas.DataFrame` is composed of rows and columns:
 # 
 # <br>
@@ -94,7 +92,7 @@ print(pengs.groupby("species")["body_mass_g"].mean())
 pengs.hist(column='body_mass_g', bins=25)
 
 
-# `groupby` is a powerful method which splits a dataframe and aggregates data in groups. To see what’s possible, let’s return to the pengs dataset. We start by creating a new column `child` to indicate whether a pengouin was a child or not, based on the existing `body_mass_g` column. For this example, let’s assume that you are a child when you weight less than 4500 g:
+# `groupby` is a powerful method which splits a dataframe and aggregates data in groups. We start by creating a new column `child` to indicate whether a pengouin was a child or not, based on the existing `body_mass_g` column. For this example, let’s assume that you are a child when you weight less than 4500 g:
 
 # In[7]:
 
@@ -110,18 +108,9 @@ pengs["child"] = pengs["body_mass_g"] < 4000
 pengs.groupby(["species", "child"])["flipper_length_mm"].mean()
 
 
-# In[9]:
-
-
-<div class="alert alert-danger">
-Task 2.8: How many pengouins per species live on which island? Store the answer in a new variable. (2 points).
-<p> </p>
-</div>
-
-
 # Each column of a dataframe is a `pandas.Series` object - a dataframe is thus a collection of series:
 
-# In[8]:
+# In[9]:
 
 
 # print some information about the columns
@@ -130,7 +119,7 @@ pengs.info()
 
 # Now we can already see what columns are present in the `df`. Any easier way jsut to display the column names is to use the function `df.columns`.
 
-# In[ ]:
+# In[10]:
 
 
 pengs.columns
@@ -140,7 +129,7 @@ pengs.columns
 # 
 # Let’s inspect one column of the penguin data (first downloading and reading the datafile into a dataframe if needed, see above):
 
-# In[9]:
+# In[11]:
 
 
 pengs["flipper_length_mm"]
@@ -178,7 +167,7 @@ pengs["is_animal"] = True             # set a whole column
 
 # Dataframes also support boolean indexing, just like we saw for `numpy` arrays:
 
-# In[15]:
+# In[14]:
 
 
 idx_big = pengs["body_mass_g"] > 4500 
@@ -186,6 +175,11 @@ pengs[idx_big]
 
 
 # Using the boolean index `idx_big`, we can select specific row from an entire `df` based on values from a single column. 
+
+# <div class="alert alert-danger">
+# Task 2.8: How many pengouins per species live on which island? Store the answer in a new variable. (2 points).
+# <p> </p>
+# </div>
 
 # <div class="alert alert-danger">
 # Task 2.9: Using boolean indexing, compute the mean flipper length among pengouins over and under the average body mass. (2 points).
@@ -200,7 +194,7 @@ pengs[idx_big]
 # 
 # What would untidy data look like? Here’s an example from some run time statistics from a 1500 m running event:
 
-# In[16]:
+# In[15]:
 
 
 runners = pd.DataFrame([
@@ -210,13 +204,13 @@ runners = pd.DataFrame([
             ])
 
 
-# In[17]:
+# In[16]:
 
 
 runners.head()
 
 
-# In[18]:
+# In[17]:
 
 
 runners = pd.melt(runners, id_vars="Runner",
@@ -226,7 +220,7 @@ runners = pd.melt(runners, id_vars="Runner",
             )
 
 
-# In[19]:
+# In[18]:
 
 
 runners.head()
@@ -247,7 +241,7 @@ runners.head()
 
 # Let's create a `df` for our study and fill it with random numbers which do not make **any** sense at all.
 
-# In[23]:
+# In[19]:
 
 
 import random
