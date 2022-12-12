@@ -27,11 +27,13 @@ import matplotlib.pyplot as plt
 
 
 # <div class="alert alert-danger">
-# Task 3.1: Import the numpy package as np and create a variable with a meaningful name. The variable should hold an 1darray with number as integers from 1 to 10. (2 points)
+# Task 2.1: Import the numpy package as np and create a variable with a meaningful name. The variable should hold an 1darray with number as integers from 1 to 10. (2 points)
+# <p></p>
 # </div>
 
 # <div class="alert alert-danger">
-# Task 3.2: Using numpy create a 1darray of random integers (np.random.randint). Find the min, max, and mean of the array and print them in the command line using a formatted string. (2 points)
+# Task 2.2: Using numpy create a 1darray of random integers (np.random.randint). Find the min, max, and mean of the array and print them in the command line using a formatted string. (2 points)
+# <p></p>
 # </div>
 
 # ## Prediction
@@ -63,7 +65,7 @@ weights = [17.5, 10, 18, 20]   # kg's
 fig, ax = plt.subplots()
 ax.plot(lengths, weights, '.', ms=15)
 ax.set(xlabel='Length (cm)', ylabel='Weight (kg)',
-       xlim=[30, 125], ylim=[5, 25]);
+       xlim=[30, 125], ylim=[5, 25])
 
 
 # In[4]:
@@ -139,7 +141,7 @@ data = np.array([[10., 600.], [16., 1200], [6., 800], [12., 700.], [17., 1400.],
 fig, ax = plt.subplots()
 ax.plot(data[:, 0], data[:, 1], '.', ms=12)
 ax.set(xlabel='Height (cm)', ylabel='Weight (g)',
-       xlim=[0, 25], ylim=[300, 1700]);
+       xlim=[0, 25], ylim=[300, 1700])
 
 
 # In[10]:

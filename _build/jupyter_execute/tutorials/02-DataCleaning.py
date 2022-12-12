@@ -64,35 +64,35 @@ sum(data_lst) / len(data_lst)
 
 # ### Numpy - NaN
 
-# In[8]:
+# In[ ]:
 
 
 # Numpy also has a special value for 'not a number' - NaN
 data_nan = np.nan
 
 
-# In[9]:
+# In[ ]:
 
 
 # It's actually a special float value
 type(data_nan)
 
 
-# In[10]:
+# In[ ]:
 
 
 # It doesn't evaluate as null (unlike None)
 not data_nan
 
 
-# In[12]:
+# In[ ]:
 
 
 # Numpy has multiple ways to write NaN - but they are all actually the same.
 np.nan is np.NaN is np.NAN
 
 
-# In[13]:
+# In[ ]:
 
 
 # NaN values won't fail (unlike None) but they will return undefined (NaN) answers
@@ -100,7 +100,7 @@ dat_a = np.array([1, 2, 3, np.nan])
 print(np.mean(dat_a))
 
 
-# In[15]:
+# In[ ]:
 
 
 # You can tell numpy to do calculations, ignoring NaN values, but you have to explicitly tell it to do so
@@ -135,7 +135,7 @@ print(np.nanmean(dat_a))
 # - messy_data.json, has id & height information
 # - messy_data.csv, has id, age, & weight information
 
-# In[34]:
+# In[ ]:
 
 
 # Load in the json file
@@ -146,14 +146,14 @@ df1 = pd.read_json(url)
 df1 = df1[['id', 'height']]
 
 
-# In[35]:
+# In[ ]:
 
 
 # Check out the data. We have a NaN value!
 df1
 
 
-# In[36]:
+# In[ ]:
 
 
 # Let's use pandas to drop the NaN value(s)
@@ -162,21 +162,21 @@ df1
 df1.dropna(inplace=True)
 
 
-# In[37]:
+# In[ ]:
 
 
 # Check out the data after dropping NaNs
 df1
 
 
-# In[38]:
+# In[ ]:
 
 
 # Read in the CSV data file
 df2 = pd.read_csv('https://raw.githubusercontent.com/BioPsychKiel/datascience_in_practice/main/tutorials/files/messy_data.csv')
 
 
-# In[39]:
+# In[ ]:
 
 
 # Check out the data
@@ -185,14 +185,14 @@ df2
 
 # Note that we have another NaN value! However, it is in the weight column, a feature we actually are not planning to use for our current analysis. If we drop NaN's from this dataframe, we are actually rejecting good data - since we will drop subject 1, who actually does have the age and height information we need. 
 
-# In[40]:
+# In[ ]:
 
 
 # So, since we don't need it, lets drop the weight column instead
 df2.drop('weight', axis=1, inplace=True)
 
 
-# In[41]:
+# In[ ]:
 
 
 # Let's check if there are any NaN values in the age column (that we do need)
@@ -203,7 +203,7 @@ sum(df2['age'].isnull())
 
 # There aren't any NaN values in the data column that we need! Let's proceed!
 
-# In[42]:
+# In[ ]:
 
 
 # Now lets merge our data together
@@ -212,14 +212,14 @@ sum(df2['age'].isnull())
 df = pd.merge(df1, df2, on='id')
 
 
-# In[43]:
+# In[ ]:
 
 
 # Check out our merged dataframe
 df
 
 
-# In[44]:
+# In[ ]:
 
 
 # Check out basic descriptive statistics to see if things look reasonable
@@ -230,21 +230,21 @@ df.describe()
 # 
 # At some point in data collection, missing age values seem to have been encoded as -999. We need to deal with these data. 
 
-# In[45]:
+# In[ ]:
 
 
 # Drop all rows with an impossible age
 df = df[df['age'] > 0]
 
 
-# In[46]:
+# In[ ]:
 
 
 # So what is the actual average age?
 df['age'].mean()
 
 
-# In[47]:
+# In[ ]:
 
 
 # Check out the cleaned data frame! It is now ready for doing real analysis with!
@@ -278,4 +278,43 @@ df
 # and the 
 # <a href="http://pandas.pydata.org/pandas-docs/stable/tutorials.html" class="alert-link">Pandas tutorials</a>
 # have lots of relevant materials, including a chapter (#7) on data cleaning.
+# </div>
+
+# ## Tasks
+
+# In[ ]:
+
+
+url_goodreads = 'https://raw.githubusercontent.com/BioPsychKiel/datascience_in_practice/main/tutorials/files/goodreads.txt'
+
+
+# In[ ]:
+
+
+#Read the data into a dataframe
+df = pd.read_csv(url_goodreads)
+
+#Examine the first few rows of the dataframe
+df.head()
+
+
+# Oh dear. That does not quite seem to be right. We are missing the column names. We need to add these in! But what are they?
+# 
+# Here is a list of them in order:
+# 
+# ['rating', 'review_count', 'isbn', 'booktype','author_url', 'year', 'genre_urls', 'dir','rating_count', 'name']
+
+# <div class="alert alert-danger">
+# Task 2.3: Use the provided list to load the dataframe properly! Make sure to properly include the first line of the file as the first line of actual data (1 point).
+# <p> </p>
+# </div>
+
+# <div class="alert alert-danger">
+# Task 2.4: Remove all entries (rows) from the dataframe where no meaningful year is provided (1 point).
+# <p> </p>
+# </div>
+
+# <div class="alert alert-danger">
+# Task 2.5: What is the shortest name of any book in the dataset (1 point).
+# <p> </p>
 # </div>
