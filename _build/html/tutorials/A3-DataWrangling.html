@@ -130,48 +130,43 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="02-JupyterNotebooks.html">
+  <a class="reference internal" href="01-JupyterNotebooks.html">
    s01: Jupyter Notebooks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="02-NumPy.html">
+  <a class="reference internal" href="01-NumPy.html">
    s01: NumPy
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="02-Plotting.html">
+  <a class="reference internal" href="01-Plotting.html">
    s01: Plotting
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="02-Pandas.html">
+  <a class="reference internal" href="01-Pandas.html">
    s01: Pandas
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="03-DataAnalysis.html">
+  <a class="reference internal" href="02-DataAnalysis.html">
    s02: Data Analysis
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="05-DataCleaning.html">
-   s03: Data Cleaning
+  <a class="reference internal" href="02-DataCleaning.html">
+   s02: Data Cleaning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="06-DataVisualization.html">
-   s03: Data Visualization
+  <a class="reference internal" href="03-Distributions.html">
+   s03: Distributions
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="07-Distributions.html">
-   s04: Distributions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08-TestingDistributions.html">
-   s04: Testing Distributions
+  <a class="reference internal" href="03-TestingDistributions.html">
+   s03: Testing Distributions
   </a>
  </li>
  <li class="toctree-l1">
@@ -441,11 +436,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-i-o">
-   Pandas I/O
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#file-types">
    File types
   </a>
@@ -513,11 +503,6 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#python-i-o">
    Python I/O
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-i-o">
-   Pandas I/O
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -646,47 +631,6 @@ Second line of data
 <p>Using input / output functionality from standard library Python is a pretty ‘low level’ way to read data files. This strategy often takes a lot of work to organize and define the details of how files are organized and how to read them. For example, in the above simple example, we had to deal with the new line character explicitly.</p>
 <p>As long as you have reasonably well structured data files, using standardized file types, you can use higher-level functions that will take care of a lot of these details - loading data straight into <code class="docutils literal notranslate"><span class="pre">pandas</span></code> data objects, for example.</p>
 </section>
-<section id="pandas-i-o">
-<h2>Pandas I/O<a class="headerlink" href="#pandas-i-o" title="Permalink to this headline">#</a></h2>
-<div class="alert alert-success">
-Pandas has a range of functions that will automatically read in whole files of standard file types in pandas objects. 
-</div>
-<div class="alert alert-info">
-Official Pandas
-<a href="http://pandas.pydata.org/pandas-docs/stable/io.html" class="alert-link">documentation</a> 
-on input / output. 
-</div><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tab complete to check out all the read functions available</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">read_</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">Input In [5],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Tab complete to check out all the read functions available</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_</span>
-
-<span class="nn">File ~\anaconda3\lib\site-packages\pandas\__init__.py:261,</span> in <span class="ni">__getattr__</span><span class="nt">(name)</span>
-<span class="g g-Whitespace">    </span><span class="mi">257</span>     <span class="kn">from</span> <span class="nn">pandas.core.arrays.sparse</span> <span class="kn">import</span> <span class="n">SparseArray</span> <span class="k">as</span> <span class="n">_SparseArray</span>
-<span class="g g-Whitespace">    </span><span class="mi">259</span>     <span class="k">return</span> <span class="n">_SparseArray</span>
-<span class="ne">--&gt; </span><span class="mi">261</span> <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;module &#39;pandas&#39; has no attribute &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
-
-<span class="ne">AttributeError</span>: module &#39;pandas&#39; has no attribute &#39;read_&#39;
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 <section id="file-types">
 <h2>File types<a class="headerlink" href="#file-types" title="Permalink to this headline">#</a></h2>
 <p>There are many different file types in which data may be stored.</p>
@@ -707,9 +651,8 @@ More information on CSV files from
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1, 2, 3, 4
-5, 6, 7, 8
-9, 10, 11, 12
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Der Befehl &quot;cat&quot; ist entweder falsch geschrieben oder
+konnte nicht gefunden werden.
 </pre></div>
 </div>
 </div>
@@ -752,6 +695,11 @@ pd.read_csv<span class="o">?</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Object `pd.read_csv` not found.
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -761,55 +709,16 @@ pd.read_csv<span class="o">?</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [8],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Let&#39;s read in our csv file</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;files/data.csv&#39;</span><span class="p">),</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>5</td>
-      <td>6</td>
-      <td>7</td>
-      <td>8</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>9</td>
-      <td>10</td>
-      <td>11</td>
-      <td>12</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <p>As we can see, using <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> save us from having to do more work (write more code) to use load the file.</p>
 </section>

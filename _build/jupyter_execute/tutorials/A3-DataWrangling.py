@@ -60,31 +60,6 @@ with open('files/data.txt', 'r') as file_obj:
 # 
 # As long as you have reasonably well structured data files, using standardized file types, you can use higher-level functions that will take care of a lot of these details - loading data straight into `pandas` data objects, for example.
 
-# ## Pandas I/O
-
-# <div class="alert alert-success">
-# Pandas has a range of functions that will automatically read in whole files of standard file types in pandas objects. 
-# </div>
-# 
-# <div class="alert alert-info">
-# Official Pandas
-# <a href="http://pandas.pydata.org/pandas-docs/stable/io.html" class="alert-link">documentation</a> 
-# on input / output. 
-# </div>
-
-# In[4]:
-
-
-import pandas as pd
-
-
-# In[5]:
-
-
-# Tab complete to check out all the read functions available
-pd.read_
-
-
 # ## File types
 # 
 # There are many different file types in which data may be stored. 
@@ -102,7 +77,7 @@ pd.read_
 # <a href="https://en.wikipedia.org/wiki/Comma-separated_values" class="alert-link">wikipedia</a>. 
 # </div>
 
-# In[17]:
+# In[4]:
 
 
 # Let's have a look at a csv file (printed out in plain text)
@@ -111,14 +86,14 @@ get_ipython().system('cat files/data.csv')
 
 # #### CSV Files with Python
 
-# In[18]:
+# In[5]:
 
 
 # Python has a module devoted to working with csv's
 import csv
 
 
-# In[19]:
+# In[6]:
 
 
 # We can read through our file with the csv module
@@ -130,14 +105,14 @@ with open('files/data.csv') as csv_file:
 
 # #### CSV Files with Pandas
 
-# In[20]:
+# In[7]:
 
 
 # Pandas also has functions to directly load csv data
 get_ipython().run_line_magic('pinfo', 'pd.read_csv')
 
 
-# In[21]:
+# In[8]:
 
 
 # Let's read in our csv file

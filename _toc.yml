@@ -6,16 +6,14 @@ parts:
   chapters:
   - file: tutorials/00-Introduction
   - file: tutorials/01-Python
-  - file: tutorials/02-JupyterNotebooks
-  - file: tutorials/02-NumPy
-  - file: tutorials/02-Plotting
-  - file: tutorials/02-Pandas
-  - file: tutorials/03-DataAnalysis
-  - file: tutorials/04-DataSciencePython
-  - file: tutorials/05-DataCleaning
-  - file: tutorials/06-DataVisualization
-  - file: tutorials/07-Distributions
-  - file: tutorials/08-TestingDistributions
+  - file: tutorials/01-JupyterNotebooks
+  - file: tutorials/01-NumPy
+  - file: tutorials/01-Plotting
+  - file: tutorials/01-Pandas
+  - file: tutorials/02-DataAnalysis
+  - file: tutorials/02-DataCleaning
+  - file: tutorials/03-Distributions
+  - file: tutorials/03-TestingDistributions
   - file: tutorials/09-StatisticalComparisons
   - file: tutorials/10-OrdinaryLeastSquares
   - file: tutorials/11-LinearModels
