@@ -210,3 +210,31 @@ check_p_val(p_val, alpha=0.05)
 
 
 # In this case, the data sample is consistent with being from a beta distribution!
+
+# ## Exercise
+# Load a dataset which contains running times from a marathon running contest.
+
+# In[17]:
+
+
+import pandas as pd
+import seaborn as sns
+
+df = sns.load_dataset('iris')
+
+
+# In[18]:
+
+
+df.dtypes
+
+
+# <div class="alert alert-danger">
+# Task 3.1: Write a function that plots two data vectors as histograms (e.g. `df["sepal_length"]` and `df["sepal_width"]`) and tests for normal distribution of the two. If one of the data vectors is not normally distributed, the function should not do any plotting, but print an error statement (2 points).
+# <p> </p>
+# </div>
+
+# <div class="alert alert-danger">
+# Task 3.2: Write a function that automatically checks ALL numeric columns from the `df` for normal distribution and prints the result (1 point).
+# <p> </p>
+# </div>

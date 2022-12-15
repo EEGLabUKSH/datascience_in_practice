@@ -130,6 +130,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="01-PythonBasics.html">
+   s01: Python Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="01-JupyterNotebooks.html">
    s01: Jupyter Notebooks
   </a>
@@ -584,12 +589,20 @@ Uniform distribution on
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03-Distributions_8_0.png" src="../_images/03-Distributions_8_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([1024., 1010., 1004., 1036.,  997.,  993., 1003.,  975.,  967.,
+         991.]),
+ array([8.85004946e-06, 1.00005991e-01, 2.00003132e-01, 3.00000273e-01,
+        3.99997414e-01, 4.99994555e-01, 5.99991696e-01, 6.99988837e-01,
+        7.99985978e-01, 8.99983119e-01, 9.99980260e-01]),
+ &lt;BarContainer object of 10 artists&gt;)
+</pre></div>
+</div>
+<img alt="../_images/03-Distributions_8_1.png" src="../_images/03-Distributions_8_1.png" />
 </div>
 </div>
 </section>
@@ -617,12 +630,23 @@ Normal distribution on
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03-Distributions_13_0.png" src="../_images/03-Distributions_13_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([   6.,   13.,   23.,   72.,  169.,  344.,  561.,  865., 1211.,
+        1276., 1425., 1276., 1072.,  744.,  489.,  254.,  115.,   62.,
+          16.,    7.]),
+ array([-3.76195648, -3.39835957, -3.03476267, -2.67116576, -2.30756886,
+        -1.94397195, -1.58037505, -1.21677814, -0.85318124, -0.48958433,
+        -0.12598743,  0.23760948,  0.60120638,  0.96480329,  1.32840019,
+         1.6919971 ,  2.055594  ,  2.41919091,  2.78278781,  3.14638472,
+         3.50998162]),
+ &lt;BarContainer object of 20 artists&gt;)
+</pre></div>
+</div>
+<img alt="../_images/03-Distributions_13_1.png" src="../_images/03-Distributions_13_1.png" />
 </div>
 </div>
 </section>
@@ -650,12 +674,17 @@ Bernouilli distribution on wikipedia
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03-Distributions_18_0.png" src="../_images/03-Distributions_18_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([498.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0., 502.]),
+ array([0. , 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1. ]),
+ &lt;BarContainer object of 10 artists&gt;)
+</pre></div>
+</div>
+<img alt="../_images/03-Distributions_18_1.png" src="../_images/03-Distributions_18_1.png" />
 </div>
 </div>
 </section>
@@ -712,7 +741,7 @@ Beta distribution on
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">beta</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">beta</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -745,7 +774,7 @@ Poisson distribution on
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

@@ -61,7 +61,7 @@ data = uniform.rvs(size=10000)
 # In[4]:
 
 
-plt.hist(data);
+plt.hist(data)
 
 
 # ### Normal Distribution
@@ -90,7 +90,7 @@ data = norm.rvs(size=10000)
 # In[7]:
 
 
-plt.hist(data, bins=20);
+plt.hist(data, bins=20)
 
 
 # ### Bernouilli Distribution
@@ -119,7 +119,7 @@ data = bernoulli.rvs(0.5, size=1000)
 # In[10]:
 
 
-plt.hist(data);
+plt.hist(data)
 
 
 # ### Gamma Distribution
@@ -175,7 +175,7 @@ from scipy.stats import beta
 # In[15]:
 
 
-data = beta.rvs(1, 1, size=1000)
+data = beta.rvs(1,1, size=1000)
 
 
 # In[16]:
@@ -204,7 +204,7 @@ from scipy.stats import poisson
 # In[18]:
 
 
-data = poisson.rvs(mu=1, size=100000)
+data = poisson.rvs(mu=5, size=100000)
 
 
 # In[19]:
