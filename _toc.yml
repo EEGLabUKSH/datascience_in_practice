@@ -6,6 +6,7 @@ parts:
   chapters:
   - file: tutorials/00-Introduction
   - file: tutorials/01-Python
+  - file: tutorials/01-PythonBasics
   - file: tutorials/01-JupyterNotebooks
   - file: tutorials/01-NumPy
   - file: tutorials/01-Plotting
