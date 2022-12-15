@@ -130,6 +130,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="01-PythonBasics.html">
+   s01: Python Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="01-JupyterNotebooks.html">
    s01: Jupyter Notebooks
   </a>
@@ -447,6 +452,11 @@ title="Print to PDF"
    Evaluating Different Distributions
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -481,6 +491,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#evaluating-different-distributions">
    Evaluating Different Distributions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
   </a>
  </li>
 </ul>
@@ -582,7 +597,7 @@ normaltest<span class="o">?</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Normaltest p-value is: 0.30 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Normaltest p-value is: 0.19 
 
 We do not have evidence to reject the null hypothesis.
 </pre></div>
@@ -657,7 +672,7 @@ We do not have evidence to reject the null hypothesis.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Normaltest p-value is: 6.09e-175 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Normaltest p-value is: 5.12e-182 
 
 We have evidence to reject the null hypothesis.
 </pre></div>
@@ -724,7 +739,7 @@ We have evidence to reject the null hypothesis.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Statistic: 	0.00 
-P-Value: 	4.63e-01
+P-Value: 	6.07e-01
 
 We do not have evidence to reject the null hypothesis.
 </pre></div>
@@ -733,6 +748,43 @@ We do not have evidence to reject the null hypothesis.
 </div>
 <p>In this case, the data sample is consistent with being from a beta distribution!</p>
 </section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<p>Load a dataset which contains running times from a marathon running contest.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;iris&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sepal_length    float64
+sepal_width     float64
+petal_length    float64
+petal_width     float64
+species          object
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-danger">
+Task 3.1: Write a function that plots two data vectors as histograms (e.g. `df["sepal_length"]` and `df["sepal_width"]`) and tests for normal distribution of the two. If one of the data vectors is not normally distributed, the function should not do any plotting, but print an error statement (2 points).
+<p> </p>
+</div><div class="alert alert-danger">
+Task 3.2: Write a function that automatically checks ALL numeric columns from the `df` for normal distribution and prints the result (1 point).
+<p> </p>
+</div></section>
 </section>
 
     <script type="text/x-thebe-config">
