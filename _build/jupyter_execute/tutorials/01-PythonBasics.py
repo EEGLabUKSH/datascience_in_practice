@@ -130,8 +130,8 @@ str_out = say_hello("Anne")
 
 
 # <div class="alert alert-info">
-# There is a great tutorial on python functions by Clemens Brunner 
-# <a href=https://cbrnr.quarto.pub/python-22w-04/ class="alert-link">website</a>.
+# There is a great tutorial on python functions by  
+# <a href=https://cbrnr.quarto.pub/python-22w-04/ class="alert-link">Clemens Brunner</a>.
 # </div>
 
 # Classes are defined by the `class` keyword:
