@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="s05: Ordinary Least Squares" href="10-OrdinaryLeastSquares.html" />
@@ -634,6 +636,7 @@ title="Print to PDF"
 <p>For this, we can calculate correlations between features.</p>
 <div class="alert alert-success">
 Correlations are statistical dependencies or relationships between variables. 
+<p></p>
 </div>
 <div class="alert alert-info">
 Correlation on 
@@ -643,6 +646,7 @@ including for the
 and 
 <a href=https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient class="alert-link">spearman</a>
 correlation measures.     
+<p></p>
 </div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">pearsonr</span><span class="p">,</span> <span class="n">spearmanr</span>
@@ -661,7 +665,7 @@ correlation measures.
 <span class="n">covs</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="n">corr</span><span class="p">],</span> <span class="p">[</span><span class="n">corr</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
 <span class="n">means</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 
-<span class="c1"># Generate the data</span>
+<span class="c1"># Generate the data (d1 and d2 are two normal distributed sets with a correlation of .75)</span>
 <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">covs</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 </div>
@@ -681,7 +685,7 @@ correlation measures.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The correlation coefficient is </span><span class="si">{:1.4f}</span><span class="s2"> with a p-value of </span><span class="si">{:1.2f}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r_val</span><span class="p">,</span> <span class="n">p_val</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The correlation coefficient is </span><span class="si">{</span><span class="n">r_val</span><span class="si">:</span><span class="s2">1.4f</span><span class="si">}</span><span class="s2"> with a p-value of </span><span class="si">{</span><span class="n">p_val</span><span class="si">:</span><span class="s2">1.2f</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -706,7 +710,7 @@ correlation measures.
 <span class="n">r_val</span><span class="p">,</span> <span class="n">p_val</span> <span class="o">=</span> <span class="n">spearmanr</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">)</span>
 
 <span class="c1"># Check the results of the spearman correlation</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The correlation coefficient is </span><span class="si">{:1.4f}</span><span class="s2"> with a p-value of </span><span class="si">{:1.2f}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r_val</span><span class="p">,</span> <span class="n">p_val</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The correlation coefficient is </span><span class="si">{</span><span class="n">r_val</span><span class="si">:</span><span class="s2">1.4f</span><span class="si">}</span><span class="s2"> with a p-value of </span><span class="si">{</span><span class="n">p_val</span><span class="si">:</span><span class="s2">1.2f</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -746,10 +750,12 @@ correlation measures.
 <p>Functions for the other versions are also available in <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code>.</p>
 <div class="alert alert-success">
 T-tests are statistical hypothesis tests for examining mean values and differences of groups of data. 
+<p></p>
 </div>
 <div class="alert alert-info">
 T-tests on
 <a href=https://en.wikipedia.org/wiki/Student%27s_t-test class="alert-link">wikipedia</a>. 
+<p></p>
 </div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">ttest_ind</span>
@@ -788,6 +794,39 @@ T-tests on
 <img alt="../_images/09-StatisticalComparisons_21_0.png" src="../_images/09-StatisticalComparisons_21_0.png" />
 </div>
 </div>
+<p>This is an interactive plotter:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statistics</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">FloatSlider</span><span class="p">,</span> <span class="n">IntSlider</span>
+
+<span class="k">def</span> <span class="nf">cohens_d</span><span class="p">(</span><span class="n">mean1</span><span class="p">,</span> <span class="n">mean2</span><span class="p">,</span> <span class="n">pooledSD</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">mean1</span> <span class="o">-</span> <span class="n">mean2</span><span class="p">)</span> <span class="o">/</span> <span class="n">pooledSD</span>
+    <span class="k">return</span> <span class="n">d</span>
+
+<span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">mean1</span><span class="p">,</span> <span class="n">mean2</span><span class="p">,</span> <span class="n">pooledSD</span><span class="p">,</span> <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">):</span>
+    <span class="n">data1</span> <span class="o">=</span> <span class="p">[</span><span class="n">mean1</span> <span class="o">+</span> <span class="n">pooledSD</span> <span class="o">*</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n1</span><span class="p">)]</span>
+    <span class="n">data2</span> <span class="o">=</span> <span class="p">[</span><span class="n">mean2</span> <span class="o">+</span> <span class="n">pooledSD</span> <span class="o">*</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n2</span><span class="p">)]</span>
+    <span class="c1"># Visualize our data comparison</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data1&#39;</span><span class="p">);</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data1</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data2&#39;</span><span class="p">);</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data2</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+    <span class="n">tmp_d</span> <span class="o">=</span> <span class="n">cohens_d</span><span class="p">(</span><span class="n">mean1</span><span class="p">,</span> <span class="n">mean2</span><span class="p">,</span> <span class="n">pooledSD</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;d: </span><span class="si">{</span><span class="n">tmp_d</span><span class="si">:</span><span class="s2">1.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+
+<span class="n">interact</span><span class="p">(</span><span class="n">plot</span><span class="p">,</span> <span class="n">mean1</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">mean2</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">pooledSD</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">n1</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">n2</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">2</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "ca661d7cc5e44e269fb5ac1f9e0b28f2"}
+</script></div>
+</div>
 </section>
 <section id="calculate-t-tests">
 <h3>Calculate T-Tests<a class="headerlink" href="#calculate-t-tests" title="Permalink to this headline">#</a></h3>
@@ -804,9 +843,9 @@ T-tests on
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the results of the t-test</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;T-Test comparison of D1 &amp; D2:&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">T-value </span><span class="se">\t</span><span class="s1"> </span><span class="si">{:1.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t_val</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">P-value </span><span class="se">\t</span><span class="s1"> </span><span class="si">{:1.2e}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p_val</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;T-Test comparison of D1 &amp; D2:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">T-value </span><span class="se">\t</span><span class="s1"> </span><span class="si">{</span><span class="n">t_val</span><span class="si">:</span><span class="s1">1.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">P-value </span><span class="se">\t</span><span class="s1"> </span><span class="si">{</span><span class="n">p_val</span><span class="si">:</span><span class="s1">1.2e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -834,14 +873,20 @@ T-tests on
 <p>For this example, we will use cohens-d effect size estimate for differences in means.</p>
 <div class="alert alert-success">
 Effect size measurements are measurements of the magnitude of a particular effect.
+<p></p>
 </div>
 <div class="alert alert-info">
 Effect sizes on 
 <a href=https://en.wikipedia.org/wiki/Effect_size class="alert-link">wikipedia</a>.
-</div><section id="defining-effect-size-code">
+<p></p>
+</div> <section id="defining-effect-size-code">
 <h3>Defining Effect Size Code<a class="headerlink" href="#defining-effect-size-code" title="Permalink to this headline">#</a></h3>
 <p>Often, when analyzing data, we will want to apply some measure that we may not find already available, in which case we may need to implement a version ourselves.</p>
 <p>For this example, we will implement cohens-d, an effect size measure for differences of means. Briefly, is a calculation of the difference of means between two distributions, divided by the pooled standard deviation. As such, cohens-d is a standardized measure, meaning the output value is independent of the units of the inputs.</p>
+<p>The formula to calculate the pooled standard deviation is:
+$<span class="math notranslate nohighlight">\(SD_{pooled}= \sqrt{\frac{[(n_1 - 1) * (SD_1)^2] + [(n_2 - 1) * (SD_2)^2]}{n_1 + n_2 - 2}}\)</span>$</p>
+<p>The formula to calculate <strong>Cohen’s d</strong> is:
+$<span class="math notranslate nohighlight">\(d = \frac{M_1 - M_2}{SD_{pooled}}\)</span>$</p>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">math</span></code> and <code class="docutils literal notranslate"><span class="pre">statistics</span></code> are standard library modules that contain some useful basic numerical functionality.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -892,12 +937,18 @@ Effect sizes on
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the measured value of the effect size</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The cohens-d effect size is </span><span class="si">{:1.2f}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cohens_d</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The cohens-d effect size is {:1.2 f}.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cohens_d</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The cohens-d effect size is 0.20.
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">Input In [16],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Check the measured value of the effect size</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The cohens-d effect size is {:1.2 f}.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cohens_d</span><span class="p">))</span>
+
+<span class="ne">ValueError</span>: Invalid format specifier
 </pre></div>
 </div>
 </div>
