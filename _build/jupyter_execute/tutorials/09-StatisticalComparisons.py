@@ -45,6 +45,7 @@ np.random.seed(21)
 
 # <div class="alert alert-success">
 # Correlations are statistical dependencies or relationships between variables. 
+# <p></p>
 # </div>
 # 
 # <div class="alert alert-info">
@@ -55,6 +56,7 @@ np.random.seed(21)
 # and 
 # <a href=https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient class="alert-link">spearman</a>
 # correlation measures.     
+# <p></p>
 # </div>
 
 # In[3]:
@@ -77,7 +79,7 @@ corr = 0.75
 covs = [[1, corr], [corr, 1]]
 means = [0, 0]
 
-# Generate the data
+# Generate the data (d1 and d2 are two normal distributed sets with a correlation of .75)
 d1, d2 = np.random.multivariate_normal(means, covs, 1000).T
 
 
@@ -95,7 +97,7 @@ r_val, p_val = pearsonr(d1, d2)
 # In[6]:
 
 
-print("The correlation coefficient is {:1.4f} with a p-value of {:1.2f}.".format(r_val, p_val))
+print(f"The correlation coefficient is {r_val:1.4f} with a p-value of {p_val:1.2f}.")
 
 
 # In this case, we have a high correlation coefficient, with a very low p-value. 
@@ -119,7 +121,7 @@ print("The correlation coefficient is {:1.4f} with a p-value of {:1.2f}.".format
 r_val, p_val = spearmanr(d1, d2)
 
 # Check the results of the spearman correlation
-print("The correlation coefficient is {:1.4f} with a p-value of {:1.2f}.".format(r_val, p_val))
+print(f"The correlation coefficient is {r_val:1.4f} with a p-value of {p_val:1.2f}.")
 
 
 # In this case, the measured values for `pearson` and `spearman` correlations are about the same, since both are appropriate for the properties of this data.
@@ -146,11 +148,13 @@ print("The correlation coefficient is {:1.4f} with a p-value of {:1.2f}.".format
 
 # <div class="alert alert-success">
 # T-tests are statistical hypothesis tests for examining mean values and differences of groups of data. 
+# <p></p>
 # </div>
 # 
 # <div class="alert alert-info">
 # T-tests on
 # <a href=https://en.wikipedia.org/wiki/Student%27s_t-test class="alert-link">wikipedia</a>. 
+# <p></p>
 # </div>
 
 # In[8]:
@@ -187,26 +191,55 @@ plt.axvline(np.mean(d2), linestyle='--', linewidth=2, color='orange')
 plt.legend();
 
 
+# This is an interactive plotter:
+
+# In[11]:
+
+
+import statistics
+from scipy.stats import norm
+import matplotlib.pyplot as plt
+from ipywidgets import interact, FloatSlider, IntSlider
+
+def cohens_d(mean1, mean2, pooledSD):
+    d = (mean1 - mean2) / pooledSD
+    return d
+
+def plot(mean1, mean2, pooledSD, n1, n2):
+    data1 = [mean1 + pooledSD * norm.rvs() for _ in range(n1)]
+    data2 = [mean2 + pooledSD * norm.rvs() for _ in range(n2)]
+    # Visualize our data comparison
+    plt.hist(data1, alpha=0.5, label='data1');
+    plt.axvline(np.mean(data1), linestyle='--', linewidth=2, color='blue')
+    plt.hist(data2, alpha=0.5, label='data2');
+    plt.axvline(np.mean(data2), linestyle='--', linewidth=2, color='orange')
+    tmp_d = cohens_d(mean1, mean2, pooledSD)
+    plt.title(f"d: {tmp_d:1.2f}")
+    plt.legend();
+
+interact(plot, mean1=FloatSlider(min=0, max=10, step=0.1), mean2=FloatSlider(min=0, max=10, step=0.1), pooledSD=FloatSlider(min=0.1, max=10, step=0.1), n1=IntSlider(min=0, max=100, step=2), n2=IntSlider(min=0, max=100, step=2));
+
+
 # ### Calculate T-Tests
 # 
 # Now that we have some data, let's use a t-tests to statistically compare the two groups of data. 
 # 
 # For this example, we will test whether the two distributions have significantly different means. 
 
-# In[11]:
+# In[12]:
 
 
 # Run independent samples t-test
 t_val, p_val = ttest_ind(d1, d2)
 
 
-# In[12]:
+# In[13]:
 
 
 # Check the results of the t-test
-print('T-Test comparison of D1 & D2:')
-print('\tT-value \t {:1.4f}'.format(t_val))
-print('\tP-value \t {:1.2e}'.format(p_val))
+print(f'T-Test comparison of D1 & D2:')
+print(f'\tT-value \t {t_val:1.4f}')
+print(f'\tP-value \t {p_val:1.2e}')
 
 
 # In this case, the t-test shows that there is a significant difference in the mean of the two arrays of data!
@@ -229,22 +262,31 @@ print('\tP-value \t {:1.2e}'.format(p_val))
 
 # <div class="alert alert-success">
 # Effect size measurements are measurements of the magnitude of a particular effect.
+# <p></p>
 # </div>
 # 
 # <div class="alert alert-info">
 # Effect sizes on 
 # <a href=https://en.wikipedia.org/wiki/Effect_size class="alert-link">wikipedia</a>.
-# </div>
+# <p></p>
+# </div> 
 
 # ### Defining Effect Size Code
 # 
 # Often, when analyzing data, we will want to apply some measure that we may not find already available, in which case we may need to implement a version ourselves. 
 # 
 # For this example, we will implement cohens-d, an effect size measure for differences of means. Briefly, is a calculation of the difference of means between two distributions, divided by the pooled standard deviation. As such, cohens-d is a standardized measure, meaning the output value is independent of the units of the inputs. 
-# 
-# Note that `math` and `statistics` are standard library modules that contain some useful basic numerical functionality. 
 
-# In[13]:
+# The formula to calculate the pooled standard deviation is:
+# $$SD_{pooled}= \sqrt{\frac{[(n_1 - 1) * (SD_1)^2] + [(n_2 - 1) * (SD_2)^2]}{n_1 + n_2 - 2}}$$
+# 
+# The formula to calculate **Cohen’s d** is:
+# $$d = \frac{M_1 - M_2}{SD_{pooled}}$$
+# 
+
+# Note that `math` and `statistics` are standard library modules that contain some useful basic numerical functionality.
+
+# In[14]:
 
 
 from math import sqrt
@@ -281,18 +323,18 @@ def compute_cohens_d(data_1, data_2):
     return cohens_d
 
 
-# In[14]:
+# In[15]:
 
 
 # Calculate the cohens-d effect size for our simulated data from before
 cohens_d = compute_cohens_d(d2, d1)
 
 
-# In[15]:
+# In[16]:
 
 
 # Check the measured value of the effect size
-print('The cohens-d effect size is {:1.2f}.'.format(cohens_d))
+print('The cohens-d effect size is {:1.2 f}.'.format(cohens_d))
 
 
 # A cohens-d effect size of ~0.2 is a small or modest effect. 

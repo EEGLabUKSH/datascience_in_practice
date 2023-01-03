@@ -72,7 +72,7 @@ else:
     print('x is something else')
 
 
-# While ``while` loops loop until some condition is met:
+# While `while` loops loop until some condition is met:
 
 # In[4]:
 
