@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # s06: Dimensionality Reduction
+# # s05: Dimensionality Reduction
 # 
 # Datasets are sometimes very large, containing potentially millions of data points across a large numbers of features. 
 # 

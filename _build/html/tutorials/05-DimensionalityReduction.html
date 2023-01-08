@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>s06: Dimensionality Reduction &#8212; Data science in practice</title>
+    <title>s05: Dimensionality Reduction &#8212; Data science in practice</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -188,7 +188,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   s06: Dimensionality Reduction
+   s05: Dimensionality Reduction
   </a>
  </li>
  <li class="toctree-l1">
@@ -198,7 +198,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="06-EegMagic.html">
-   s07: EEG magic
+   s06: EEG magic
   </a>
  </li>
  <li class="toctree-l1">
@@ -223,7 +223,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="A5-LinearModels.html">
-   s05: Linear Models
+   Appendix: Linear Models
   </a>
  </li>
 </ul>
@@ -434,7 +434,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   s06: Dimensionality Reduction
+   s05: Dimensionality Reduction
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
@@ -472,7 +472,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>s06: Dimensionality Reduction</h1>
+                <h1>s05: Dimensionality Reduction</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -484,7 +484,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   s06: Dimensionality Reduction
+   s05: Dimensionality Reduction
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
@@ -523,8 +523,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="s06-dimensionality-reduction">
-<h1>s06: Dimensionality Reduction<a class="headerlink" href="#s06-dimensionality-reduction" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="s05-dimensionality-reduction">
+<h1>s05: Dimensionality Reduction<a class="headerlink" href="#s05-dimensionality-reduction" title="Permalink to this headline">#</a></h1>
 <p>Datasets are sometimes very large, containing potentially millions of data points across a large numbers of features.</p>
 <p>Each feature can also be thought of as a ‘dimension’. In some cases, for high-dimensional data, we may want or need to try to reduce the number of dimensions. Reducing the number of dimensions (or reducing the number of features in a dataset) is called ‘dimensionality reduction’.</p>
 <p>The simplest way to do so could simply be to drop some dimensions, and we could even choose to drop the dimensions that seem likely to be the least useful. This would be a simple method of dimensionality reduction. However, this approach is likely to throw away a lot of information, and we wouldn’t necessarily know which features to keep. Typically we want to try to reduce the number of dimensions while still preserving the most information we can from the dataset.</p>
@@ -681,7 +681,7 @@ Transformed data dimensions: 	 (1000, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The proportion of variance explained by the first principcal component is 0.8685.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The proportion of variance explained by the first principcal component is 0.8724.
 </pre></div>
 </div>
 </div>

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # s07: EEG magic
+# # s06: EEG magic
 
 # In[1]:
 

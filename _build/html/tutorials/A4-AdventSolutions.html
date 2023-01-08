@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="s05: Linear Models" href="A5-LinearModels.html" />
+    <link rel="next" title="Appendix: Linear Models" href="A5-LinearModels.html" />
     <link rel="prev" title="Appendix: Data Wrangling" href="A3-DataWrangling.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -186,7 +186,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="05-DimensionalityReduction.html">
-   s06: Dimensionality Reduction
+   s05: Dimensionality Reduction
   </a>
  </li>
  <li class="toctree-l1">
@@ -196,7 +196,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="06-EegMagic.html">
-   s07: EEG magic
+   s06: EEG magic
   </a>
  </li>
  <li class="toctree-l1">
@@ -221,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="A5-LinearModels.html">
-   s05: Linear Models
+   Appendix: Linear Models
   </a>
  </li>
 </ul>
@@ -560,11 +560,10 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Felix&#39;, &#39;Charlotte&#39;, &#39;Felix&#39;, &#39;Malena&#39;, &#39;Malena&#39;, &#39;Malena&#39;,
-       &#39;Malena&#39;, &#39;Julius&#39;, &#39;Elli&#39;, &#39;Charlotte&#39;, &#39;Felix&#39;, &#39;Felix&#39;,
-       &#39;Julius&#39;, &#39;Charlotte&#39;, &#39;Vanessa&#39;, &#39;Elli&#39;, &#39;Elli&#39;, &#39;Charlotte&#39;,
-       &#39;Malena&#39;, &#39;Malena&#39;, &#39;Elli&#39;, &#39;Vanessa&#39;, &#39;Charlotte&#39;, &#39;Charlotte&#39;],
-      dtype=&#39;&lt;U9&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Malena&#39;, &#39;Vanessa&#39;, &#39;Felix&#39;, &#39;Charlotte&#39;, &#39;Vanessa&#39;, &#39;Elli&#39;,
+       &#39;Vanessa&#39;, &#39;Julius&#39;, &#39;Elli&#39;, &#39;Malena&#39;, &#39;Charlotte&#39;, &#39;Elli&#39;,
+       &#39;Malena&#39;, &#39;Julius&#39;, &#39;Charlotte&#39;, &#39;Elli&#39;, &#39;Elli&#39;, &#39;Charlotte&#39;,
+       &#39;Vanessa&#39;, &#39;Elli&#39;, &#39;Elli&#39;, &#39;Felix&#39;, &#39;Felix&#39;, &#39;Elli&#39;], dtype=&#39;&lt;U9&#39;)
 </pre></div>
 </div>
 </div>
@@ -579,10 +578,11 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Charlotte&#39;, &#39;Vanessa&#39;, &#39;Malena&#39;, &#39;Vanessa&#39;, &#39;Elli&#39;, &#39;Elli&#39;,
-       &#39;Julius&#39;, &#39;Malena&#39;, &#39;Malena&#39;, &#39;Charlotte&#39;, &#39;Elli&#39;, &#39;Felix&#39;,
-       &#39;Malena&#39;, &#39;Felix&#39;, &#39;Felix&#39;, &#39;Julius&#39;, &#39;Charlotte&#39;, &#39;Vanessa&#39;,
-       &#39;Elli&#39;, &#39;Elli&#39;, &#39;Malena&#39;, &#39;Vanessa&#39;, &#39;Felix&#39;, &#39;Elli&#39;], dtype=&#39;&lt;U9&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Malena&#39;, &#39;Elli&#39;, &#39;Elli&#39;, &#39;Vanessa&#39;, &#39;Charlotte&#39;, &#39;Felix&#39;,
+       &#39;Vanessa&#39;, &#39;Malena&#39;, &#39;Vanessa&#39;, &#39;Charlotte&#39;, &#39;Felix&#39;, &#39;Julius&#39;,
+       &#39;Malena&#39;, &#39;Malena&#39;, &#39;Elli&#39;, &#39;Malena&#39;, &#39;Elli&#39;, &#39;Vanessa&#39;, &#39;Felix&#39;,
+       &#39;Charlotte&#39;, &#39;Vanessa&#39;, &#39;Vanessa&#39;, &#39;Malena&#39;, &#39;Vanessa&#39;],
+      dtype=&#39;&lt;U9&#39;)
 </pre></div>
 </div>
 </div>
@@ -616,17 +616,17 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Charlotte
-[21 11  4 16]
+[21 11 12 23]
 Elli
-[ 2 20 19 17]
+[13  1  9  7]
 Malena
-[14  6  9 13]
+[22 20  2 16]
 Felix
-[22  1 18  3]
+[ 4 18  5 10]
 Vanessa
-[ 7 10 15 12]
+[ 6 15  3 24]
 Julius
-[23  8  5 24]
+[17 14 19  8]
 </pre></div>
 </div>
 </div>
@@ -845,7 +845,7 @@ Julius
     <a class='right-next' id="next-link" href="A5-LinearModels.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">s05: Linear Models</p>
+        <p class="prev-next-title">Appendix: Linear Models</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
