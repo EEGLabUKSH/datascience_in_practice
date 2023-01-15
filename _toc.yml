@@ -16,9 +16,9 @@ parts:
   - file: tutorials/03-Distributions
   - file: tutorials/03-TestingDistributions
   - file: tutorials/04-StatisticalComparisons
-  - file: tutorials/05-Clustering
-  - file: tutorials/05-DimensionalityReduction
-  - file: tutorials/05-Classification
+  - file: tutorials/05-1-Clustering
+  - file: tutorials/05-2-Classification
+  - file: tutorials/05-3-DimensionalityReduction
   - file: tutorials/06-EegMagic
   - file: tutorials/A1-PythonPackages
   - file: tutorials/A2-Git
