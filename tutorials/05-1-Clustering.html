@@ -893,52 +893,7 @@ whiten<span class="o">?</span>
 <ul>
     Task 5.2: Write a function that performs a KMeans classification between data vectors. It should take the vectors as inputs (data1, data2) and the number of cluster (n_clusters) as inputs. It should return the assigned labels and the mean error per cluster centroid. (1 point).
 </ul>
-</div><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">pairwise_distances_argmin</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1"># generate sample data</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="c1"># initialize k-means model and fit to data</span>
-<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-
-<span class="c1"># get the index of the closest point for each sample</span>
-<span class="n">closest</span> <span class="o">=</span> <span class="n">pairwise_distances_argmin</span><span class="p">(</span><span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
-
-<span class="c1"># compute mean error for each centroid</span>
-<span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">kmeans</span><span class="o">.</span><span class="n">n_clusters</span><span class="p">):</span>
-    <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">closest</span><span class="p">]</span> <span class="o">-</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
-    
-<span class="c1"># print mean error per centroid</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.722459620126544, 1.8073258156299417, 1.2774526835265685, 2.0348409115486956, 1.7418102793003232]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">[</span><span class="n">closest</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">-</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.1093452 , -0.09712463])
-</pre></div>
-</div>
-</div>
-</div>
-</section>
+</div></section>
 <section id="other-clustering-approaches">
 <h2>Other Clustering Approaches<a class="headerlink" href="#other-clustering-approaches" title="Permalink to this headline">#</a></h2>
 <p>Clustering is a general task, and there are many different algorithms that can be used to attempt to solve it.</p>
@@ -1036,7 +991,7 @@ whiten<span class="o">?</span>
 Estimated number of noise points: 11
 </pre></div>
 </div>
-<img alt="../_images/05-1-Clustering_33_1.png" src="../_images/05-1-Clustering_33_1.png" />
+<img alt="../_images/05-1-Clustering_31_1.png" src="../_images/05-1-Clustering_31_1.png" />
 </div>
 </div>
 </section>
