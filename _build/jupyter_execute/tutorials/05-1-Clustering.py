@@ -262,39 +262,6 @@ axs[1].set_ylabel('Petal Width (cm)', fontsize=14);
 # </ul>
 # </div>
 
-# In[38]:
-
-
-from sklearn.cluster import KMeans
-from sklearn.metrics import pairwise_distances_argmin
-import numpy as np
-
-# generate sample data
-np.random.seed(0)
-X = np.random.randn(100, 2)
-
-# initialize k-means model and fit to data
-kmeans = KMeans(n_clusters=5)
-kmeans.fit(X)
-
-# get the index of the closest point for each sample
-closest = pairwise_distances_argmin(kmeans.cluster_centers_, X)
-
-# compute mean error for each centroid
-errors = []
-for i in range(kmeans.n_clusters):
-    errors.append(np.mean(np.linalg.norm(X[closest] - kmeans.cluster_centers_[i], axis=1)))
-    
-# print mean error per centroid
-print(errors)
-
-
-# In[39]:
-
-
-X[closest[i]] - kmeans.cluster_centers_[i]
-
-
 # ## Other Clustering Approaches
 # 
 # Clustering is a general task, and there are many different algorithms that can be used to attempt to solve it. 
