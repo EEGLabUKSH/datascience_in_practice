@@ -200,7 +200,7 @@ km.fit(data);
 labels = km.fit_predict(data)
 
 
-# In[36]:
+# In[15]:
 
 
 km.cluster_centers_
@@ -208,7 +208,7 @@ km.cluster_centers_
 
 # ### Results from KMeans
 
-# In[37]:
+# In[27]:
 
 
 # Getting the Centroids
@@ -218,22 +218,23 @@ u_labels = np.unique(labels)
 
 # Let's check out the clusters that KMeans found and compare to original data
 
-fig, axs = plt.subplots(1,2)
+fig, axs = plt.subplots(1,2, figsize=(15, 10))
 
 for ind in range(n_labels):
     axs[0].scatter(d1w[iris.target==ind],
                 d2w[iris.target==ind],
                 label=iris.target_names[ind])
-axs[0].scatter(centroids[:,0] , centroids[:,1] , s = 80, color = 'k', label='Final cluster centroids')
+axs[0].scatter(centroids[:,0] , centroids[:,1] , marker = '$c$', s = 150, color = 'k', label='Final cluster centroids')
 axs[0].set_title('Original data', fontweight='bold')
 axs[0].set_xlabel('Petal Length (cm)');
 axs[0].set_ylabel('Petal Width (cm)');
 axs[0].legend(scatterpoints=1, loc='upper left');
 
 axs[1].scatter(d1w, d2w, c=km.labels_, cmap='viridis');
-axs[1].set_title('KMeans results', fontsize=16, fontweight='bold')
-axs[1].set_xlabel('Petal Length (cm)', fontsize=14);
-axs[1].set_ylabel('Petal Width (cm)', fontsize=14);
+axs[1].scatter(centroids[:,0] , centroids[:,1] , marker = '$c$', s = 150, color = 'k', label='Final cluster centroids')
+axs[1].set_title('KMeans results', fontweight='bold')
+axs[1].set_xlabel('Petal Length (cm)', );
+axs[1].set_ylabel('Petal Width (cm)', );
 
 
 # In the plot above, each data point is labeled with it's cluster assignment, that we learned from the data. 
@@ -252,7 +253,7 @@ axs[1].set_ylabel('Petal Width (cm)', fontsize=14);
 
 # <div class="alert alert-danger">
 # <ul>
-#     Task 5.1: What are the default options for the sklearn KMeans function (number of clusters and maximal number of iterations). No Code needed for this exercise (1 point).
+#     Task 5.1: What are the default options for the sklearn KMeans function (number of clusters and maximal number of iterations). <b>No Code needed for this exercise</b> (1 point).
 # </ul>
 # </div>
 
@@ -268,7 +269,7 @@ axs[1].set_ylabel('Petal Width (cm)', fontsize=14);
 # 
 # For example, below are printed some of the different clustering algorithms and approaches that are available in sklearn.
 
-# In[40]:
+# In[17]:
 
 
 print('Clustering approaches in sklearn:')
@@ -277,7 +278,9 @@ for name in dir(cluster):
         print('  ', name)
 
 
-# In[41]:
+# 
+
+# In[18]:
 
 
 ## Example Code DBScan for Iris data
