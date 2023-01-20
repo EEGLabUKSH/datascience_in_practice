@@ -666,7 +666,7 @@ provides a nice overview of the SVM algorithm. This is also a code-based explain
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x26cd84286d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1a38fc0d4f0&gt;
 </pre></div>
 </div>
 <img alt="../_images/05-2-Classification_9_1.png" src="../_images/05-2-Classification_9_1.png" />
@@ -904,11 +904,7 @@ This following code to find and visualize the decision boundary and margins is a
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\User\anaconda3\lib\site-packages\sklearn\svm\_base.py:1225: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
-  warnings.warn(
-</pre></div>
-</div>
-<img alt="../_images/05-2-Classification_31_1.png" src="../_images/05-2-Classification_31_1.png" />
+<img alt="../_images/05-2-Classification_31_0.png" src="../_images/05-2-Classification_31_0.png" />
 </div>
 </div>
 </section>
@@ -945,7 +941,24 @@ This following code to find and visualize the decision boundary and margins is a
 <ul>
     Task 5.4: Using list comprehensions create a new variable which holds the cards names instead of the numerical labels (1='Ace of spades', 2 = 'Jack of clubs', .... ). The corresponsing card names are given below (1 point).
 </ul>
-</div><p>Next we want to see if the participant did think about one card in particular (which was the task).</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cards</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Ace of spades&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Jack of clubs&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Queen of hearts&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;King of diamonds&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;10 of spaces&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;3 of clubs&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;10 of hearts&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;3 of diamonds&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;King of spades&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we want to see if the participant did think about one card in particular (which was the task).</p>
 <div class="alert alert-danger">
 <ul>
     Task 5.5.1: Create a SVM classifier with a 'poly' or 'linear' kernel (0.5 point). <br>
