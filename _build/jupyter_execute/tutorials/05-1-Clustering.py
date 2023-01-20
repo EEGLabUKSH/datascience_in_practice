@@ -203,12 +203,18 @@ labels = km.fit_predict(data)
 # In[14]:
 
 
+len(labels)
+
+
+# In[15]:
+
+
 km.cluster_centers_
 
 
 # ### Results from KMeans
 
-# In[15]:
+# In[16]:
 
 
 # Getting the Centroids
@@ -269,7 +275,7 @@ axs[1].set_ylabel('Petal Width (cm)', );
 # 
 # For example, below are printed some of the different clustering algorithms and approaches that are available in sklearn.
 
-# In[16]:
+# In[17]:
 
 
 print('Clustering approaches in sklearn:')
@@ -278,7 +284,7 @@ for name in dir(cluster):
         print('  ', name)
 
 
-# In[17]:
+# In[18]:
 
 
 ## Example Code DBScan for Iris data

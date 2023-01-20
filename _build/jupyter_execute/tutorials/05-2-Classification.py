@@ -66,39 +66,48 @@ from sklearn.metrics import classification_report
 
 
 # Setting for generating some random data
-n_points = 50             # Total number of data points
-label_prop = 0.5          # Proportion of points in class 1
+n_points = 100             # Total number of data points
+label_prop = 0.4          # Proportion of points in class 1
+n_dims = 2                # Number of dimensions in the generated dataset
+class_offset = 2         # Offset between class 1 and 2
 
 # Initialize data matrix (as zeros)
-data = np.zeros(shape=[n_points, 2])
+data = np.zeros(shape=[n_points, n_dims])
 
 # Set up the number of data points in each class
 n_data_1 = int(n_points * label_prop)
 n_data_2 = n_points - n_data_1
 
-# Generate the data
-data[0:n_data_1, 0] = np.abs(np.random.randn(n_data_1))
-data[0:n_data_1, 1] = np.abs(np.random.randn(n_data_1))
-data[n_data_2:, 0] = np.abs(np.random.randn(n_data_1)) + 2
-data[n_data_2:, 1] = np.abs(np.random.randn(n_data_1)) + 2
+# Generate the data for all dimensions
+for d in range(0,n_dims):
+    data[0:n_data_1, d] = np.abs(np.random.randn(n_data_1))
+    data[n_data_1:, d] = np.abs(np.random.randn(n_data_2)) + class_offset
+
 
 # Create the labels vector
-labels = np.array([0] * n_data_1 + [1] * n_data_2)
+labels = np.array([1] * n_data_1 + [2] * n_data_2)
+
+
+# In[3]:
+
+
+print(data.shape)
+print(labels.shape)
 
 
 # ### Data Visualization
 # 
 # Now that we have some data, let's start by plotting it.
 
-# In[3]:
+# In[4]:
 
 
 # Plot out labelled data
 fig = plt.figure(figsize=[9, 7])
 plt.plot(data[0:n_data_1, 0], data[0:n_data_1, 1],
-         'b.', ms=12, label="Label=0")
+        'b.', ms=12, label="Label=1")
 plt.plot(data[n_data_2:, 0], data[n_data_2:, 1],
-         'g.', ms=12, label="Label=1")
+        'g.', ms=12, label="Label=2")
 plt.legend(fontsize=15)
 
 
@@ -119,28 +128,28 @@ plt.legend(fontsize=15)
 # - Check performance of our model (in real applications, using a separate, labeled, test set)
 # - Apply the model to make predictions about new datapoints
 
-# In[4]:
+# In[5]:
 
 
 # Initialize an SVM classifer object
 classifier = SVC(kernel='linear')
 
 
-# In[5]:
+# In[6]:
 
 
 # Fit our classification model to our training data
 classifier.fit(data, labels)
 
 
-# In[6]:
+# In[7]:
 
 
 # Calculate predictions of the model on the training data
 train_predictions = classifier.predict(data)
 
 
-# In[7]:
+# In[8]:
 
 
 # Print out the performance metrics on the 
@@ -159,14 +168,14 @@ print(classification_report(train_predictions, labels))
 # 
 # Now that we have a trained model, we can use it to predict labels for new data points, including for data points for which we do not know already know the correct label.
 
-# In[8]:
+# In[9]:
 
 
 # Define a new data point, that we will predict a label for
-new_point = np.array([[3, 3]])
+new_point = np.array([[np.random.rand() + class_offset,np.random.rand() + class_offset]])
 
 
-# In[9]:
+# In[10]:
 
 
 # Add our new point to figure, in red, and redraw the figure
@@ -174,7 +183,7 @@ fig.gca().plot(new_point[0][0], new_point[0][1], '.r', ms=12);
 fig
 
 
-# In[10]:
+# In[11]:
 
 
 # Predict the class of the new data point
@@ -188,7 +197,7 @@ print('Predicted class of new data point is: {}'.format(prediction[0]))
 # 
 # Now that we have a trained model, we can have a look at the support vectors, and the decision boundary learned from them. 
 
-# In[11]:
+# In[12]:
 
 
 # Add the support vectors to plot, and redraw the figure
@@ -209,7 +218,7 @@ fig
 # <a href="http://scikit-learn.org/stable/auto_examples/svm/plot_separating_hyperplane.html#sphx-glr-auto-examples-svm-plot-separating-hyperplane-py" class="alert-link">sklearn example</a>.
 # </div>
 
-# In[12]:
+# In[13]:
 
 
 # Grab the current plot, and find axis sizes
@@ -226,10 +235,10 @@ Z = classifier.decision_function(xy).reshape(XX.shape)
 
 # Plot the decision boundary and margins
 ax.contour(XX, YY, Z, colors='k', levels=[-1, 0, 1], alpha=0.5,
-           linestyles=['--', '-', '--']);
+            linestyles=['--', '-', '--']);
 
 
-# In[13]:
+# In[14]:
 
 
 # Redraw figure
@@ -250,7 +259,7 @@ fig
 
 # But how does this look like for the Iris datasets?
 
-# In[14]:
+# In[15]:
 
 
 import numpy as np
@@ -318,3 +327,63 @@ fig.set_size_inches(15,10)
 # This example is meant as a brief example for using classification models with scikit-learn. Much more information can be found in the `scikit-learn` documentation. 
 # 
 # Classification is a vast area of machine learning, with many tools, algorithms, and approaches that can be applied to data within the realm of data science. This example seeks merely to introduce the basic idea. If you are interested in classification algorithms, then you are recommended to look into resources and classes that focus on machine learning. 
+
+# ## Exercises
+# You will for the first time finally work with EEG data (background to the data see [Session 06](https://biopsychkiel.github.io/datascience_in_practice/tutorials/06-EegMagic.html)).
+# 
+# You can find the mean P300 amplitudes and the labels for each of the 270 trials here:
+# 
+
+# In[16]:
+
+
+url_amps_ch = "https://raw.githubusercontent.com/BioPsychKiel/datascience_in_practice/main/tutorials/files/p300_amplitudes_chns.csv"
+url_labels = "https://raw.githubusercontent.com/BioPsychKiel/datascience_in_practice/main/tutorials/files/p300_labels.csv"
+
+
+# <div class="alert alert-danger">
+# <ul>
+#     Task 5.3: Load the amplitudes and labels in two variables using the pandas package, squeeze out the singelton dimension and transform them into a numpy array. (1 point).
+# </ul>
+# </div>
+# 
+# <div class="alert alert-danger">
+# <ul>
+#     Task 5.3: Load the amplitudes and labels in two variables using the pandas package in transform them into a numpy array. (1 point).
+# </ul>
+# </div>
+
+# The dataset holds 270 trials in which one of eight cards was presented.
+# 
+# <div class="alert alert-danger">
+# <ul>
+#     Task 5.4: Using list comprehensions create a new variable which holds the cards names instead of the numerical labels (1='Ace of spades', 2 = 'Jack of clubs', .... ). The corresponsing card names are given below (1 point).
+# </ul>
+# </div>
+
+# In[17]:
+
+
+cards = [
+    'Ace of spades',
+    'Jack of clubs',
+    'Queen of hearts',
+    'King of diamonds',
+    '10 of spaces',
+    '3 of clubs',
+    '10 of hearts',
+    '3 of diamonds',
+    'King of spades',
+]
+
+
+# Next we want to see if the participant did think about one card in particular (which was the task).
+# 
+# <div class="alert alert-danger">
+# <ul>
+#     Task 5.5.1: Create a SVM classifier with a 'poly' or 'linear' kernel (0.5 point). <br>
+#     Task 5.5.2: Fit the amplitude data with the card labels (0.5 point).<br>
+#     Task 5.5.3: Calculate predictions based on the amplitude data (0.5 point).<br>
+#     Task 5.5.4: Show a classification result using your predictions and the card labels (0.5 point).<br>
+# </ul>
+# </div>

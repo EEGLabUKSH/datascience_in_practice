@@ -39,6 +39,19 @@ data = sio.loadmat(Path.joinpath(dir_rawdata,fname))
 data_mne = np.vstack((data['EEG'],data['labels']))
 
 
+# In[3]:
+
+
+data['EEG']
+data['labels']
+
+
+# In[4]:
+
+
+data['EEG'].shape
+
+
 # ## Explore the loaded data
 # To understand the data we were handed please explore what the variable contains.
 # 
@@ -48,7 +61,7 @@ data_mne = np.vstack((data['EEG'],data['labels']))
 # 
 # </div>
 
-# In[3]:
+# In[5]:
 
 
 print('EEG dimensions:', data['EEG'].shape)
@@ -61,7 +74,7 @@ print(np.unique(data['labels']))
 # For now these are channel names and types of our data, as well as the sampling rate.
 # 
 
-# In[4]:
+# In[6]:
 
 
 # convert raw numpy to mne
@@ -77,7 +90,7 @@ info = mne.create_info(ch_names=ch_nms, sfreq=srate, ch_types=ch_types)
 # ## Create MNE object
 # With the raw data loaded and the config variables defined, we can initiate the MNE object.
 
-# In[5]:
+# In[7]:
 
 
 raw = mne.io.RawArray(data_mne, info)
@@ -86,7 +99,7 @@ raw = mne.io.RawArray(data_mne, info)
 # WOW, that was super easy (when you know the right functions XD).
 # Lets, already do some basic processing of the data.
 
-# In[6]:
+# In[8]:
 
 
 raw.filter(0.5, 20)
@@ -95,7 +108,7 @@ raw.filter(0.5, 20)
 # ## Prepare epoching
 # To better understand the data, we want to find events in the raw data and epoch around these.
 
-# In[7]:
+# In[9]:
 
 
 events = mne.find_events(raw)
@@ -137,7 +150,7 @@ print('Card shown at each onset:', classes[:10])
 
 # Now lets do the epoching
 
-# In[8]:
+# In[10]:
 
 
 nchannels = 7 # 7 EEG channels
@@ -155,7 +168,7 @@ print(trials.shape)
 # ## Defining a function
 # because we will probably plot our data a trazillion times, lets define a function to make the code look cleaner and to help us keep an overview.
 
-# In[9]:
+# In[11]:
 
 
 def plot_eeg(EEG, vspace=100, color='k'):
@@ -202,7 +215,7 @@ def plot_eeg(EEG, vspace=100, color='k'):
     plt.title('EEG data')
 
 
-# In[10]:
+# In[12]:
 
 
 plt.figure(figsize=(4, 4))
@@ -213,11 +226,11 @@ plot_eeg(trials[0, :, :], vspace=30)
 # "Why do you always plot your data?" <br>
 # "Because I can" - *Immanuel Kant*
 
-# In[11]:
+# In[13]:
 
 
 # Lets give each response a different color
-colors = cfg_colors_eeg_plot_trials = plt.cm.viridis(np.linspace(0,1,EEG.shape[0]+2))
+cfg_colors_eeg_plot_trials = plt.cm.viridis(np.linspace(0,1,EEG.shape[0]+2))
 
 plt.figure()
 
@@ -225,23 +238,23 @@ plt.figure()
 for i in range(len(cards)):
     # Use logical indexing to get the right trial indices
     erp = np.mean(trials[classes == i+1, :, :], axis=0)
-    plot_eeg(erp, vspace=20, color=colors[i])
-plt.xlim(0,0.5)
+    plot_eeg(erp, vspace=20, color=cfg_colors_eeg_plot_trials[i])
+plt.xlim(0,0.4)
 
 
 # ## Find features
 # For the classification we want to extract the P300 amplitude. Easy!
 
-# In[12]:
+# In[14]:
 
 
-from_index = int(0.3 * sample_rate)
-to_index = int(0.5 * sample_rate)
+from_index = int(0.25 * sample_rate)
+to_index = int(0.4 * sample_rate)
 p300_amplitudes = np.mean(np.mean(trials[:, :, from_index:to_index], axis=1), axis=1)
 p300_amplitudes -= min(p300_amplitudes) # Make them all positive
 
 
-# In[13]:
+# In[15]:
 
 
 card_oi = 3
@@ -253,7 +266,7 @@ plt.xlabel('Cards match')
 plt.title(f'Card : {cards[card_oi-1]}')
 
 
-# In[14]:
+# In[16]:
 
 
 nclasses = len(cards)
@@ -268,4 +281,21 @@ plt.ylabel('score')
 # Pick the card with the highest score
 winning_card = np.argmax(scores)
 print('Was your card the %s?' % cards[winning_card])
+
+
+# In[17]:
+
+
+import pandas as pd
+
+# amp channel avg
+amps = pd.DataFrame(p300_amplitudes)
+amps.to_csv(Path.joinpath(dir_rawdata,"p300_amplitudes.csv"), index=False,header=False)
+
+# amp per channel
+p300_amplitudes_chans = np.mean(trials[:, :, from_index:to_index], axis=2)
+pd.DataFrame(p300_amplitudes_chans).to_csv(Path.joinpath(dir_rawdata,"p300_amplitudes_chns.csv"), index=False, header=False)
+
+# label
+pd.DataFrame(classes).to_csv(Path.joinpath(dir_rawdata,"p300_labels.csv"), index=False,header=False)
 

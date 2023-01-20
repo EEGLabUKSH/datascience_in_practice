@@ -477,6 +477,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -543,6 +548,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -601,24 +611,40 @@ provides a nice overview of the SVM algorithm. This is also a code-based explain
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setting for generating some random data</span>
-<span class="n">n_points</span> <span class="o">=</span> <span class="mi">50</span>             <span class="c1"># Total number of data points</span>
-<span class="n">label_prop</span> <span class="o">=</span> <span class="mf">0.5</span>          <span class="c1"># Proportion of points in class 1</span>
+<span class="n">n_points</span> <span class="o">=</span> <span class="mi">100</span>             <span class="c1"># Total number of data points</span>
+<span class="n">label_prop</span> <span class="o">=</span> <span class="mf">0.4</span>          <span class="c1"># Proportion of points in class 1</span>
+<span class="n">n_dims</span> <span class="o">=</span> <span class="mi">2</span>                <span class="c1"># Number of dimensions in the generated dataset</span>
+<span class="n">class_offset</span> <span class="o">=</span> <span class="mi">2</span>         <span class="c1"># Offset between class 1 and 2</span>
 
 <span class="c1"># Initialize data matrix (as zeros)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="n">n_points</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="n">n_points</span><span class="p">,</span> <span class="n">n_dims</span><span class="p">])</span>
 
 <span class="c1"># Set up the number of data points in each class</span>
 <span class="n">n_data_1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_points</span> <span class="o">*</span> <span class="n">label_prop</span><span class="p">)</span>
 <span class="n">n_data_2</span> <span class="o">=</span> <span class="n">n_points</span> <span class="o">-</span> <span class="n">n_data_1</span>
 
-<span class="c1"># Generate the data</span>
-<span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n_data_1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_data_1</span><span class="p">))</span>
-<span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n_data_1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_data_1</span><span class="p">))</span>
-<span class="n">data</span><span class="p">[</span><span class="n">n_data_2</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_data_1</span><span class="p">))</span> <span class="o">+</span> <span class="mi">2</span>
-<span class="n">data</span><span class="p">[</span><span class="n">n_data_2</span><span class="p">:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_data_1</span><span class="p">))</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="c1"># Generate the data for all dimensions</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_dims</span><span class="p">):</span>
+    <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n_data_1</span><span class="p">,</span> <span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_data_1</span><span class="p">))</span>
+    <span class="n">data</span><span class="p">[</span><span class="n">n_data_1</span><span class="p">:,</span> <span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_data_2</span><span class="p">))</span> <span class="o">+</span> <span class="n">class_offset</span>
+
 
 <span class="c1"># Create the labels vector</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_data_1</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_data_2</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_data_1</span> <span class="o">+</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_data_2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(100, 2)
+(100,)
 </pre></div>
 </div>
 </div>
@@ -632,18 +658,18 @@ provides a nice overview of the SVM algorithm. This is also a code-based explain
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot out labelled data</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n_data_1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n_data_1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-         <span class="s1">&#39;b.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Label=0&quot;</span><span class="p">)</span>
+        <span class="s1">&#39;b.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Label=1&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">n_data_2</span><span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="n">n_data_2</span><span class="p">:,</span> <span class="mi">1</span><span class="p">],</span>
-         <span class="s1">&#39;g.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Label=1&quot;</span><span class="p">)</span>
+        <span class="s1">&#39;g.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Label=2&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x28bcceae9d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1a38fc0d4f0&gt;
 </pre></div>
 </div>
-<img alt="../_images/05-2-Classification_8_1.png" src="../_images/05-2-Classification_8_1.png" />
+<img alt="../_images/05-2-Classification_9_1.png" src="../_images/05-2-Classification_9_1.png" />
 </div>
 </div>
 <p>As we can see above, we have two fairly distinct groups of data.</p>
@@ -696,12 +722,12 @@ provides a nice overview of the SVM algorithm. This is also a code-based explain
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
-           0       1.00      1.00      1.00        25
-           1       1.00      1.00      1.00        25
+           1       0.97      1.00      0.99        39
+           2       1.00      0.98      0.99        61
 
-    accuracy                           1.00        50
-   macro avg       1.00      1.00      1.00        50
-weighted avg       1.00      1.00      1.00        50
+    accuracy                           0.99       100
+   macro avg       0.99      0.99      0.99       100
+weighted avg       0.99      0.99      0.99       100
 </pre></div>
 </div>
 </div>
@@ -717,7 +743,7 @@ weighted avg       1.00      1.00      1.00        50
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a new data point, that we will predict a label for</span>
-<span class="n">new_point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="n">new_point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">+</span> <span class="n">class_offset</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">+</span> <span class="n">class_offset</span><span class="p">]])</span>
 </pre></div>
 </div>
 </div>
@@ -731,7 +757,7 @@ weighted avg       1.00      1.00      1.00        50
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05-2-Classification_18_0.png" src="../_images/05-2-Classification_18_0.png" />
+<img alt="../_images/05-2-Classification_19_0.png" src="../_images/05-2-Classification_19_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -743,7 +769,7 @@ weighted avg       1.00      1.00      1.00        50
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted class of new data point is: 1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted class of new data point is: 2
 </pre></div>
 </div>
 </div>
@@ -764,7 +790,7 @@ weighted avg       1.00      1.00      1.00        50
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05-2-Classification_21_0.png" src="../_images/05-2-Classification_21_0.png" />
+<img alt="../_images/05-2-Classification_22_0.png" src="../_images/05-2-Classification_22_0.png" />
 </div>
 </div>
 <p>As we can see, the support vectors, which are identified with some meta-data that is stored in the model object, are some datapoints at the end of the classes - those closest to the boundary.</p>
@@ -791,7 +817,7 @@ This following code to find and visualize the decision boundary and margins is a
 
 <span class="c1"># Plot the decision boundary and margins</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">XX</span><span class="p">,</span> <span class="n">YY</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-           <span class="n">linestyles</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">]);</span>
+            <span class="n">linestyles</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">]);</span>
 </pre></div>
 </div>
 </div>
@@ -804,7 +830,7 @@ This following code to find and visualize the decision boundary and margins is a
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05-2-Classification_26_0.png" src="../_images/05-2-Classification_26_0.png" />
+<img alt="../_images/05-2-Classification_27_0.png" src="../_images/05-2-Classification_27_0.png" />
 </div>
 </div>
 <p>In the above plot, the solid line is the decision boundary that the model has learned.</p>
@@ -878,7 +904,7 @@ This following code to find and visualize the decision boundary and margins is a
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05-2-Classification_30_0.png" src="../_images/05-2-Classification_30_0.png" />
+<img alt="../_images/05-2-Classification_31_0.png" src="../_images/05-2-Classification_31_0.png" />
 </div>
 </div>
 </section>
@@ -889,6 +915,58 @@ This following code to find and visualize the decision boundary and margins is a
 <p>Classification is a vast area of machine learning, with many tools, algorithms, and approaches that can be applied to data within the realm of data science. This example seeks merely to introduce the basic idea. If you are interested in classification algorithms, then you are recommended to look into resources and classes that focus on machine learning.</p>
 </section>
 </section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<p>You will for the first time finally work with EEG data (background to the data see <a class="reference external" href="https://biopsychkiel.github.io/datascience_in_practice/tutorials/06-EegMagic.html">Session 06</a>).</p>
+<p>You can find the mean P300 amplitudes and the labels for each of the 270 trials here:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_amps_ch</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/BioPsychKiel/datascience_in_practice/main/tutorials/files/p300_amplitudes_chns.csv&quot;</span>
+<span class="n">url_labels</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/BioPsychKiel/datascience_in_practice/main/tutorials/files/p300_labels.csv&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-danger">
+<ul>
+    Task 5.3: Load the amplitudes and labels in two variables using the pandas package, squeeze out the singelton dimension and transform them into a numpy array. (1 point).
+</ul>
+</div>
+<div class="alert alert-danger">
+<ul>
+    Task 5.3: Load the amplitudes and labels in two variables using the pandas package in transform them into a numpy array. (1 point).
+</ul>
+</div><p>The dataset holds 270 trials in which one of eight cards was presented.</p>
+<div class="alert alert-danger">
+<ul>
+    Task 5.4: Using list comprehensions create a new variable which holds the cards names instead of the numerical labels (1='Ace of spades', 2 = 'Jack of clubs', .... ). The corresponsing card names are given below (1 point).
+</ul>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cards</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Ace of spades&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Jack of clubs&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Queen of hearts&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;King of diamonds&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;10 of spaces&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;3 of clubs&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;10 of hearts&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;3 of diamonds&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;King of spades&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we want to see if the participant did think about one card in particular (which was the task).</p>
+<div class="alert alert-danger">
+<ul>
+    Task 5.5.1: Create a SVM classifier with a 'poly' or 'linear' kernel (0.5 point). <br>
+    Task 5.5.2: Fit the amplitude data with the card labels (0.5 point).<br>
+    Task 5.5.3: Calculate predictions based on the amplitude data (0.5 point).<br>
+    Task 5.5.4: Show a classification result using your predictions and the card labels (0.5 point).<br>
+</ul>
+</div></section>
 </section>
 
     <script type="text/x-thebe-config">

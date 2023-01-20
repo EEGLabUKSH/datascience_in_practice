@@ -576,6 +576,31 @@ Load data with relativ path (1 point).
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;EEG&#39;</span><span class="p">]</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 0, 0, ..., 0, 0, 0]], dtype=uint8)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;EEG&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(7, 288349)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="explore-the-loaded-data">
 <h2>Explore the loaded data<a class="headerlink" href="#explore-the-loaded-data" title="Permalink to this headline">#</a></h2>
@@ -919,7 +944,7 @@ Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/06-EegMagic_18_0.png" src="../_images/06-EegMagic_18_0.png" />
+<img alt="../_images/06-EegMagic_20_0.png" src="../_images/06-EegMagic_20_0.png" />
 </div>
 </div>
 </section>
@@ -930,7 +955,7 @@ Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lets give each response a different color</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="n">cfg_colors_eeg_plot_trials</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">EEG</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">cfg_colors_eeg_plot_trials</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">EEG</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 
@@ -938,16 +963,16 @@ Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cards</span><span class="p">)):</span>
     <span class="c1"># Use logical indexing to get the right trial indices</span>
     <span class="n">erp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">trials</span><span class="p">[</span><span class="n">classes</span> <span class="o">==</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">plot_eeg</span><span class="p">(</span><span class="n">erp</span><span class="p">,</span> <span class="n">vspace</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">plot_eeg</span><span class="p">(</span><span class="n">erp</span><span class="p">,</span> <span class="n">vspace</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cfg_colors_eeg_plot_trials</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 0.5)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 0.4)
 </pre></div>
 </div>
-<img alt="../_images/06-EegMagic_20_1.png" src="../_images/06-EegMagic_20_1.png" />
+<img alt="../_images/06-EegMagic_22_1.png" src="../_images/06-EegMagic_22_1.png" />
 </div>
 </div>
 </section>
@@ -956,8 +981,8 @@ Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
 <p>For the classification we want to extract the P300 amplitude. Easy!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">from_index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.3</span> <span class="o">*</span> <span class="n">sample_rate</span><span class="p">)</span>
-<span class="n">to_index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">sample_rate</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">from_index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.25</span> <span class="o">*</span> <span class="n">sample_rate</span><span class="p">)</span>
+<span class="n">to_index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.4</span> <span class="o">*</span> <span class="n">sample_rate</span><span class="p">)</span>
 <span class="n">p300_amplitudes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">trials</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">from_index</span><span class="p">:</span><span class="n">to_index</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">p300_amplitudes</span> <span class="o">-=</span> <span class="nb">min</span><span class="p">(</span><span class="n">p300_amplitudes</span><span class="p">)</span> <span class="c1"># Make them all positive</span>
 </pre></div>
@@ -980,7 +1005,7 @@ Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Card : Queen of hearts&#39;)
 </pre></div>
 </div>
-<img alt="../_images/06-EegMagic_23_1.png" src="../_images/06-EegMagic_23_1.png" />
+<img alt="../_images/06-EegMagic_25_1.png" src="../_images/06-EegMagic_25_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1004,7 +1029,25 @@ Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Was your card the Queen of hearts?
 </pre></div>
 </div>
-<img alt="../_images/06-EegMagic_24_1.png" src="../_images/06-EegMagic_24_1.png" />
+<img alt="../_images/06-EegMagic_26_1.png" src="../_images/06-EegMagic_26_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># amp channel avg</span>
+<span class="n">amps</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">p300_amplitudes</span><span class="p">)</span>
+<span class="n">amps</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">dir_rawdata</span><span class="p">,</span><span class="s2">&quot;p300_amplitudes.csv&quot;</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># amp per channel</span>
+<span class="n">p300_amplitudes_chans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">trials</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">from_index</span><span class="p">:</span><span class="n">to_index</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">p300_amplitudes_chans</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">dir_rawdata</span><span class="p">,</span><span class="s2">&quot;p300_amplitudes_chns.csv&quot;</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># label</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">dir_rawdata</span><span class="p">,</span><span class="s2">&quot;p300_labels.csv&quot;</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 </section>
