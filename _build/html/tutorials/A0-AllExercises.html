@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Appendix: Python Packages &#8212; Data science in practice</title>
+    <title>Appendix: Exercise overview &#8212; Data science in practice</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Appendix: Version Control" href="A2-Git.html" />
-    <link rel="prev" title="Appendix: Exercise overview" href="A0-AllExercises.html" />
+    <link rel="next" title="Appendix: Python Packages" href="A1-PythonPackages.html" />
+    <link rel="prev" title="s06: EEG magic" href="06-EegMagic.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -199,13 +199,13 @@ const thebe_selector_output = ".output, .cell_output"
    s06: EEG magic
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="A0-AllExercises.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Appendix: Exercise overview
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="A1-PythonPackages.html">
    Appendix: Python Packages
   </a>
  </li>
@@ -288,7 +288,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/tutorials/A1-PythonPackages.ipynb"
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/tutorials/A0-AllExercises.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -348,7 +348,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftutorials/A1-PythonPackages.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftutorials/A0-AllExercises.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -376,7 +376,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/tutorials/A1-PythonPackages.ipynb"
+        <a href="../_sources/tutorials/A0-AllExercises.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -436,70 +436,98 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-science-modules">
-   Data-Science Modules
+  <a class="reference internal nav-link" href="#chapter-intro">
+   Chapter: Intro
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#core-packages">
-     Core Packages
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#text-mining">
-     Text Mining
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mathematics-statistics">
-     Mathematics &amp; Statistics
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#web-scraping">
-     Web Scraping
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plotting-vizualization-libraries">
-     Plotting / Vizualization Libraries
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#graph-theory-networks">
-     Graph Theory / Networks
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deep-learning">
-     Deep Learning
+    <a class="reference internal nav-link" href="#introduction">
+     00 Introduction
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#useful-parts-of-the-standard-library">
-   Useful parts of the standard library
+  <a class="reference internal nav-link" href="#chapter-python">
+   Chapter: Python
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#basic-utilities">
-     Basic Utilities
+    <a class="reference internal nav-link" href="#jupyternotebooks">
+     01 JupyterNotebooks
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#useful-functions">
-     Useful Functions
+    <a class="reference internal nav-link" href="#numpy">
+     01 Numpy
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#file-formats">
-     File Formats
+    <a class="reference internal nav-link" href="#plotting">
+     01 Plotting
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-objects">
-     Data Objects
+    <a class="reference internal nav-link" href="#pandas">
+     01 Pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chapter-data-intro">
+   Chapter: Data intro
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataanalysis">
+     02 DataAnalysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datacleaning">
+     02 DataCleaning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chapter-stats-basics">
+   Chapter: Stats Basics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testing-distributions">
+     03 Testing Distributions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chapter-stats-testing">
+   Chapter: Stats testing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistical-comparisons">
+     04 Statistical Comparisons
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chapter-applied-algorithms">
+   Chapter: Applied Algorithms
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clsutering">
+     05.1 Clsutering
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classification">
+     05.2 Classification
     </a>
    </li>
   </ul>
@@ -513,7 +541,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Appendix: Python Packages</h1>
+                <h1>Appendix: Exercise overview</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -524,70 +552,98 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-science-modules">
-   Data-Science Modules
+  <a class="reference internal nav-link" href="#chapter-intro">
+   Chapter: Intro
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#core-packages">
-     Core Packages
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#text-mining">
-     Text Mining
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mathematics-statistics">
-     Mathematics &amp; Statistics
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#web-scraping">
-     Web Scraping
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plotting-vizualization-libraries">
-     Plotting / Vizualization Libraries
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#graph-theory-networks">
-     Graph Theory / Networks
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deep-learning">
-     Deep Learning
+    <a class="reference internal nav-link" href="#introduction">
+     00 Introduction
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#useful-parts-of-the-standard-library">
-   Useful parts of the standard library
+  <a class="reference internal nav-link" href="#chapter-python">
+   Chapter: Python
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#basic-utilities">
-     Basic Utilities
+    <a class="reference internal nav-link" href="#jupyternotebooks">
+     01 JupyterNotebooks
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#useful-functions">
-     Useful Functions
+    <a class="reference internal nav-link" href="#numpy">
+     01 Numpy
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#file-formats">
-     File Formats
+    <a class="reference internal nav-link" href="#plotting">
+     01 Plotting
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-objects">
-     Data Objects
+    <a class="reference internal nav-link" href="#pandas">
+     01 Pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chapter-data-intro">
+   Chapter: Data intro
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataanalysis">
+     02 DataAnalysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datacleaning">
+     02 DataCleaning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chapter-stats-basics">
+   Chapter: Stats Basics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testing-distributions">
+     03 Testing Distributions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chapter-stats-testing">
+   Chapter: Stats testing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistical-comparisons">
+     04 Statistical Comparisons
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chapter-applied-algorithms">
+   Chapter: Applied Algorithms
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clsutering">
+     05.1 Clsutering
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classification">
+     05.2 Classification
     </a>
    </li>
   </ul>
@@ -602,104 +658,193 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="appendix-python-packages">
-<h1>Appendix: Python Packages<a class="headerlink" href="#appendix-python-packages" title="Permalink to this headline">#</a></h1>
-<div class="alert alert-success">
-The following is general overview of packages available in Python that may be useful for data science.
+  <section class="tex2jax_ignore mathjax_ignore" id="appendix-exercise-overview">
+<h1>Appendix: Exercise overview<a class="headerlink" href="#appendix-exercise-overview" title="Permalink to this headline">#</a></h1>
+<p>You can download <a class="reference external" href="https://biopsychkiel.github.io/datascience_in_practice/_sources/tutorials/A0-AllExercises.ipynb">this</a> notebook as a template to fill out all exercises. A complete list of tasks has to be handed in by <strong>28.02.2023, 23:59:59</strong> via e-mail (<a class="reference external" href="mailto:j&#46;welzel&#37;&#52;&#48;neurologie&#46;uni-kiel&#46;de">j<span>&#46;</span>welzel<span>&#64;</span>neurologie<span>&#46;</span>uni-kiel<span>&#46;</span>de</a>). There is a total of 37 points, you need 18 to pass (5 you already have by just sending an empty notebook). People who did the extra advent exercise have to score <em>14 points</em> to pass.</p>
+<section id="chapter-intro">
+<h2>Chapter: Intro<a class="headerlink" href="#chapter-intro" title="Permalink to this headline">#</a></h2>
+<p>Everybody get full score here, no need to put this in the final document.</p>
+<section id="introduction">
+<h3>00 Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h3>
+<div class="alert alert-danger">
+<ul>
+Task 0.1: Create an account at <a href="https://github.com/" class="alert-link">Github</a>. (1 point)
+</ul>
 </div>
-<div class="alert alert-info">
-For a much broader / fuller list of the Python ecosystem, check out the 
-<a href="https://github.com/vinta/awesome-python" class="alert-link">Awesome Python</a> list. 
-</div><section id="data-science-modules">
-<h2>Data-Science Modules<a class="headerlink" href="#data-science-modules" title="Permalink to this headline">#</a></h2>
-<p>These are all external (non-standard library) packages. Many of them are available in the Ananconda distribution.</p>
-<section id="core-packages">
-<h3>Core Packages<a class="headerlink" href="#core-packages" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.scipy.org">scipy</a> - mathematics, science, and engineering.</p></li>
-<li><p><a class="reference external" href="http://www.numpy.org">numpy</a> - numerical computing with arrays &amp; array operations.</p></li>
-<li><p><a class="reference external" href="https://pandas.pydata.org">pandas</a> - data structures and data analysis.</p></li>
-<li><p><a class="reference external" href="http://scikit-learn.org/stable/">scikit-learn</a> - machine learning and data analysis.</p></li>
+<div class="alert alert-danger">
+<ul>
+Task 0.2: Download and install GitHub Desktop until the next session. (1 point)
 </ul>
-</section>
-<section id="text-mining">
-<h3>Text Mining<a class="headerlink" href="#text-mining" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="http://www.nltk.org">nltk</a> - natural language processing.</p></li>
-<li><p><a class="reference external" href="https://radimrehurek.com/gensim/">gensim</a> - topic modelling.</p></li>
+</div>
+<div class="alert alert-danger">
+<ul>
+Task 0.3: Connect your Github account to your GitHub Desktop install. (1 point)
 </ul>
+</div></section>
 </section>
-<section id="mathematics-statistics">
-<h3>Mathematics &amp; Statistics<a class="headerlink" href="#mathematics-statistics" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="http://www.sympy.org/en/index.html">sympy</a> - symbolic mathematics.</p></li>
-<li><p><a class="reference external" href="http://www.statsmodels.org/stable/index.html">statsmodels</a> - statistical modelling.</p></li>
+<section id="chapter-python">
+<h2>Chapter: Python<a class="headerlink" href="#chapter-python" title="Permalink to this headline">#</a></h2>
+<section id="jupyternotebooks">
+<h3>01 JupyterNotebooks<a class="headerlink" href="#jupyternotebooks" title="Permalink to this headline">#</a></h3>
+<div class="alert alert-danger">
+<ul>
+Task 1.1: Create a Jupyter Notebook using the Anaconda Navigator and name it "s01_jupyter_introduction". (1 point) (Of course everybody gets this point)
+</div>
+<div class="alert alert-danger">
+<ul>
+Task 1.2: Close the Notebook and open it again. (1 point) (This one as well)
 </ul>
-</section>
-<section id="web-scraping">
-<h3>Web Scraping<a class="headerlink" href="#web-scraping" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://requests.readthedocs.io/">requests</a> - HTTP requests.</p></li>
-<li><p><a class="reference external" href="https://scrapy.org">scrapy</a> - web scraping.</p></li>
+</div>
+<div class="alert alert-danger">
+<ul>
+Task 1.3: Create two variables. One variable with name "one" which holds the numeric value 1. The other variable should be named "two" and has to contain a string of value "two". (1 point)
 </ul>
-</section>
-<section id="plotting-vizualization-libraries">
-<h3>Plotting / Vizualization Libraries<a class="headerlink" href="#plotting-vizualization-libraries" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://matplotlib.org">matplotlib</a> - 2D plotting library.</p></li>
-<li><p><a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> - visualization (based on matplotlib).</p></li>
-<li><p><a class="reference external" href="http://bokeh.pydata.org/en/latest/">bokeh</a> - interactive visualizations.</p></li>
+</div>
+<div class="alert alert-danger">
+<ul>
+Task 1.4: Create a list which contains at least one variable of types (bool,int,float,str). (1 point)
 </ul>
+</div>
 </section>
-<section id="graph-theory-networks">
-<h3>Graph Theory / Networks<a class="headerlink" href="#graph-theory-networks" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://networkx.github.io/">networkx</a> - network analysis.</p></li>
-<li><p><a class="reference external" href="https://graph-tool.skewed.de/">graph-tool</a> - manipulation and analysis of graphs.</p></li>
+<section id="numpy">
+<h3>01 Numpy<a class="headerlink" href="#numpy" title="Permalink to this headline">#</a></h3>
+<div class="alert alert-danger">
+<ul>
+Task 1.5: Create a random array with elements between 0 and 1. Then add 10 to all elements in the range [0.2, 0.7). (2 points)
 </ul>
-</section>
-<section id="deep-learning">
-<h3>Deep Learning<a class="headerlink" href="#deep-learning" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="http://deeplearning.net/software/theano/">theano</a> - mathematical operations on multi-dimensional arrays.</p></li>
-<li><p><a class="reference external" href="https://www.tensorflow.org/">tensorflow</a> - numerical computation using data flow graphs.</p></li>
-<li><p><a class="reference external" href="https://keras.io">keras</a> - a high-level neural network library.</p></li>
+</div>
+<div class="alert alert-danger">
+<ul>
+Task 1.6: 
+Create a (8, 8)-array called chess with a chessboard pattern (use the values 0 and 1 for this). There are many possible solutions, feel free to give several variants. For example, see the help for the function np.tile, or first create an array of all zeros and then insert ones at the appropriate places (e.g. by indexing appropriately). (3 points)
 </ul>
+</div>
 </section>
-</section>
-<section id="useful-parts-of-the-standard-library">
-<h2>Useful parts of the standard library<a class="headerlink" href="#useful-parts-of-the-standard-library" title="Permalink to this headline">#</a></h2>
-<p>The full list of packages in the standard library is available <a class="reference external" href="https://docs.python.org/3/library/index.html">here</a>.</p>
-<section id="basic-utilities">
-<h3>Basic Utilities<a class="headerlink" href="#basic-utilities" title="Permalink to this headline">#</a></h3>
+<section id="plotting">
+<h3>01 Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">#</a></h3>
+<div class="alert alert-danger">
+<ul>
+Task 1.7: This is a great exercise which is very close to real life. (3 points)
+<p>Your task is to select one visualization library (some need to be installed first - indoubt choose Matplotlib or Seaborn since they are part of Anaconda installation):</p>
+<p>(i) <a href=https://matplotlib.org/stable/gallery/index.html class="alert-link">Matplotlib</a>: probably the most standard and most widely used</p>
+<p>(ii) <a href=https://seaborn.pydata.org/examples/index.html class="alert-link">Seaborn</a>: probably the most standard and most widely used</p>
+<p>(iii) <a href=https://yhat.github.io/ggpy/ class="alert-link">ggplot</a>: probably the most standard and most widely used</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://docs.python.org/3/library/os.html">os</a> - miscellaneous operating system operations.</p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/sys.html">sys</a> - system operations.</p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/datetime.html">datetime</a> - manipulating dates &amp; times.</p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/glob.html">glob</a> - searching path names.</p></li>
+<li><p>Browse the various example galleries (links above).</p></li>
+<li><p>Select one example that simply interests you.</p></li>
+<li><p>First try to reproduce this example in the Jupyter notebook.</p></li>
+<li><p>Then try to print out the data that is used in this example just before the call of the plotting function to learn about its structure. Is it a pandas dataframe? Is it a NumPy array? Is it a dictionary? A list or a list of lists?</p></li>
 </ul>
+</ul>
+</div>
 </section>
-<section id="useful-functions">
-<h3>Useful Functions<a class="headerlink" href="#useful-functions" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://docs.python.org/3/library/math.html">math</a> - mathematical functions.</p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/random.html">random</a> - (pseudo) random number generators.</p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/re.html">re</a> - regular expressions.</p></li>
+<section id="pandas">
+<h3>01 Pandas<a class="headerlink" href="#pandas" title="Permalink to this headline">#</a></h3>
+<div class="alert alert-danger">
+<ul>
+Task 1.8: How many pengouins per species live on which island? Store the answer in a new variable. (2 points).
 </ul>
+</div>
+<div class="alert alert-danger">
+<ul>
+Task 1.9: Using boolean indexing, compute the mean flipper length among pengouins over and under the average body mass. (2 points).
+</ul>
+</div></section>
 </section>
-<section id="file-formats">
-<h3>File Formats<a class="headerlink" href="#file-formats" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://docs.python.org/3/library/json.html">json</a> - support for working with JSON files.</p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/csv.html">csv</a> - support for working with CSV files.</p></li>
+<section id="chapter-data-intro">
+<h2>Chapter: Data intro<a class="headerlink" href="#chapter-data-intro" title="Permalink to this headline">#</a></h2>
+<section id="dataanalysis">
+<h3>02 DataAnalysis<a class="headerlink" href="#dataanalysis" title="Permalink to this headline">#</a></h3>
+<div class="alert alert-danger">
+<ul>
+Task 2.1: Import the numpy package as np and create a variable with a meaningful name. The variable should hold an 1darray with number as integers from 1 to 10. (2 points)
 </ul>
+</div>
+<div class="alert alert-danger">
+<ul>
+Task 2.2: Using numpy create a 1darray of random integers (np.random.randint). Find the min, max, and mean of the array and print them in the command line using a formatted string. (2 points)
+</ul>
+</div>
 </section>
-<section id="data-objects">
-<h3>Data Objects<a class="headerlink" href="#data-objects" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://docs.python.org/3/library/collections.html">collections</a> - container data types.</p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/pickle.html">pickle</a> - serializing &amp; de-serializing (saving and loading complex objects).</p></li>
+<section id="datacleaning">
+<h3>02 DataCleaning<a class="headerlink" href="#datacleaning" title="Permalink to this headline">#</a></h3>
+<div class="alert alert-danger">
+<ul>
+Task 2.3: Use the provided list to load the dataframe properly! Make sure to properly include the first line of the file as the first line of actual data (1 point).
 </ul>
+</div>
+<div class="alert alert-danger">
+<ul>
+Task 2.4: Remove all entries (rows) from the dataframe where no meaningful year is provided (1 point).
+</ul>
+</div></section>
+</section>
+<section id="chapter-stats-basics">
+<h2>Chapter: Stats Basics<a class="headerlink" href="#chapter-stats-basics" title="Permalink to this headline">#</a></h2>
+<section id="testing-distributions">
+<h3>03 Testing Distributions<a class="headerlink" href="#testing-distributions" title="Permalink to this headline">#</a></h3>
+<div class="alert alert-danger">
+<ul>
+Task 3.1: Write a function that plots two data vectors as histograms (e.g. `df["sepal_length"]` and `df["sepal_width"]`) and tests for normal distribution of the two. If one of the data vectors is not normally distributed, the function should not do any plotting, but print an error statement (2 points).
+</ul>
+</div>
+<div class="alert alert-danger">
+<ul>
+Task 3.2: Write a function that automatically checks ALL numeric columns from the `df` for normal distribution and prints the result (1 point).
+</ul>
+</div></section>
+</section>
+<section id="chapter-stats-testing">
+<h2>Chapter: Stats testing<a class="headerlink" href="#chapter-stats-testing" title="Permalink to this headline">#</a></h2>
+<section id="statistical-comparisons">
+<h3>04 Statistical Comparisons<a class="headerlink" href="#statistical-comparisons" title="Permalink to this headline">#</a></h3>
+<div class="alert alert-danger">
+<ul>
+Task 4.1: Write a function that takes distance and tip as inputs and tests for normal distribution of the two. Depending on the outcome of the test calculate the appropriate correltaion between the two. The function should return the correlation coefficient and the p-value as variables and print what type of correlation was used (2 points).
+</ul>
+</div>
+<div class="alert alert-danger">
+<ul>
+Task 4.2: Make a scatterplot with distance on the x-axis and tip on the y-axis and label the plot accordingly (2 points).
+</ul>
+</div></section>
+</section>
+<section id="chapter-applied-algorithms">
+<h2>Chapter: Applied Algorithms<a class="headerlink" href="#chapter-applied-algorithms" title="Permalink to this headline">#</a></h2>
+<section id="clsutering">
+<h3>05.1 Clsutering<a class="headerlink" href="#clsutering" title="Permalink to this headline">#</a></h3>
+<div class="alert alert-danger">
+<ul>
+Task 5.1: What are the default options for the sklearn KMeans function (number of clusters and maximal number of iterations). <b>No Code needed for this exercise</b> (1 point).
+</ul>
+</div>
+<div class="alert alert-danger">
+<ul>
+    Task 5.2: Write a function that performs a KMeans classification between data vectors. It should take the vectors as inputs (data1, data2) and the number of cluster (n_clusters) as inputs. It should return the assigned labels and the mean error per cluster centroid. (1 point).
+</ul>
+</div>
+</section>
+<section id="classification">
+<h3>05.2 Classification<a class="headerlink" href="#classification" title="Permalink to this headline">#</a></h3>
+<div class="alert alert-danger">
+<ul>
+Task 5.3: Load the amplitudes and labels in two variables using the pandas package, squeeze out the singelton dimension and transform them into a numpy array. (1 point).
+</ul>
+</div>
+<div class="alert alert-danger">
+<ul>
+    Task 5.4: Using list comprehensions create a new variable which holds the cards names instead of the numerical labels (1='Ace of spades', 2 = 'Jack of clubs', .... ). The corresponsing card names are given below (1 point).
+</ul>
+</div>
+<p>Next we want to see if the participant did think about one card in particular (which was the task).</p>
+<div class="alert alert-danger">
+<ul>
+    Task 5.5.1: Create a SVM classifier with a 'poly' or 'linear' kernel (0.5 point). <br>
+    Task 5.5.2: Fit the amplitude data with the card labels (0.5 point).<br>
+    Task 5.5.3: Calculate predictions based on the amplitude data (0.5 point).<br>
+    Task 5.5.4: Show a classification result using your predictions and the card labels (0.5 point).<br>
+</ul>
+</div>
 </section>
 </section>
 </section>
@@ -731,17 +876,17 @@ For a much broader / fuller list of the Python ecosystem, check out the
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="A0-AllExercises.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="06-EegMagic.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Appendix: Exercise overview</p>
+            <p class="prev-next-title">s06: EEG magic</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="A2-Git.html" title="next page">
+    <a class='right-next' id="next-link" href="A1-PythonPackages.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Appendix: Version Control</p>
+        <p class="prev-next-title">Appendix: Python Packages</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

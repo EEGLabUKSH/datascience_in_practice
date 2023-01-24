@@ -9,32 +9,35 @@ Data science is an emerging and multidisciplinary field, organized around the pr
 These materials focus on the practical elements of finding, analyzing, interpreting and contextualizing data analysis, in order to practice answering questions with data.
 
 ### Topics
+
 1. Python and how to write it (s00-s01)
 2. Basic data operations (s02-s03)
 3. Statistic in Python (s04-s06)
 4. Neurophysiological data (s07-?)
 
 ### Dates
+
 14 seminar sessions in total. <br>
 25.10.2022 - 07.02.2023 (No sessions 27.12. & 03.01.)<br>
 Tuesdays 10:15-11:45.<br>
 We meet every week online [here.](https://mediaportal01.rz.uni-kiel.de/b/wel-qyn-wtn-8rj)<br>
-Room 315 in OS62 is reserved if you dont want to do the course from home.
+Room 315 in OS62 is reserved if you dont want to do the course from home.<br>
+The final exercises must be handed in until 28.02. 23:59:59.
 
 ## Content
 
 Available materials include:
 
 - **Theory** which introduce key topics for doing data science
-    - These can be used to explore and learn about key topics
+  - These can be used to explore and learn about key topics
 - **Assignments** which are problem sets that can be worked through
-    - These can be used to practice key skills and ideas with code
+  - These can be used to practice key skills and ideas with code
 
 ## Session plan
-1. Joined coding of old assignments as presentations *(~20-30-min)*
-2. New theory and assignments *(~45 min)*
-3. Feedback session *(15 min)*
 
+1. Joined coding of old assignments as presentations _(~20-30-min)_
+2. New theory and assignments _(~45 min)_
+3. Feedback session _(15 min)_
 
 All the materials **for psyM1-2** are listed in the table of contents in the left sidebar.
 Note that these materials are not created as fully detailed descriptions or formal descriptions of the topics they introduce.
@@ -57,7 +60,6 @@ Designing and curation of scientific data projects is based on [The Good Researc
 
 The idea for the analysis of electrophysiological data is inspired by [Neuroscience tutorials from Marijn van Vliet](https://github.com/wmvanvliet/neuroscience_tutorials).
 
-
 ## Reference
 
 This content of the course is partially described in the following paper:
@@ -65,9 +67,7 @@ This content of the course is partially described in the following paper:
     Donoghue T, Voytek B, & Ellis S (2022). Course Materials for Data Science in 
     Practice. Journal of Open Source Education, 5(51), 121. DOI: 10.21105/jose.00121
 
-
 ## License
 
 The materials on this website are openly available under a
 [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
-
