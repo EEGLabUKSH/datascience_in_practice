@@ -20,6 +20,7 @@ parts:
   - file: tutorials/05-2-Classification
   - file: tutorials/05-3-DimensionalityReduction
   - file: tutorials/06-EegMagic
+  - file: tutorials/A0-AllExercises
   - file: tutorials/A1-PythonPackages
   - file: tutorials/A2-Git
   - file: tutorials/A3-DataWrangling
