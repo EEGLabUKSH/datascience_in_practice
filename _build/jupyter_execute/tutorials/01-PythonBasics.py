@@ -114,11 +114,52 @@ for ii, x in enumerate(xs):
     print(ii, x)
 
 
+# ## List comprehensions
+# 
+# List Comprehensions are an alternative way to elegantly create lists. List Comprehensions are basically loops, but you can make them syntactically more compact (strictly speaking, List Comprehensions are not really necessary, because you can't do anything with them that wouldn't be possible otherwise).
+# 
+# Let's take as an example a list of square numbers from 0 to 9. With a normal loop you would create this list like this
+
+# In[8]:
+
+
+squares = []  # wir beginnen mit leerer Liste
+for x in range(10):
+    squares.append(x**2)  # Liste wird befüllt
+
+squares
+
+
+# The same result can be written much shorter with a List Comprehension:
+
+# In[9]:
+
+
+squares = [x**2 for x in range(10)]
+squares
+
+
+# The ingredients of a List Comprehension are:
+# 
+# - Two enclosing square brackets (which, after all, define a list).
+# - An expression
+# - A for statement (which iterates over an object)
+# - *Optionally an if-condition*
+# - *Optionally further for-statements*
+# 
+# A relatively complex example might look like the following:
+
+# In[10]:
+
+
+[(x - 1, y - 2) for x in [1, 2, 3] for y in [3, 1, 4] if x != y]
+
+
 # ## Functions and classes
 # 
 # Python functions are defined by the `def` keyword. They take a number of arguments, and return a number of return values.
 
-# In[8]:
+# In[11]:
 
 
 def say_hello(name):
@@ -136,7 +177,7 @@ str_out = say_hello("Anne")
 
 # Classes are defined by the `class` keyword:
 
-# In[9]:
+# In[12]:
 
 
 class Hello:

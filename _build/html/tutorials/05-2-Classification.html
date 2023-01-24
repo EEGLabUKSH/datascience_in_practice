@@ -666,7 +666,7 @@ provides a nice overview of the SVM algorithm. This is also a code-based explain
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1a38fc0d4f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x22bc5765610&gt;
 </pre></div>
 </div>
 <img alt="../_images/05-2-Classification_9_1.png" src="../_images/05-2-Classification_9_1.png" />
@@ -722,12 +722,12 @@ provides a nice overview of the SVM algorithm. This is also a code-based explain
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
-           1       0.97      1.00      0.99        39
-           2       1.00      0.98      0.99        61
+           1       0.95      1.00      0.97        38
+           2       1.00      0.97      0.98        62
 
-    accuracy                           0.99       100
-   macro avg       0.99      0.99      0.99       100
-weighted avg       0.99      0.99      0.99       100
+    accuracy                           0.98       100
+   macro avg       0.97      0.98      0.98       100
+weighted avg       0.98      0.98      0.98       100
 </pre></div>
 </div>
 </div>
@@ -904,7 +904,11 @@ This following code to find and visualize the decision boundary and margins is a
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05-2-Classification_31_0.png" src="../_images/05-2-Classification_31_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\User\anaconda3\lib\site-packages\sklearn\svm\_base.py:1225: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+</pre></div>
+</div>
+<img alt="../_images/05-2-Classification_31_1.png" src="../_images/05-2-Classification_31_1.png" />
 </div>
 </div>
 </section>
@@ -917,7 +921,7 @@ This following code to find and visualize the decision boundary and margins is a
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
-<p>You will for the first time finally work with EEG data (background to the data see <a class="reference external" href="https://biopsychkiel.github.io/datascience_in_practice/tutorials/06-EegMagic.html">Session 06</a>).</p>
+<p>You will for the first time finally work with EEG data (background to the data see <a class="reference external" href="https://biopsychkiel.github.io/datascience_in_practice/tutorials/06-EegMagic.html">Session 06</a>). The goal is to classify which cars a participant was thinking about by using EEG data.</p>
 <p>You can find the mean P300 amplitudes and the labels for each of the 270 trials here:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -930,11 +934,6 @@ This following code to find and visualize the decision boundary and margins is a
 <div class="alert alert-danger">
 <ul>
     Task 5.3: Load the amplitudes and labels in two variables using the pandas package, squeeze out the singelton dimension and transform them into a numpy array. (1 point).
-</ul>
-</div>
-<div class="alert alert-danger">
-<ul>
-    Task 5.3: Load the amplitudes and labels in two variables using the pandas package in transform them into a numpy array. (1 point).
 </ul>
 </div><p>The dataset holds 270 trials in which one of eight cards was presented.</p>
 <div class="alert alert-danger">

@@ -329,7 +329,7 @@ fig.set_size_inches(15,10)
 # Classification is a vast area of machine learning, with many tools, algorithms, and approaches that can be applied to data within the realm of data science. This example seeks merely to introduce the basic idea. If you are interested in classification algorithms, then you are recommended to look into resources and classes that focus on machine learning. 
 
 # ## Exercises
-# You will for the first time finally work with EEG data (background to the data see [Session 06](https://biopsychkiel.github.io/datascience_in_practice/tutorials/06-EegMagic.html)).
+# You will for the first time finally work with EEG data (background to the data see [Session 06](https://biopsychkiel.github.io/datascience_in_practice/tutorials/06-EegMagic.html)). The goal is to classify which cars a participant was thinking about by using EEG data.
 # 
 # You can find the mean P300 amplitudes and the labels for each of the 270 trials here:
 # 
@@ -344,12 +344,6 @@ url_labels = "https://raw.githubusercontent.com/BioPsychKiel/datascience_in_prac
 # <div class="alert alert-danger">
 # <ul>
 #     Task 5.3: Load the amplitudes and labels in two variables using the pandas package, squeeze out the singelton dimension and transform them into a numpy array. (1 point).
-# </ul>
-# </div>
-# 
-# <div class="alert alert-danger">
-# <ul>
-#     Task 5.3: Load the amplitudes and labels in two variables using the pandas package in transform them into a numpy array. (1 point).
 # </ul>
 # </div>
 
