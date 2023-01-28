@@ -466,6 +466,11 @@ title="Print to PDF"
      Conclusion
     </a>
    </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -514,6 +519,11 @@ title="Print to PDF"
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#conclusion">
      Conclusion
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
     </a>
    </li>
   </ul>
@@ -686,7 +696,7 @@ Transformed data dimensions: 	 (1000, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The proportion of variance explained by the first principcal component is 0.8762.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The proportion of variance explained by the first principcal component is 0.8843.
 </pre></div>
 </div>
 </div>
@@ -719,6 +729,58 @@ For a more in depth tutorial on doing PCA in Python, go
 and for a more technical orientation tutorial, go
 <a href="http://sebastianraschka.com/Articles/2015_pca_in_3_steps.html" class="alert-link">here</a>.
 </div></section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<p>We want to explore the penguin dataset from seaborn again. Lets see if we can find useful features for classification.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First import relevant functions</span>
+
+<span class="c1"># Imports</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cluster</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">scipy.cluster.vq</span> <span class="kn">import</span> <span class="n">whiten</span> <span class="c1"># better use this in exercise 5.7 ;)</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let us load the dataset and check the distribution visually by using <code class="docutils literal notranslate"><span class="pre">sns.pairplot</span></code> and remove all <code class="docutils literal notranslate"><span class="pre">NA</span></code> entries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;penguins&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span> <span class="c1"># remove NA now for later PCA</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x26943078a60&gt;
+</pre></div>
+</div>
+<img alt="../_images/05-3-DimensionalityReduction_27_1.png" src="../_images/05-3-DimensionalityReduction_27_1.png" />
+</div>
+</div>
+<p>This plotting function automatically selects only the numeric features.</p>
+<div class="alert alert-danger">
+<ul>
+    Task 5.6: Create a new PD DataFrame which contains only the numberic features of the penguin dataset (1 point).<br>
+</ul>
+</div><div class="alert alert-danger">
+<ul>
+    Task 5.7: Write a function which performs PCA on an input dataframe and takes the number of PC to be returned as inputs. The functions output should be the Principal Components after performing PCA (2 points).<br>
+    <p>
+    Example: <i>pc1, pc2 = run_pca(data, n_pcs = 2)</i>
+</ul>
+</div>
+<div class="alert alert-danger">
+<ul>
+    Task 5.8: Use the function from Task 5.6 to create a plot with two returned PCs and label each datapoint according to the original species (1 point).<br>
+</ul>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
