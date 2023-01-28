@@ -194,4 +194,25 @@
 # </ul>
 # </div>
 # 
+# ### 05.3 DimensionalityReduction
+# <div class="alert alert-danger">
+# <ul>
+#     Task 5.6: Create a new PD DataFrame which contains only the numberic features of the penguin dataset (1 point).<br>
+# </ul>
+# </div>
+# 
+# <div class="alert alert-danger">
+# <ul>
+#     Task 5.7: Write a function which performs PCA on an input dataframe and takes the number of PC to be returned as inputs. The functions output should be the Principal Components after performing PCA (2 points).<br>
+#     <p>
+#     Example: <i>pc1, pc2 = run_pca(data, n_pcs = 2)</i>
+# </ul>
+# </div>
+# 
+# <div class="alert alert-danger">
+# <ul>
+#     Task 5.8: Use the function from Task 5.6 to create a plot with two returned PCs and label each datapoint according to the original species (1 point).<br>
+#     
+# </ul>
+# </div>
 # 

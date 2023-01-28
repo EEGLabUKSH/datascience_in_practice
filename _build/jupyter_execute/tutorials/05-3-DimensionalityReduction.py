@@ -200,3 +200,54 @@ plt.ylabel('PC-1', fontsize=14);
 # and for a more technical orientation tutorial, go
 # <a href="http://sebastianraschka.com/Articles/2015_pca_in_3_steps.html" class="alert-link">here</a>.
 # </div>
+
+# ## Exercise
+# We want to explore the penguin dataset from seaborn again. Lets see if we can find useful features for classification.
+
+# In[11]:
+
+
+# First import relevant functions
+
+# Imports
+from sklearn import cluster
+from sklearn.cluster import KMeans
+from scipy.cluster.vq import whiten # better use this in exercise 5.7 ;)
+import seaborn as sns
+import pandas as pd
+
+
+# Now let us load the dataset and check the distribution visually by using `sns.pairplot` and remove all `NA` entries.
+
+# In[12]:
+
+
+# Load the data
+df = sns.load_dataset("penguins")
+df = df.dropna() # remove NA now for later PCA
+sns.pairplot(df, hue="species")
+
+
+# This plotting function automatically selects only the numeric features. 
+# <div class="alert alert-danger">
+# <ul>
+#     Task 5.6: Create a new PD DataFrame which contains only the numberic features of the penguin dataset (1 point).<br>
+# </ul>
+# </div>
+
+# <div class="alert alert-danger">
+# <ul>
+#     Task 5.7: Write a function which performs PCA on an input dataframe and takes the number of PC to be returned as inputs. The functions output should be the Principal Components after performing PCA (2 points).<br>
+#     <p>
+#     Example: <i>pc1, pc2 = run_pca(data, n_pcs = 2)</i>
+# </ul>
+# </div>
+#     
+
+# <div class="alert alert-danger">
+# <ul>
+#     Task 5.8: Use the function from Task 5.6 to create a plot with two returned PCs and label each datapoint according to the original species (1 point).<br>
+#     
+# </ul>
+# </div>
+# 
