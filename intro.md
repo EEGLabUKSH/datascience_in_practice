@@ -1,4 +1,4 @@
-# Data Science in Practice or Neurophysiological Data
+# Data Science in Practice for Neurophysiological Data
 
 Data Science in Practice for Neurophysiological data is an open set of materials for learning introductory data science for [**psyM1**](https://www.studium.uni-kiel.de/de/studienangebot/studienfaecher/psychologie-ma).
 
