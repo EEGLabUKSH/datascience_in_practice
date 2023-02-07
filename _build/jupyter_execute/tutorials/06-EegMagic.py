@@ -19,15 +19,7 @@ import seaborn as sns
 plt.rcParams.update({"figure.dpi": 200,"figure.facecolor":"w","figure.figsize": (15,10)})
 
 
-# ## Set path and load data fro you local machine
-# First we will detect where the current script is located on our harddrive. We will points VS code to the location of the file we want to load. The raw data is in MatLab format, luckerly scipy can handle this issue.
-# 
-# <div class="alert alert-danger">
-# Load data with relativ path (1 point).
-# 
-# </div>
-
-# In[150]:
+# In[2]:
 
 
 dir_script = Path("__file__").parent.absolute()
@@ -37,29 +29,20 @@ data = sio.loadmat(Path.joinpath(dir_rawdata,fname))
 data_mne = np.vstack((data['EEG'],data['labels']))
 
 
-# In[151]:
+# In[3]:
 
 
 data['EEG']
 data['labels']
 
 
-# In[152]:
+# In[4]:
 
 
 data['EEG'].shape
 
 
-# ## Explore the loaded data
-# To understand the data we were handed please explore what the variable contains.
-# 
-# <div class="alert alert-danger">
-# Determine the shape of the EEG data (1 point).
-# Determine the names of the triggers in the data (1 point).
-# 
-# </div>
-
-# In[153]:
+# In[5]:
 
 
 print('EEG dimensions:', data['EEG'].shape)
@@ -72,7 +55,7 @@ print(np.unique(data['labels']))
 # For now these are channel names and types of our data, as well as the sampling rate.
 # 
 
-# In[154]:
+# In[6]:
 
 
 # convert raw numpy to mne
@@ -88,7 +71,7 @@ info = mne.create_info(ch_names=ch_nms, sfreq=srate, ch_types=ch_types)
 # ## Create MNE object
 # With the raw data loaded and the config variables defined, we can initiate the MNE object.
 
-# In[155]:
+# In[ ]:
 
 
 raw = mne.io.RawArray(data_mne, info);
@@ -97,13 +80,13 @@ raw = mne.io.RawArray(data_mne, info);
 # WOW, that was super easy (when you know the right functions XD).
 # Lets, already do some basic processing of the data.
 
-# In[156]:
+# In[ ]:
 
 
 raw.filter(0.5, 20);
 
 
-# In[157]:
+# In[ ]:
 
 
 #store data for seminar
