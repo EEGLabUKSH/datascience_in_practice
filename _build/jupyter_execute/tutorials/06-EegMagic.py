@@ -11,17 +11,15 @@ import scipy.io as sio
 from scipy.stats import pearsonr, ttest_rel
 import matplotlib.pyplot as plt
 from matplotlib.collections import LineCollection
-import mne
+import pandas as pd
+
 import numpy as np
 import seaborn as sns
-from tueplots import axes, bundles
 
-# Increase the resolution of all the plots below
-bundles.beamer_moml()
 plt.rcParams.update({"figure.dpi": 200,"figure.facecolor":"w","figure.figsize": (15,10)})
 
 
-# ## Set path and load data
+# ## Set path and load data fro you local machine
 # First we will detect where the current script is located on our harddrive. We will points VS code to the location of the file we want to load. The raw data is in MatLab format, luckerly scipy can handle this issue.
 # 
 # <div class="alert alert-danger">
@@ -29,7 +27,7 @@ plt.rcParams.update({"figure.dpi": 200,"figure.facecolor":"w","figure.figsize": 
 # 
 # </div>
 
-# In[2]:
+# In[150]:
 
 
 dir_script = Path("__file__").parent.absolute()
@@ -39,14 +37,14 @@ data = sio.loadmat(Path.joinpath(dir_rawdata,fname))
 data_mne = np.vstack((data['EEG'],data['labels']))
 
 
-# In[3]:
+# In[151]:
 
 
 data['EEG']
 data['labels']
 
 
-# In[4]:
+# In[152]:
 
 
 data['EEG'].shape
@@ -61,7 +59,7 @@ data['EEG'].shape
 # 
 # </div>
 
-# In[5]:
+# In[153]:
 
 
 print('EEG dimensions:', data['EEG'].shape)
@@ -74,7 +72,7 @@ print(np.unique(data['labels']))
 # For now these are channel names and types of our data, as well as the sampling rate.
 # 
 
-# In[6]:
+# In[154]:
 
 
 # convert raw numpy to mne
@@ -90,43 +88,41 @@ info = mne.create_info(ch_names=ch_nms, sfreq=srate, ch_types=ch_types)
 # ## Create MNE object
 # With the raw data loaded and the config variables defined, we can initiate the MNE object.
 
-# In[7]:
+# In[155]:
 
 
-raw = mne.io.RawArray(data_mne, info)
+raw = mne.io.RawArray(data_mne, info);
 
 
 # WOW, that was super easy (when you know the right functions XD).
 # Lets, already do some basic processing of the data.
 
-# In[8]:
+# In[156]:
 
 
-raw.filter(0.5, 20)
+raw.filter(0.5, 20);
+
+
+# In[157]:
+
+
+#store data for seminar
+pd.DataFrame(data['EEG']).to_csv(r'./files/eeg_raw.csv', index=False)
+pd.DataFrame(data['labels']).to_csv(r'./files/eeg_labels.csv', index=False)
 
 
 # ## Prepare epoching
 # To better understand the data, we want to find events in the raw data and epoch around these.
 
-# In[9]:
+# In[ ]:
 
 
-events = mne.find_events(raw)
-event_id = {
-    'Ace of spades': 1,
-    'Jack of clubs': 2,
-    'Queen of hearts': 3,
-    'King of diamonds': 4,
-    '10 of spades': 5,
-    '3 of clubs': 6,
-    '10 of hearts': 7,
-    '3 of diamonds': 8,
-    'King of spades': 9,
-}
-epochs = mne.Epochs(raw, events, event_id, tmin=-0.2, tmax=0.8)
+url_eeg_raw = 'https://raw.githubusercontent.com/BioPsychKiel/datascience_in_practice/main/tutorials/files/eeg_raw.csv'
+url_eeg_labels = 'https://raw.githubusercontent.com/BioPsychKiel/datascience_in_practice/main/tutorials/files/eeg_labels.csv'
 
-EEG = data['EEG']
-labels = data['labels'].flatten()
+EEG = np.array(pd.read_csv(url_eeg_raw))
+labels = np.array(pd.read_csv(url_eeg_labels))
+labels = labels[0]
 
 cards = [
     'Ace of spades',
@@ -144,13 +140,17 @@ onsets = np.flatnonzero(labels)
 print(onsets[:10])  # Print the first 10 onsets
 print('Number of onsets:', len(onsets))
 
+
+# In[ ]:
+
+
 classes = labels[onsets]
 print('Card shown at each onset:', classes[:10])
 
 
 # Now lets do the epoching
 
-# In[10]:
+# In[ ]:
 
 
 nchannels = 7 # 7 EEG channels
@@ -166,9 +166,9 @@ print(trials.shape)
 
 
 # ## Defining a function
-# because we will probably plot our data a trazillion times, lets define a function to make the code look cleaner and to help us keep an overview.
+# Because we will probably plot our data a trazillion times, lets define a function to make the code look cleaner.
 
-# In[11]:
+# In[ ]:
 
 
 def plot_eeg(EEG, vspace=100, color='k'):
@@ -196,7 +196,7 @@ def plot_eeg(EEG, vspace=100, color='k'):
     samplerate = 2048.
     time = np.arange(EEG.shape[0]) / samplerate
     
-    # Plot EEG versus time
+        # Plot EEG versus time
     plt.plot(time, EEG, color=color)
 
     # Add gridlines to the plot
@@ -215,37 +215,39 @@ def plot_eeg(EEG, vspace=100, color='k'):
     plt.title('EEG data')
 
 
-# In[12]:
+# In[ ]:
 
 
-plt.figure(figsize=(4, 4))
-plot_eeg(trials[0, :, :], vspace=30)
+# run the function with our eeg data from one trial
+idx_trial = 0
+plt.figure(figsize=(6,4))
+plot_eeg(trials[idx_trial, :, :], vspace=30)
 
 
 # ## More plotting
 # "Why do you always plot your data?" <br>
 # "Because I can" - *Immanuel Kant*
 
-# In[13]:
+# In[ ]:
 
 
 # Lets give each response a different color
 cfg_colors_eeg_plot_trials = plt.cm.viridis(np.linspace(0,1,EEG.shape[0]+2))
 
-plt.figure()
+plt.figure(figsize=(4,4))
 
 # Plot the mean EEG response to each card, such an average is called an ERP in the literature
 for i in range(len(cards)):
     # Use logical indexing to get the right trial indices
     erp = np.mean(trials[classes == i+1, :, :], axis=0)
-    plot_eeg(erp, vspace=20, color=cfg_colors_eeg_plot_trials[i])
+    plot_eeg(erp, vspace=30, color=cfg_colors_eeg_plot_trials[i])
 plt.xlim(0,0.4)
 
 
 # ## Find features
 # For the classification we want to extract the P300 amplitude. Easy!
 
-# In[14]:
+# In[ ]:
 
 
 from_index = int(0.25 * sample_rate)
@@ -254,7 +256,7 @@ p300_amplitudes = np.mean(np.mean(trials[:, :, from_index:to_index], axis=1), ax
 p300_amplitudes -= min(p300_amplitudes) # Make them all positive
 
 
-# In[15]:
+# In[ ]:
 
 
 card_oi = 3
@@ -266,7 +268,7 @@ plt.xlabel('Cards match')
 plt.title(f'Card : {cards[card_oi-1]}')
 
 
-# In[16]:
+# In[ ]:
 
 
 nclasses = len(cards)
@@ -281,21 +283,4 @@ plt.ylabel('score')
 # Pick the card with the highest score
 winning_card = np.argmax(scores)
 print('Was your card the %s?' % cards[winning_card])
-
-
-# In[17]:
-
-
-import pandas as pd
-
-# amp channel avg
-amps = pd.DataFrame(p300_amplitudes)
-amps.to_csv(Path.joinpath(dir_rawdata,"p300_amplitudes.csv"), index=False,header=False)
-
-# amp per channel
-p300_amplitudes_chans = np.mean(trials[:, :, from_index:to_index], axis=2)
-pd.DataFrame(p300_amplitudes_chans).to_csv(Path.joinpath(dir_rawdata,"p300_amplitudes_chns.csv"), index=False, header=False)
-
-# label
-pd.DataFrame(classes).to_csv(Path.joinpath(dir_rawdata,"p300_labels.csv"), index=False,header=False)
 

@@ -4,6 +4,81 @@
 # # Appendix: Exercise overview
 # You can download [this](https://biopsychkiel.github.io/datascience_in_practice/_sources/tutorials/A0-AllExercises.ipynb) notebook as a template to fill out all exercises. A complete list of tasks has to be handed in by **28.02.2023, 23:59:59** via e-mail (j.welzel@neurologie.uni-kiel.de). There is a total of 42 points, you need 21 to pass (5 you already have by just sending an empty notebook). People who did the extra advent exercise have to score *17 points* to pass. 
 
+# <style type="text/css">
+# 
+# </style>
+# <table class="tg">
+# <thead>
+#   <tr>
+#     <th class="tg-za14">Normal grading</th>
+#     <th class="tg-za14">Extra Task grading</th>
+#     <th class="tg-7zrl">Grade</th>
+#   </tr>
+# </thead>
+# <tbody>
+#   <tr>
+#     <td class="tg-za14">42</td>
+#     <td class="tg-za14">38</td>
+#     <td class="tg-7zrl">1</td>
+#   </tr>
+#   <tr>
+#     <td class="tg-za14">39</td>
+#     <td class="tg-za14">35</td>
+#     <td class="tg-7zrl">1,3</td>
+#   </tr>
+#   <tr>
+#     <td class="tg-za14">37</td>
+#     <td class="tg-za14">33</td>
+#     <td class="tg-7zrl">1,6</td>
+#   </tr>
+#   <tr>
+#     <td class="tg-za14">34</td>
+#     <td class="tg-za14">30</td>
+#     <td class="tg-7zrl">1,9</td>
+#   </tr>
+#   <tr>
+#     <td class="tg-7zrl">31</td>
+#     <td class="tg-7zrl">27</td>
+#     <td class="tg-7zrl">2,2</td>
+#   </tr>
+#   <tr>
+#     <td class="tg-7zrl">29</td>
+#     <td class="tg-7zrl">25</td>
+#     <td class="tg-7zrl">2,5</td>
+#   </tr>
+#   <tr>
+#     <td class="tg-7zrl">26</td>
+#     <td class="tg-7zrl">22</td>
+#     <td class="tg-7zrl">2,8</td>
+#   </tr>
+#   <tr>
+#     <td class="tg-7zrl">24</td>
+#     <td class="tg-7zrl">20</td>
+#     <td class="tg-7zrl">3,1</td>
+#   </tr>
+#   <tr>
+#     <td class="tg-7zrl">21</td>
+#     <td class="tg-7zrl">17</td>
+#     <td class="tg-7zrl">3,4</td>
+#   </tr>
+#   <tr>
+#     <td class="tg-7zrl">19</td>
+#     <td class="tg-7zrl">15</td>
+#     <td class="tg-7zrl">3,7</td>
+#   </tr>
+#   <tr>
+#     <td class="tg-7zrl">17</td>
+#     <td class="tg-7zrl">13</td>
+#     <td class="tg-7zrl">4</td>
+#   </tr>
+#   <tr>
+#     <td class="tg-7zrl">&lt;17</td>
+#     <td class="tg-7zrl">&lt;13</td>
+#     <td class="tg-7zrl">5</td>
+#   </tr>
+# </tbody>
+# </table>
+
 # ## Chapter: Intro
 # 
 # Everybody get full score here, no need to put this in the final document.

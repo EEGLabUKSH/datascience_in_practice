@@ -436,8 +436,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#set-path-and-load-data">
-   Set path and load data
+  <a class="reference internal nav-link" href="#set-path-and-load-data-fro-you-local-machine">
+   Set path and load data fro you local machine
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -495,8 +495,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#set-path-and-load-data">
-   Set path and load data
+  <a class="reference internal nav-link" href="#set-path-and-load-data-fro-you-local-machine">
+   Set path and load data fro you local machine
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -553,20 +553,18 @@ title="Print to PDF"
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">pearsonr</span><span class="p">,</span> <span class="n">ttest_rel</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="kn">import</span> <span class="n">LineCollection</span>
-<span class="kn">import</span> <span class="nn">mne</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">tueplots</span> <span class="kn">import</span> <span class="n">axes</span><span class="p">,</span> <span class="n">bundles</span>
 
-<span class="c1"># Increase the resolution of all the plots below</span>
-<span class="n">bundles</span><span class="o">.</span><span class="n">beamer_moml</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;figure.dpi&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span><span class="s2">&quot;figure.facecolor&quot;</span><span class="p">:</span><span class="s2">&quot;w&quot;</span><span class="p">,</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">)})</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section id="set-path-and-load-data">
-<h2>Set path and load data<a class="headerlink" href="#set-path-and-load-data" title="Permalink to this headline">#</a></h2>
+<section id="set-path-and-load-data-fro-you-local-machine">
+<h2>Set path and load data fro you local machine<a class="headerlink" href="#set-path-and-load-data-fro-you-local-machine" title="Permalink to this headline">#</a></h2>
 <p>First we will detect where the current script is located on our harddrive. We will points VS code to the location of the file we want to load. The raw data is in MatLab format, luckerly scipy can handle this issue.</p>
 <div class="alert alert-danger">
 Load data with relativ path (1 point).
@@ -654,18 +652,14 @@ For now these are channel names and types of our data, as well as the sampling r
 <p>With the raw data loaded and the config variables defined, we can initiate the MNE object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">RawArray</span><span class="p">(</span><span class="n">data_mne</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">RawArray</span><span class="p">(</span><span class="n">data_mne</span><span class="p">,</span> <span class="n">info</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Creating RawArray with float64 data, n_channels=8, n_times=288349
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Range : 0 ... 288348 =      0.000 ...   140.795 secs
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ready.
+    Range : 0 ... 288348 =      0.000 ...   140.795 secs
+Ready.
 </pre></div>
 </div>
 </div>
@@ -674,51 +668,24 @@ For now these are channel names and types of our data, as well as the sampling r
 Lets, already do some basic processing of the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filtering raw data in 1 contiguous segment
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Setting up band-pass filter from 0.5 - 20 Hz
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FIR filter parameters
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Designing a one-pass, zero-phase, non-causal bandpass filter:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Windowed time-domain design (firwin) method
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Lower passband edge: 0.50
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Lower transition bandwidth: 0.50 Hz (-6 dB cutoff frequency: 0.25 Hz)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Upper passband edge: 20.00 Hz
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Upper transition bandwidth: 5.00 Hz (-6 dB cutoff frequency: 22.50 Hz)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Filter length: 13517 samples (6.600 sec)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+Setting up band-pass filter from 0.5 - 20 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 0.50
+- Lower transition bandwidth: 0.50 Hz (-6 dB cutoff frequency: 0.25 Hz)
+- Upper passband edge: 20.00 Hz
+- Upper transition bandwidth: 5.00 Hz (-6 dB cutoff frequency: 22.50 Hz)
+- Filter length: 13517 samples (6.600 sec)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=1)]: Using backend SequentialBackend with 1 concurrent workers.
@@ -729,70 +696,16 @@ Lets, already do some basic processing of the data.</p>
 [Parallel(n_jobs=1)]: Done   7 out of   7 | elapsed:    0.0s finished
 </pre></div>
 </div>
-<div class="output text_html"><table class="table table-hover table-striped table-sm table-responsive small">
-    <tr>
-        <th>Measurement date</th>
-
-        <td>Unknown</td>
-
-    </tr>
-    <tr>
-        <th>Experimenter</th>
-
-        <td>Unknown</td>
-
-    </tr>
-        <th>Participant</th>
-
-        <td>Unknown</td>
-
-    </tr>
-    <tr>
-        <th>Digitized points</th>
-
-        <td>Not available</td>
-
-    </tr>
-    <tr>
-        <th>Good channels</th>
-        <td>7 EEG, 1 Stimulus</td>
-    </tr>
-    <tr>
-        <th>Bad channels</th>
-        <td>None</td>
-    </tr>
-    <tr>
-        <th>EOG channels</th>
-        <td>Not available</td>
-    </tr>
-    <tr>
-        <th>ECG channels</th>
-        <td>Not available</td>
-
-    <tr>
-        <th>Sampling frequency</th>
-        <td>2048.00 Hz</td>
-    </tr>
-
-
-    <tr>
-        <th>Highpass</th>
-        <td>0.50 Hz</td>
-    </tr>
-
-
-    <tr>
-        <th>Lowpass</th>
-        <td>20.00 Hz</td>
-    </tr>
-
-
-
-    <tr>
-        <th>Duration</th>
-        <td>00:02:20 (HH:MM:SS)</td>
-    </tr>
-</table></div></div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#store data for seminar</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;EEG&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;./files/eeg_raw.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;./files/eeg_labels.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="prepare-epoching">
@@ -800,22 +713,12 @@ Lets, already do some basic processing of the data.</p>
 <p>To better understand the data, we want to find events in the raw data and epoch around these.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">events</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">find_events</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
-<span class="n">event_id</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;Ace of spades&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s1">&#39;Jack of clubs&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="s1">&#39;Queen of hearts&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="s1">&#39;King of diamonds&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-    <span class="s1">&#39;10 of spades&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="s1">&#39;3 of clubs&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
-    <span class="s1">&#39;10 of hearts&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
-    <span class="s1">&#39;3 of diamonds&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-    <span class="s1">&#39;King of spades&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
-<span class="p">}</span>
-<span class="n">epochs</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">Epochs</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">events</span><span class="p">,</span> <span class="n">event_id</span><span class="p">,</span> <span class="n">tmin</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_eeg_raw</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/BioPsychKiel/datascience_in_practice/main/tutorials/files/eeg_raw.csv&#39;</span>
+<span class="n">url_eeg_labels</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/BioPsychKiel/datascience_in_practice/main/tutorials/files/eeg_labels.csv&#39;</span>
 
-<span class="n">EEG</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;EEG&#39;</span><span class="p">]</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">EEG</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url_eeg_raw</span><span class="p">))</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url_eeg_labels</span><span class="p">))</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="n">cards</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;Ace of spades&#39;</span><span class="p">,</span>
@@ -832,37 +735,25 @@ Lets, already do some basic processing of the data.</p>
 <span class="n">onsets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">onsets</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>  <span class="c1"># Print the first 10 onsets</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of onsets:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">onsets</span><span class="p">))</span>
-
-<span class="n">classes</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">onsets</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 7789  8790  9814 10838 11862 12886 13910 14934 15958 16982]
+Number of onsets: 270
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classes</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">onsets</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Card shown at each onset:&#39;</span><span class="p">,</span> <span class="n">classes</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>270 events found
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Event IDs: [1 2 3 4 5 6 7 8 9]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Not setting metadata
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>270 matching events found
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Setting baseline interval to [-0.2001953125, 0.0] sec
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Applying baseline correction (mode: mean)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 projection items activated
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 7789  8790  9814 10838 11862 12886 13910 14934 15958 16982]
-Number of onsets: 270
-Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
 </pre></div>
 </div>
 </div>
@@ -892,7 +783,7 @@ Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
 </section>
 <section id="defining-a-function">
 <h2>Defining a function<a class="headerlink" href="#defining-a-function" title="Permalink to this headline">#</a></h2>
-<p>because we will probably plot our data a trazillion times, lets define a function to make the code look cleaner and to help us keep an overview.</p>
+<p>Because we will probably plot our data a trazillion times, lets define a function to make the code look cleaner.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_eeg</span><span class="p">(</span><span class="n">EEG</span><span class="p">,</span> <span class="n">vspace</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">):</span>
@@ -920,7 +811,7 @@ Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
     <span class="n">samplerate</span> <span class="o">=</span> <span class="mf">2048.</span>
     <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">EEG</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">samplerate</span>
     
-    <span class="c1"># Plot EEG versus time</span>
+        <span class="c1"># Plot EEG versus time</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">EEG</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
 
     <span class="c1"># Add gridlines to the plot</span>
@@ -943,13 +834,15 @@ Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plot_eeg</span><span class="p">(</span><span class="n">trials</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">vspace</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run the function with our eeg data from one trial</span>
+<span class="n">idx_trial</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plot_eeg</span><span class="p">(</span><span class="n">trials</span><span class="p">[</span><span class="n">idx_trial</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">vspace</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/06-EegMagic_20_0.png" src="../_images/06-EegMagic_20_0.png" />
+<img alt="../_images/06-EegMagic_22_0.png" src="../_images/06-EegMagic_22_0.png" />
 </div>
 </div>
 </section>
@@ -962,13 +855,13 @@ Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lets give each response a different color</span>
 <span class="n">cfg_colors_eeg_plot_trials</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">EEG</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 
 <span class="c1"># Plot the mean EEG response to each card, such an average is called an ERP in the literature</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cards</span><span class="p">)):</span>
     <span class="c1"># Use logical indexing to get the right trial indices</span>
     <span class="n">erp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">trials</span><span class="p">[</span><span class="n">classes</span> <span class="o">==</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">plot_eeg</span><span class="p">(</span><span class="n">erp</span><span class="p">,</span> <span class="n">vspace</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cfg_colors_eeg_plot_trials</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">plot_eeg</span><span class="p">(</span><span class="n">erp</span><span class="p">,</span> <span class="n">vspace</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cfg_colors_eeg_plot_trials</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.4</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -977,7 +870,7 @@ Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 0.4)
 </pre></div>
 </div>
-<img alt="../_images/06-EegMagic_22_1.png" src="../_images/06-EegMagic_22_1.png" />
+<img alt="../_images/06-EegMagic_24_1.png" src="../_images/06-EegMagic_24_1.png" />
 </div>
 </div>
 </section>
@@ -1010,7 +903,7 @@ Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Card : Queen of hearts&#39;)
 </pre></div>
 </div>
-<img alt="../_images/06-EegMagic_25_1.png" src="../_images/06-EegMagic_25_1.png" />
+<img alt="../_images/06-EegMagic_27_1.png" src="../_images/06-EegMagic_27_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1034,25 +927,7 @@ Card shown at each onset: [3 6 7 9 1 8 5 2 4 9]
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Was your card the Queen of hearts?
 </pre></div>
 </div>
-<img alt="../_images/06-EegMagic_26_1.png" src="../_images/06-EegMagic_26_1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="c1"># amp channel avg</span>
-<span class="n">amps</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">p300_amplitudes</span><span class="p">)</span>
-<span class="n">amps</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">dir_rawdata</span><span class="p">,</span><span class="s2">&quot;p300_amplitudes.csv&quot;</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="c1"># amp per channel</span>
-<span class="n">p300_amplitudes_chans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">trials</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">from_index</span><span class="p">:</span><span class="n">to_index</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">p300_amplitudes_chans</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">dir_rawdata</span><span class="p">,</span><span class="s2">&quot;p300_amplitudes_chns.csv&quot;</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="c1"># label</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">dir_rawdata</span><span class="p">,</span><span class="s2">&quot;p300_labels.csv&quot;</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
+<img alt="../_images/06-EegMagic_28_1.png" src="../_images/06-EegMagic_28_1.png" />
 </div>
 </div>
 </section>
