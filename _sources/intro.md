@@ -23,6 +23,7 @@ Tuesdays 10:15-11:45.<br>
 We meet every week online [here.](https://mediaportal01.rz.uni-kiel.de/b/wel-qyn-wtn-8rj)<br>
 Room 315 in OS62 is reserved if you dont want to do the course from home.<br>
 The final exercises must be handed in until 28.02. 23:59:59.
+The evaluation from the seminar can be found [here.](https://github.com/BioPsychKiel/teaching-evaluation/blob/main/seminar_evaluation_DataScience.ipynb)
 
 ## Content
 

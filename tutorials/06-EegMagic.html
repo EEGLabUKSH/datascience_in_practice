@@ -436,16 +436,6 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#set-path-and-load-data-fro-you-local-machine">
-   Set path and load data fro you local machine
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#explore-the-loaded-data">
-   Explore the loaded data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#set-config-vars-for-mne">
    Set config vars for MNE
   </a>
@@ -494,16 +484,6 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#set-path-and-load-data-fro-you-local-machine">
-   Set path and load data fro you local machine
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#explore-the-loaded-data">
-   Explore the loaded data
-  </a>
- </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#set-config-vars-for-mne">
    Set config vars for MNE
@@ -563,12 +543,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<section id="set-path-and-load-data-fro-you-local-machine">
-<h2>Set path and load data fro you local machine<a class="headerlink" href="#set-path-and-load-data-fro-you-local-machine" title="Permalink to this headline">#</a></h2>
-<p>First we will detect where the current script is located on our harddrive. We will points VS code to the location of the file we want to load. The raw data is in MatLab format, luckerly scipy can handle this issue.</p>
-<div class="alert alert-danger">
-Load data with relativ path (1 point).
-</div><div class="cell docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dir_script</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;__file__&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>
 <span class="n">dir_rawdata</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">dir_script</span><span class="p">,</span> <span class="s2">&quot;files&quot;</span><span class="p">)</span>
@@ -604,14 +579,7 @@ Load data with relativ path (1 point).
 </div>
 </div>
 </div>
-</section>
-<section id="explore-the-loaded-data">
-<h2>Explore the loaded data<a class="headerlink" href="#explore-the-loaded-data" title="Permalink to this headline">#</a></h2>
-<p>To understand the data we were handed please explore what the variable contains.</p>
-<div class="alert alert-danger">
-Determine the shape of the EEG data (1 point).
-Determine the names of the triggers in the data (1 point).
-</div><div class="cell docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;EEG dimensions:&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;EEG&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Label dimensions:&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -627,7 +595,6 @@ Label dimensions: (1, 288349)
 </div>
 </div>
 </div>
-</section>
 <section id="set-config-vars-for-mne">
 <h2>Set config vars for MNE<a class="headerlink" href="#set-config-vars-for-mne" title="Permalink to this headline">#</a></h2>
 <p>To process the data we have to hardcode a couple of information to pass to the MNE toolbox.
@@ -642,6 +609,18 @@ For now these are channel names and types of our data, as well as the sampling r
 <span class="n">srate</span> <span class="o">=</span> <span class="mi">2048</span>
 
 <span class="n">info</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">create_info</span><span class="p">(</span><span class="n">ch_names</span><span class="o">=</span><span class="n">ch_nms</span><span class="p">,</span> <span class="n">sfreq</span><span class="o">=</span><span class="n">srate</span><span class="p">,</span> <span class="n">ch_types</span><span class="o">=</span><span class="n">ch_types</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [6],</span> in <span class="ni">&lt;cell line: 8&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">ch_nms</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Fz&#39;</span><span class="p">,</span> <span class="s1">&#39;Cz&#39;</span><span class="p">,</span> <span class="s1">&#39;Pz&#39;</span><span class="p">,</span> <span class="s1">&#39;CP1&#39;</span><span class="p">,</span> <span class="s1">&#39;CP3&#39;</span><span class="p">,</span> <span class="s1">&#39;C3&#39;</span><span class="p">,</span> <span class="s1">&#39;C4&#39;</span><span class="p">,</span><span class="s1">&#39;status&#39;</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">srate</span> <span class="o">=</span> <span class="mi">2048</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">info</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">create_info</span><span class="p">(</span><span class="n">ch_names</span><span class="o">=</span><span class="n">ch_nms</span><span class="p">,</span> <span class="n">sfreq</span><span class="o">=</span><span class="n">srate</span><span class="p">,</span> <span class="n">ch_types</span><span class="o">=</span><span class="n">ch_types</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;mne&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -842,7 +821,7 @@ Number of onsets: 270
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/06-EegMagic_22_0.png" src="../_images/06-EegMagic_22_0.png" />
+<img alt="../_images/06-EegMagic_20_0.png" src="../_images/06-EegMagic_20_0.png" />
 </div>
 </div>
 </section>
@@ -870,7 +849,7 @@ Number of onsets: 270
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 0.4)
 </pre></div>
 </div>
-<img alt="../_images/06-EegMagic_24_1.png" src="../_images/06-EegMagic_24_1.png" />
+<img alt="../_images/06-EegMagic_22_1.png" src="../_images/06-EegMagic_22_1.png" />
 </div>
 </div>
 </section>
@@ -903,7 +882,7 @@ Number of onsets: 270
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Card : Queen of hearts&#39;)
 </pre></div>
 </div>
-<img alt="../_images/06-EegMagic_27_1.png" src="../_images/06-EegMagic_27_1.png" />
+<img alt="../_images/06-EegMagic_25_1.png" src="../_images/06-EegMagic_25_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -927,7 +906,7 @@ Number of onsets: 270
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Was your card the Queen of hearts?
 </pre></div>
 </div>
-<img alt="../_images/06-EegMagic_28_1.png" src="../_images/06-EegMagic_28_1.png" />
+<img alt="../_images/06-EegMagic_26_1.png" src="../_images/06-EegMagic_26_1.png" />
 </div>
 </div>
 </section>
